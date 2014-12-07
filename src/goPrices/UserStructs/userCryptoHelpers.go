@@ -1,14 +1,12 @@
 package UserStructs
 
-import(
-
+import (
 	"fmt"
 
 	//password derivation and storage specific
 	"code.google.com/p/go.crypto/scrypt"
 	"crypto/rand"
 	"io"
-
 )
 
 const alphanum = "!@#0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -28,7 +26,7 @@ func getArrayOfRandBytes(arrayLength int) ([]byte, error) {
 //derives a password using parameters specified in function.
 //
 //Uses the wonderful scrypt. Arguably better than bcrypt
-func DerivePassword(plaintext, nonce []byte) ([]byte, error) {
+func derivePasswordRaw(plaintext, nonce []byte) ([]byte, error) {
 	//ok, now for scrypt parameters
 	//we input the password and the nonce as usual
 	//
@@ -52,7 +50,7 @@ func randString(n int) string {
 	var bytes = make([]byte, n)
 	rand.Read(bytes)
 	for i, b := range bytes {
-		bytes[i] = alphanum[b % byte(len(alphanum))]
+		bytes[i] = alphanum[b%byte(len(alphanum))]
 	}
 	return string(bytes)
 }

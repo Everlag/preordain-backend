@@ -38,6 +38,7 @@ func getLogger(fName, name string) (aLogger *log.Logger) {
 		fmt.Println(err)
 		os.Exit(0)
 	}
+	defer file.Close()
 
 	multi:= io.MultiWriter(file, os.Stdout)
 

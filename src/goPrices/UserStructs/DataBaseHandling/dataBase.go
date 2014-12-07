@@ -78,6 +78,8 @@ type WrappedStorage struct{
 
 	//provides a way to ensure we run only a single snapshot daemon at a time
 	daemonRunning bool
+	//provides a way to close daemons when the db has been closed
+	dead bool
 
 }
 
@@ -96,6 +98,11 @@ func (someStorage *WrappedStorage) runDaemon() {
 func (someStorage *WrappedStorage) snapshotDaemon() {
 	
 	for{
+
+		//a dead database means this goroutine can exit
+		if someStorage.dead {
+			return
+		}
 
 		snapshotTime:= someStorage.SnapshotRotationTime +
 						someStorage.LastSnapshotRotation
@@ -155,6 +162,7 @@ func (someStorage *WrappedStorage) snapshot() {
 		//not an optimal solution for user experience but prevents further
 		//potential data loss
 		//once all is done, set the database to the current database
+		someStorage.LastSnapshotRotation = time.Now().UTC().Unix()
 		someStorage.database = freshDatabase
 		//update the db metadata
 		someStorage.saveMetaData()
@@ -283,6 +291,8 @@ func ReacquireWrappedStorage(name string) (*WrappedStorage, error) {
 func (someStorage *WrappedStorage) SafeClose() {
 	var err error
 
+	someStorage.dead = true
+
 	err =  someStorage.saveMetaData()
 	if err!=nil {
 		someStorage.dbLogger.Println("Failed to commit meta file")
@@ -303,6 +313,10 @@ func (someStorage *WrappedStorage) SafeClose() {
 			someStorage.dbLogger.Println("Failed to safely close database")
 		}
 	}
+}
+
+func (someStorage *WrappedStorage) GetLocation() string {
+	return deriveDirectoryLocation(someStorage.Name)
 }
 
 //creates a new wrapped storage with the provided name, rotation time,
@@ -357,5 +371,14 @@ func NewWrappedStorage(name string,
 func deriveMetaLocation(name string) (loc string) {
 	
 	loc= name + string(os.PathSeparator) + name + ".meta.json"
+	return
+}
+
+//derives the location of where the storage lives.
+//
+//this points to where the metadata is located, the actual storage is one
+//level deeper
+func deriveDirectoryLocation(name string) (loc string) {
+	loc = name
 	return
 }
