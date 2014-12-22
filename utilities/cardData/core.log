@@ -14242,3 +14242,5 @@ User 2014/12/07 00:19:18 cardInfo.go:152: Failed to unmarshal card list
 User 2014/12/07 00:19:36 cardInfo.go:152: Failed to unmarshal card list, %!(EXTRA *json.UnmarshalTypeError=json: cannot unmarshal array into Go value of type string)
 User 2014/12/07 00:21:03 cardInfo.go:54: Commencing dump to disk of cardMap
 User 2014/12/07 00:21:34 cardInfo.go:75: Dump complete
+User 2014/12/07 10:21:25 cardInfo.go:54: Commencing dump to disk of cardMap
+User 2014/12/07 10:22:05 cardInfo.go:75: Dump complete
