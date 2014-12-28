@@ -5,7 +5,7 @@ import(
 	"net/http"
 	"encoding/json"
 
-	"./influxdbHandler"
+	"./../influxdbHandler"
 
 	"io/ioutil"
 

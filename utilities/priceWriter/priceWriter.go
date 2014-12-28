@@ -3,8 +3,9 @@ package main
 import(
 
 	"log"
+	"fmt"
 
-	"./influxdbHandler"
+	"./../influxdbHandler"
 
 	"./priceSources"
 
@@ -16,22 +17,37 @@ import(
 	"time"
 )
 
-const serverLoc string = "http://192.168.56.101:8086"
-const dbName string = "goPrices"
-const user string = "writer"
-const pass string = "U6QQ5gsvy9NxuJFn9kPN"
-
 // How many sources of prices we deal with
 const priceSourceQuantity int = 1
 
+// Where we store our failed uploads
 const uploadFailureStorage string = "uploadFailures"
 
+// Where our influxdb client data is kept
+const influxdbCredentials string = "influxdbCredentials.json"
+
 func main() {
-	aClient:= influxdbHandler.GetClient(serverLoc, dbName,
-	 user, pass,
-	 true, true)
-	
+
 	aLogger:= priceSources.GetLogger("priceWriter.log", "priceWriter")
+
+	creds, err:= getCredentials()
+	if err!=nil {
+		aLogger.Fatalln(err)
+	}
+
+	aLogger.Println("Credentials read")
+
+	aClient, err:= influxdbHandler.GetClient(creds.RemoteLocation, creds.DBName,
+	 creds.User, creds.Pass,
+	 creds.Read, creds.Write)
+	if err!=nil {
+		aLogger.Fatalln("Failed to ping remote server at client creation, ", err)
+	}
+
+	aLogger.Println("Influxdb client active")
+
+	// Imports from a standard price source
+	//Import(aClient)
 
 	RunPriceLoop(aClient, aLogger)
 	
@@ -135,5 +151,28 @@ func uploadSingleSourceResults(aPriceResult priceSources.PriceMap,
 	err:= aClient.SendPoints(points)
 
 	return err
+
+}
+
+type credentials struct{
+	RemoteLocation, DBName, User, Pass string
+
+	Write, Read bool
+}
+
+func getCredentials() (credentials, error) {
+	
+	data, err:=ioutil.ReadFile(influxdbCredentials)
+	if err!=nil {
+		return credentials{}, fmt.Errorf("Failed to read influxdbCredentials, ", err)
+	}
+
+	var someCreds credentials
+	err = json.Unmarshal(data, &someCreds)
+	if err!=nil {
+		return credentials{}, fmt.Errorf("Failed to unmarshal influxdbCredentials, ", err)
+	}
+
+	return someCreds, nil
 
 }

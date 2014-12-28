@@ -6,13 +6,10 @@ import(
 
 	"net/http"
 	"bytes"
-	"encoding/json"
 
 	"io/ioutil"
 
 	"fmt"
-
-	"strings"
 
 )
 
@@ -36,7 +33,7 @@ type Client struct{
 }
 
 func GetClient(dbLoc, dbName, userName, password string,
-	canRead, canWrite bool) *Client {
+	canRead, canWrite bool) (*Client, error) {
 
 	httpClient:= &http.Client{}
 
@@ -53,7 +50,12 @@ func GetClient(dbLoc, dbName, userName, password string,
 		httpClient: httpClient,
 	}
 
-	return &aClient
+	// We ensure the remote db is live at the time of client creation as
+	// a sanity test
+
+	err:= aClient.Ping()
+
+	return &aClient, err
 	
 }
 
@@ -127,7 +129,7 @@ func (aClient *Client) SendPoints(somePoints Points) error {
 		return fmt.Errorf("Client does not have write permissions")
 	}
 
-	data, err:= json.Marshal(somePoints)
+	data, err:= somePoints.toJSON()
 	if err!=nil {
 		return fmt.Errorf("Failed to marshal provided points")
 	}
@@ -143,86 +145,5 @@ func (aClient *Client) SendPoints(somePoints Points) error {
 	}
 
 	return nil
-
-}
-
-
-type Points []Point
-
-type Point struct{
-
-	Name string `json:"name"`
-	Columns []string `json:"columns"`
-	Points [][]PointData `json:"points"`
-}
-
-// We need to mix ints and strings so this gets us to where we need to be
-type PointData interface{}
-
-func BuildPoint(seriesName string, time int64, price int64,
-	set, source string) Point {
-	
-	cleanedSetName:= normalizeSetName(set)
-
-	data:= make([]PointData, ColumnCount)
-	data[0] = PointData(time)
-	data[1] = PointData(price)
-	data[2] = PointData(cleanedSetName)
-	data[3] = PointData(source)
-
-	wrappedData:= make([][]PointData, 1)
-	wrappedData[0] = data
-
-	aPoint:= Point{
-		Name: seriesName,
-		Columns: []string(Columns),
-		Points: wrappedData,
-	}
-
-	return aPoint
-
-}
-
-func BuildPointMultiplePrices(seriesName string, times []int64, prices []int64,
-	set, source string) Point {
-	
-	cleanedSetName:= normalizeSetName(set)
-
-	wrappedData:= make([][]PointData, len(times))
-
-	var price int64
-	for i, time:= range times{
-		price = prices[i]
-
-		data:= make([]PointData, ColumnCount)
-		data[0] = PointData(time)
-		data[1] = PointData(price)
-		data[2] = PointData(cleanedSetName)
-		data[3] = PointData(source)
-
-		wrappedData[i] = data
-
-	}
-
-	aPoint:= Point{
-		Name: seriesName,
-		Columns: []string(Columns),
-		Points: wrappedData,
-	}
-
-	return aPoint
-
-}
-
-// Normalize a provided set name into something not awful to query influxdb
-// for.
-func normalizeSetName(aName string) string {
-	
-	aName = strings.Replace(aName, "'", "", -1)
-	aName = strings.Replace(aName, "\"", "", -1)
-	aName = strings.Replace(aName, "-", "", -1)
-	aName = strings.Replace(aName, ":", "", -1)
-
-	return aName
 
 }

@@ -25,6 +25,7 @@ const PriceSource string = "mtgprice"
 const baseurl string = "http://www.mtgprice.com/api?"
 
 const badSetName string = "ERROR: set looks incorrect"
+const BlankSetName string = "Blank Set Name"
 
 // Returns a map of set to card to price for mtgprice.com
 // using the provided setList and the apikey. A non-nil error is returned
@@ -39,7 +40,10 @@ func GetCardPrices(apiKey string, sets []string,
 	for _, aSet:= range sets{
 
 		setMap[aSet], err = getSetData(apiKey, aSet, priceLogger)
-		if err!=nil {
+		if err!=nil && err.Error()!=BlankSetName {
+			// Return a serious error only as we will otherwise end up
+			// discarding a significant amount of price data on a malformed
+			// set name.
 			persistentErr = err
 		}
 
@@ -57,7 +61,7 @@ func getSetData(apiKey, set string,
 	// normalize the set name to be mtgprice compatiable
 	cleanedName := cleanSetName(set)
 	if cleanedName == "" {
-		return nil, fmt.Errorf("Blank Set Name")
+		return nil, fmt.Errorf(BlankSetName)
 	}
 
 	// derive the url we will be querying
