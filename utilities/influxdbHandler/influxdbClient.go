@@ -11,11 +11,20 @@ import(
 
 	"fmt"
 
+	"strings"
+
 )
 
 var Columns = []string{"time", "price", "set", "source"}
 var ColumnCount = len(Columns)
+var UserColumns = []string{"time", "action", "actionParameters", "bodyContents"}
+var UserColumnCount = len(UserColumns)
 
+// Client allows for concurrent, client-side permissions moderated
+// access to a remote influxdb server.
+//
+// A client implements a variety of helpful methods including efficient
+// name normalization
 type Client struct{
 
 	dbLoc, dbName string
@@ -30,6 +39,9 @@ type Client struct{
 
 	httpClient *http.Client
 
+	// State attached to a client allows for more efficient name normalization
+	replacer *strings.Replacer
+
 }
 
 func GetClient(dbLoc, dbName, userName, password string,
@@ -38,6 +50,21 @@ func GetClient(dbLoc, dbName, userName, password string,
 	httpClient:= &http.Client{}
 
 	dataPostPath:= "/db/" + dbName + "/series"
+
+	// Create a replacer object that allows us to more efficiently replace
+	// problematic characters in queries
+	replacer:= strings.NewReplacer("'", "",
+	"\"", "",
+	"-", "",
+	":", "",
+	" ", "",
+	"(", "",
+	")", "",
+	",", "",
+	"!", "",
+	"?", "",
+	"/", "",
+	"&", "")
 
 	aClient:= Client{
 		dbLoc: dbLoc,
@@ -48,11 +75,11 @@ func GetClient(dbLoc, dbName, userName, password string,
 		read: canRead,
 		write: canWrite,
 		httpClient: httpClient,
+		replacer: replacer,
 	}
 
 	// We ensure the remote db is live at the time of client creation as
 	// a sanity test
-
 	err:= aClient.Ping()
 
 	return &aClient, err

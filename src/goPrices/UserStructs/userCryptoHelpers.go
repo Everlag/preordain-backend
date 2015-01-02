@@ -6,6 +6,7 @@ import (
 	//password derivation and storage specific
 	"code.google.com/p/go.crypto/scrypt"
 	"crypto/rand"
+	"crypto/subtle"
 	"io"
 )
 
@@ -42,6 +43,12 @@ func derivePasswordRaw(plaintext, nonce []byte) ([]byte, error) {
 	}
 
 	return passwordHash, nil
+
+}
+
+func hashesEqual(hashA, hashB []byte) bool {
+	
+	return subtle.ConstantTimeCompare(hashA, hashB) == 1
 
 }
 

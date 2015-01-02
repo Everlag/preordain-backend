@@ -170,11 +170,12 @@ func getFakeTrades() []Trade {
 		//each trade contains every card created up to that point
 		cards[i] = CreateCard(cardNames[i], "aSet",
 			12, 2,
-			make(map[string]int32))
+			"French")
 		tradeContents := make([]OwnedCard, i)
 		copy(tradeContents, cards)
 
-		trades[i] = CreateExistingTrade(tradeContents,
+		// It is impossible for an invalid trade to be created here
+		trades[i], _ = CreateExistingTrade(tradeContents,
 			time.Now().UTC().Unix(),
 			"this is a grand comment with a new: "+cardNames[i])
 	}
@@ -261,15 +262,9 @@ func TestTrades(t *testing.T) {
 		}
 
 		//ensure they were actually written to first layer cache
-		collData, err := aManager.GetCollection(aName, aCollName, aSession)
+		aColl, err := aManager.GetCollection(aName, aCollName, aSession)
 		if err != nil {
-			t.Fatalf("Failed to get collection", err)
-		}
-
-		//decode the data
-		aColl, err := collectionFromJson(collData)
-		if err != nil {
-			t.Fatalf("Failed to decode collection")
+			t.Fatalf("Failed to get collection")
 		}
 
 		if len(aColl.ModifyHistory) != len(trades) {
@@ -305,16 +300,10 @@ func TestTrades(t *testing.T) {
 
 		aCollName := collNames[i]
 
-		//ensure they were actually written to first layer cache
-		collData, err := aManager.GetCollection(aName, aCollName, aSession)
-		if err != nil {
-			t.Fatalf("Failed to get collection", err)
-		}
-
 		//decode the data
-		aColl, err := collectionFromJson(collData)
+		aColl, err := aManager.GetCollection(aName, aCollName, aSession)
 		if err != nil {
-			t.Fatalf("Failed to decode collection")
+			t.Fatalf("Failed to get collection")
 		}
 		
 		//compare the list of trades to the ones we set for this user

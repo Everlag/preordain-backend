@@ -9,7 +9,9 @@ import (
 	"fmt"
 )
 
-const publicSessionKey string = "public"
+const PublicSessionKey string = "public"
+
+const StandardCollectionCount int = 3
 
 //we limit the size of user names, passwords, and emails to these many
 //characters to avoid potentially nasty errors
@@ -26,7 +28,8 @@ func (aManager *UserManager) AddUser(name, email, password string,
 
 	if len(name)>fieldLength || len(email)>fieldLength ||
 	 len(password) > fieldLength {
-		return "", fmt.Errorf("Name, email, or password too long. Max length is ", fieldLength)	
+		return "",
+		fmt.Errorf("Name, email, or password too long. Max length is ",fieldLength)	
 	}
 
 	//before we do anything else, we ensure that their password is matching
@@ -100,17 +103,30 @@ func (aManager *UserManager) NewCollection(name, collName, session string) error
 
 }
 
-//attempts to latch a password reset token onto a named user
+// Attempts to latch a password reset token onto a named user
 //
-//TODO contact user by mail to actually alert them of their reset token
+// Contacts a user via their provided email with a reset token.
 func (aManager *UserManager) GetPasswordResetToken(name string) error {
-	//get the user if they exist
+	// Get the user if they exist
 	aUser, err := aManager.getUser(name)
 	if err != nil {
 		return fmt.Errorf("Invalid password reset token")
 	}
 
-	aUser.getResetToken()
+	// Set a new reset token
+	err = aUser.getResetToken()
+	if err != nil {
+		return fmt.Errorf("Failed to acquire reset token")
+	}
+	// Send the new reset token
+	err = aManager.sendPasswordResetMail(aUser.Name,
+		aUser.Email,
+		aUser.PasswordResetToken.Key)
+	if err != nil {
+		return fmt.Errorf("Failed to send reset email")
+	}
+
+	// Store the user persistently
 	err = aManager.userModified(name)
 	if err != nil {
 		return fmt.Errorf("Failed to store new user in backend")
@@ -181,7 +197,13 @@ func (aManager *UserManager) GetNewSession(name, password string) (string, error
 	//get the user if they exist
 	aUser, err := aManager.getUser(name)
 	if err != nil {
-		return "", fmt.Errorf("")
+		return "", fmt.Errorf("Invalid user")
+	}
+
+	// Ensure the provided password is the user's
+	candidateHash, err:= derivePasswordRaw([]byte(password), aUser.Nonce)
+	if err!=nil || !hashesEqual(aUser.HashedPass, candidateHash) {
+		return "", fmt.Errorf("Invalid password")
 	}
 
 	//acquire a session
@@ -191,18 +213,32 @@ func (aManager *UserManager) GetNewSession(name, password string) (string, error
 
 }
 
+func (aManager *UserManager) GetCollectionList(name,
+	sessionKey string) ([]string, error) {
+	
+	public:= sessionKey == PublicSessionKey
+
+	aUser, err := aManager.getUserWithAuthentication(name, sessionKey, public)
+	if err != nil {
+		return nil, err
+	}
+
+	return aUser.getCollectionList(public)
+
+}
+
 //requests the named collection for the named user authenticated
 //with the provided session.
 //
-//a session key of publicSessionKey attempts to get the collection using public
+//a session key of PublicSessionKey attempts to get the collection using public
 //permissions as determined by the specific collection the user has
 //
 //returns the collection, as marshalled to json, and nil if successful
 //return nil and an error if failed.
 func (aManager *UserManager) GetCollection(name, collName,
-	sessionKey string) ([]byte, error) {
+	sessionKey string) (*Collection, error) {
 
-	public := sessionKey == publicSessionKey
+	public := sessionKey == PublicSessionKey
 
 	aUser, err := aManager.getUserWithAuthentication(name, sessionKey, public)
 	if err != nil {
@@ -215,12 +251,24 @@ func (aManager *UserManager) GetCollection(name, collName,
 		return nil, err
 	}
 
-	collData, err := aColl.ToJson()
-	if err != nil {
+	return aColl, nil
 
-		return nil, err
+}
+
+func (aManager *UserManager) SetPermissions(name, collName, sessionKey string,
+	viewing, history, comments bool) error {
+	
+	// Find if the remote user is authorized for this change
+	aUser, err := aManager.authenticateUser(name, sessionKey)
+	if err != nil {
+		return err
 	}
 
-	return collData, nil
+	err = aUser.setPermissions(collName, viewing, history, comments)
+	if err!=nil {
+		return err
+	}
+
+	return aManager.userToStorage(name)
 
 }

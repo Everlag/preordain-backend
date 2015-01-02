@@ -43,3 +43,40 @@ priceWriter2014/12/28 07:38:48 priceSources.go:50: Acquiring price data for mtgp
 priceWriter2014/12/28 07:53:31 priceSources.go:58: Acquired price data for mtgprice
 priceWriter2014/12/28 07:53:31 priceWriter.go:94: Uploading data from  mtgprice
 priceWriter2014/12/28 07:56:13 priceWriter.go:103: Completed Upload of data from  mtgprice
+priceWriter2014/12/29 05:56:13 priceSources.go:50: Acquiring price data for mtgprice
+priceWriter2014/12/29 06:10:01 priceSources.go:58: Acquired price data for mtgprice
+priceWriter2014/12/29 06:10:01 priceWriter.go:94: Uploading data from  mtgprice
+priceWriter2014/12/29 06:13:03 priceWriter.go:103: Completed Upload of data from  mtgprice
+priceWriter2014/12/30 04:13:03 priceSources.go:50: Acquiring price data for mtgprice
+priceWriter2014/12/30 04:26:23 priceSources.go:58: Acquired price data for mtgprice
+priceWriter2014/12/30 04:26:23 priceWriter.go:94: Uploading data from  mtgprice
+priceWriter2014/12/30 04:26:24 priceWriter.go:120: UPLOAD FAILURE - mtgprice   -  Request not explicit success  Dumping to  uploadFailures\1419937983mtgprice
+priceWriter2014/12/30 12:31:31 priceWriter.go:38: Credentials read
+priceWriter2014/12/30 12:31:31 priceWriter.go:47: Influxdb client active
+priceWriter2014/12/30 12:31:31 priceWriter.go:60: Starting price loop
+priceWriter2014/12/30 12:31:31 priceSources.go:50: Acquiring price data for mtgprice
+priceWriter2014/12/30 12:47:43 priceSources.go:58: Acquired price data for mtgprice
+priceWriter2014/12/30 12:47:43 priceWriter.go:94: Uploading data from  mtgprice
+priceWriter2014/12/30 12:47:43 priceWriter.go:120: UPLOAD FAILURE - mtgprice   -  Request not explicit success  Dumping to  uploadFailures\1419967891mtgprice
+priceWriter2014/12/30 15:35:40 priceWriter.go:38: Credentials read
+priceWriter2014/12/30 15:35:40 priceWriter.go:47: Influxdb client active
+priceWriter2014/12/30 15:35:40 priceWriter.go:60: Starting price loop
+priceWriter2014/12/30 19:54:06 priceWriter.go:38: Credentials read
+priceWriter2014/12/30 19:54:06 priceWriter.go:47: Influxdb client active
+priceWriter2014/12/30 19:54:06 priceWriter.go:60: Starting price loop
+priceWriter2014/12/30 19:54:06 priceSources.go:50: Acquiring price data for mtgprice
+priceWriter2014/12/30 20:07:10 priceSources.go:58: Acquired price data for mtgprice
+priceWriter2014/12/30 20:07:10 priceWriter.go:94: Uploading data from  mtgprice
+priceWriter2014/12/30 20:09:57 priceWriter.go:103: Completed Upload of data from  mtgprice
+priceWriter2014/12/31 18:09:57 priceSources.go:50: Acquiring price data for mtgprice
+priceWriter2014/12/31 18:26:10 priceSources.go:58: Acquired price data for mtgprice
+priceWriter2014/12/31 18:26:10 priceWriter.go:94: Uploading data from  mtgprice
+priceWriter2014/12/31 18:28:56 priceWriter.go:103: Completed Upload of data from  mtgprice
+priceWriter2015/01/01 16:28:56 priceSources.go:50: Acquiring price data for mtgprice
+priceWriter2015/01/01 16:33:05 mtgprice.go:72: mtgprice -  Failed to unmarshal data received Set name : Cleaned Name Shadowmoor  :  Shadowmoor
+priceWriter2015/01/01 16:43:30 priceSources.go:54: Failed to acquire mtgprice prices,  Failed to unmarshal data received
+priceWriter2015/01/01 16:43:30 priceWriter.go:76: Failed to acquire prices for mtgprice, logged
+priceWriter2015/01/01 17:43:30 priceSources.go:50: Acquiring price data for mtgprice
+priceWriter2015/01/01 18:00:51 priceSources.go:58: Acquired price data for mtgprice
+priceWriter2015/01/01 18:00:51 priceWriter.go:94: Uploading data from  mtgprice
+priceWriter2015/01/01 18:03:25 priceWriter.go:103: Completed Upload of data from  mtgprice

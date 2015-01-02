@@ -1,6 +1,9 @@
 Users/
+goPricesTest/
 
 
+goPricesTestUsers/
+uploadFailures/
 
 *.json
 

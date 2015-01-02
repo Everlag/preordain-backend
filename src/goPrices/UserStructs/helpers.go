@@ -12,16 +12,37 @@ import (
 const passwordMinLength int = 10
 const passwordMaxLength int = 256
 
-//a password must contain at least one character from each character set
+// A password must contain at least one character from each character set
 //
-//character sets are compared by turning the candidate letter to lower case
+// Character sets are compared by turning the candidate letter to lower case
 const alphas string = "abcdefghijklmnopqrstuvwxyz"
 const numerics string = "1234567890"
 const additionals string = "!@#$^&*()-_=+[{]}|;:'\",<.>/?"
 
 var characterSets = [...]string{alphas, numerics, additionals}
 
-//returns if the password meets the length and complexity requirements
+// A card can have one of the following as a language
+var supportedLanguages = map[string]bool{
+	"French":true,
+	"Chinese Traditional":true,
+	"German":true,
+	"Japanese":true,
+	"Italian":true,
+	"Korean":true,
+	"Russian":true,
+	"Portuguese (Brazil)":true,
+	"Chinese Simplified":true,
+	"Spanish":true,
+	"English":true,
+}
+
+func isSupportedLanguage(language string) bool {
+	_, ok:= supportedLanguages[language]
+
+	return ok
+}
+
+// Returns if the password meets the length and complexity requirements
 func passwordMeetsRequirements(password string) bool {
 
 	complexity := true
@@ -46,7 +67,7 @@ func passwordMeetsRequirements(password string) bool {
 
 }
 
-//a quick wrapper around how we derive our passwords
+// A quick wrapper around how we derive our passwords
 func passwordDerivation(password string) (nonce, passwordHash []byte, err error) {
 
 	nonce, err = getArrayOfRandBytes(32)

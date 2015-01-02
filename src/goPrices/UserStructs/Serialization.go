@@ -2,6 +2,7 @@ package UserStructs
 
 import (
 	"./databaseHandling"
+	"./MailHandling"
 
 	"encoding/json"
 	"fmt"
@@ -156,6 +157,12 @@ func ReacquireManager(suffix string) (*UserManager, error) {
 	//run the daemon that keeps the on disk metadata up to date!
 	aManager.runDaemon()
 
+	// setup the mail service we need
+	err = aManager.startMailer()
+	if err!=nil {
+		return nil, err
+	}
+
 	//return the manager reincarnated from the flames of NAND
 	return &aManager, nil
 
@@ -177,4 +184,11 @@ func (aManager *UserManager) setStorage(someStorage *databaseHandling.WrappedSto
 
 func (aManager *UserManager) setUsers() {
 	aManager.users = make(map[string]*User)
+}
+
+func (aManager *UserManager) startMailer() (err error) {
+	aManager.mailer, err = MailHandling.NewMailer()
+
+	return err
+
 }

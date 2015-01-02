@@ -8,12 +8,14 @@ import (
 	"fmt"
 )
 
-//we keep the modify history to allow for the implementation
-//of a timemachine collection viewer feature and
-//trade history feature.
+
+
+// We keep the modify history to allow for the implementation
+// of a timemachine collection viewer feature and
+// trade history feature.
 //
-//A state of the collection is not maintained as clients are expected to
-//derive the state to whatever point they desire from the trade data.
+// A state of the collection is not maintained as clients are expected to
+// derive the state to whatever point they desire from the trade data.
 type Collection struct {
 	Name string
 
@@ -41,6 +43,22 @@ type Collection struct {
 	PublicComments bool
 }
 
+// Sets basic permissions for a collection after performing simple sanity checks
+func (aColl *Collection) SetPermissions(Viewing, History, Comments bool) (error) {
+	
+	if (!Viewing && History) || (!Viewing && Comments) || (!History && Comments) {
+		return fmt.Errorf("Non-sane permissions requested")
+	}
+
+	aColl.PublicViewing = Viewing
+	aColl.PublicHistory = History
+	aColl.PublicComments = Comments
+
+	return nil
+
+}
+
+// Returns a blank collection
 func CreateCollection(aCollName string) Collection {
 	aColl := Collection{}
 	aColl.Name = aCollName
@@ -49,8 +67,8 @@ func CreateCollection(aCollName string) Collection {
 	return aColl
 }
 
-//strips all private data away as determined by the collection's
-//Public accessibility fields
+// Strips all private data away as determined by the collection's
+// public accessibility fields
 func (aColl *Collection) StripToPublic() (*Collection, error) {
 
 	//create a copy of the public struct we'll return
@@ -81,10 +99,10 @@ func (aColl *Collection) StripToPublic() (*Collection, error) {
 
 }
 
-//adds a preformed trade to the specified collection
+// Adds a preformed trade to the specified collection
 //
-//this is the only method with which a collection may be modified
-func (aColl *Collection) AddTrade(aTrade Trade) {
+// This is the only method with which a collection may be modified
+func (aColl *Collection) AddTrade(aTrade Trade) error {
 
 	//truncate the associated comment if necessary
 	//
@@ -92,6 +110,12 @@ func (aColl *Collection) AddTrade(aTrade Trade) {
 	//practice sane XSS prevention.
 	if len(aTrade.Comment) > MaxTradeCommentLength {
 		aTrade.Comment = aTrade.Comment[:MaxTradeCommentLength-4] + "..."
+	}
+
+	// Ensure this is a clean and reasonable trade before committing any state
+	err:= aTrade.valid()
+	if err!=nil {
+		return err
 	}
 
 	//add the cards in the trade
@@ -102,11 +126,13 @@ func (aColl *Collection) AddTrade(aTrade Trade) {
 	//append the trade to the collection's modify history
 	aColl.ModifyHistory = append(aColl.ModifyHistory, aTrade)
 
+	return nil
+
 }
 
-//adds a card to the collection. This is done without history and is not safe
-//for external usage as clients are dependant on the precomputed contents being
-//synchronized with the history
+// Adds a card to the collection. This is done without history and is not safe
+// for external usage as clients are dependant on the precomputed contents being
+// synchronized with the history
 func (aColl *Collection) addCard(aCard OwnedCard) {
 	//grab the set, create if non-existent
 	setContainer, setExists := aColl.Contents[aCard.Set]
@@ -130,14 +156,14 @@ func (aColl *Collection) addCard(aCard OwnedCard) {
 	directSetContainer[aCard.Name] = aCard
 }
 
-//the absolute maximum length of a trade comment is 140 characters.
+// The absolute maximum length of a trade comment is 140 characters.
 //
-//The same size as a tweet, it forces concise comments while drawing
-//a connection between twitter's mindset and this.
+// The same size as a tweet, it forces concise comments while drawing
+// a connection between twitter's mindset and this.
 const MaxTradeCommentLength int = 140
 
-//details a specific transaction to the collection database
-//we have defined
+// Details a specific transaction to the collection database
+// we have defined
 type Trade struct {
 	//additions and subtractions presented by trade are found in the
 	//ownedCard[i].Quantity category. negatives are removals with
@@ -158,34 +184,58 @@ type Trade struct {
 	Revoked bool
 }
 
-//imports an existing trade.
+// Returns an error if a card in the trade contains an invalid language
+// or if the comment is too long.
+func (aTrade *Trade) valid() error {
+	
+	if len(aTrade.Comment) > MaxTradeCommentLength {
+		return fmt.Errorf("Comment for trade is too long")
+	}
+
+	for _, aCard:= range aTrade.Transaction{
+		if !isSupportedLanguage(aCard.Language) {
+			return fmt.Errorf("Invalid Card Language, ", aCard.Language)
+		}
+	}
+
+	return nil
+
+}
+
+// Imports an existing trade.
 //
-//truncates comments to their maximum length
-func CreateExistingTrade(someCards []OwnedCard, TimeStamp int64, comment string) Trade {
+// Truncates comments to their maximum length.
+//
+// Ensures language is a language Magic supports
+func CreateExistingTrade(someCards []OwnedCard, TimeStamp int64,
+	comment string) (Trade, error) {
 	if len(comment) > MaxTradeCommentLength {
 		comment = comment[:MaxTradeCommentLength-4] + "..."
 	}
-	return Trade{someCards, comment, TimeStamp, false}
+
+	aTrade:= Trade{someCards, comment, TimeStamp, false}
+
+	return aTrade, aTrade.valid()
 }
 
-//A basic card structure to work with.
+// A basic card structure to work with.
 //
-//Language is a map of languages present to amount of cards per language.
-//these are a subset under quantity which is the ABSOLUTE quantity of cards.
+// Language is valid country code.
 //
-//Signed is the subset of cards with signatures in the Quantity.
+// Signed is the subset of cards with signatures in the Quantity.
 type OwnedCard struct {
 	Name     string
 	Set      string
 	Quantity int32
 
-	Language map[string]int32
+	Language string
+
 	Signed   int32
 }
 
 func CreateCard(Name, Set string, Quantity,
-	Signed int, LanguageToCount map[string]int32) OwnedCard {
+	Signed int, Language string) OwnedCard {
 	return OwnedCard{Name, Set,
-		int32(Quantity), LanguageToCount,
+		int32(Quantity), Language,
 		int32(Signed)}
 }
