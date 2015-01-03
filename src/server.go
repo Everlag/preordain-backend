@@ -30,9 +30,11 @@ func main() {
 
 	priceService:= ApiServices.NewPriceService()
 	userService:= ApiServices.NewUserService()
+	typeAheadService:= ApiServices.NewTypeAheadService()
 
 	restful.Add(priceService.Service)
 	restful.Add(userService.Service)
+	restful.Add(typeAheadService.Service)
 	// BUG - user service breaks when compression is enabled.
 	//restful.DefaultContainer.EnableContentEncoding(true)
 

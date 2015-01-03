@@ -80,3 +80,12 @@ priceWriter2015/01/01 17:43:30 priceSources.go:50: Acquiring price data for mtgp
 priceWriter2015/01/01 18:00:51 priceSources.go:58: Acquired price data for mtgprice
 priceWriter2015/01/01 18:00:51 priceWriter.go:94: Uploading data from  mtgprice
 priceWriter2015/01/01 18:03:25 priceWriter.go:103: Completed Upload of data from  mtgprice
+priceWriter2015/01/02 16:03:25 priceSources.go:50: Acquiring price data for mtgprice
+priceWriter2015/01/02 16:08:21 mtgprice.go:72: mtgprice -  Failed to unmarshal data received Set name : Cleaned Name Magic 2013  :  M13
+priceWriter2015/01/02 16:09:15 mtgprice.go:72: mtgprice -  Failed to unmarshal data received Set name : Cleaned Name Fifth Dawn  :  Fifth_Dawn
+priceWriter2015/01/02 16:21:13 priceSources.go:54: Failed to acquire mtgprice prices,  Failed to unmarshal data received
+priceWriter2015/01/02 16:21:13 priceWriter.go:76: Failed to acquire prices for mtgprice, logged
+priceWriter2015/01/02 17:21:13 priceSources.go:50: Acquiring price data for mtgprice
+priceWriter2015/01/02 17:37:34 priceSources.go:58: Acquired price data for mtgprice
+priceWriter2015/01/02 17:37:34 priceWriter.go:94: Uploading data from  mtgprice
+priceWriter2015/01/02 17:40:05 priceWriter.go:103: Completed Upload of data from  mtgprice
