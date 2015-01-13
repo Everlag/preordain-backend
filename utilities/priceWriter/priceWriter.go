@@ -48,6 +48,7 @@ func main() {
 
 	// Imports from a standard price source
 	//Import(aClient)
+	//os.Exit(0)
 
 	RunPriceLoop(aClient, aLogger)
 	

@@ -62,7 +62,7 @@ func (aService *PriceService) register() error {
 
 	priceService:= new(restful.WebService)
 	priceService.
-		Path("/Prices").
+		Path("/api/Prices").
 		Consumes(restful.MIME_JSON).
 		Produces(restful.MIME_JSON).
 		ApiVersion("0.1")

@@ -13,7 +13,7 @@ import(
 const BadKey string = "No suggestions available"
 
 // How many characters into a word we work to
-const TypeAheadDepth int = 10
+const TypeAheadDepth int = 20
 
 type TypeAheadService struct{
 
@@ -36,31 +36,10 @@ func NewTypeAheadService() (*TypeAheadService) {
 	}
 
 	cardsMap:= make(map[string][]string)
-	// Populate the cardsmap with unsorted arrays indexing into two characters
-	var key string
-	for aCardName:= range cards{
-
-		aCardName = strings.Replace(aCardName, "Æ", "AE", -1)
-		aLowerName:= strings.ToLower(aCardName)
-
-		// Develop subarrays for each depth of key
-		for keyIndexEnd := 1; keyIndexEnd < (TypeAheadDepth + 1); keyIndexEnd++ {
-			
-			if keyIndexEnd > len(aCardName) {
-				break
-			}
-			key = aLowerName[0:keyIndexEnd]
-
-			_, ok:= cardsMap[key]
-			if !ok {
-				cardsMap[key] = make([]string, 0)
-			}
-
-			cardsMap[key] = append(cardsMap[key], aCardName)
-
-		}
-
-	}
+	// Populate the cardsmap with unsorted arrays indexing
+	//into TypeAheadDepth characters
+	addMap(cardsMap, cards)
+	addMap(cardsMap, sets)
 
 	for aKey, _:= range cardsMap{
 		sort.Strings(cardsMap[aKey])
@@ -80,7 +59,7 @@ func (aService *TypeAheadService) register() {
 
 	typeAheadService:= new(restful.WebService)
 	typeAheadService.
-		Path("/TypeAhead").
+		Path("/api/TypeAhead").
 		Consumes(restful.MIME_JSON).
 		Produces(restful.MIME_JSON)
 
@@ -99,6 +78,7 @@ func (aService *TypeAheadService) register() {
 	aService.Service = typeAheadService
 }
 
+// Acquire suggestions for a given string
 func (aService *TypeAheadService) getSuggestions(req *restful.Request,
 	resp *restful.Response) {
 	
@@ -110,6 +90,34 @@ func (aService *TypeAheadService) getSuggestions(req *restful.Request,
 		return
 	}
 
+	setCacheHeader(resp)
 	resp.WriteEntity(suggestions)
 
+}
+
+func addMap(targetMap map[string][]string, names map[string]bool) {
+	var key string
+	for aName:= range names{
+
+		aName = strings.Replace(aName, "Æ", "AE", -1)
+		aLowerName:= strings.ToLower(aName)
+
+		// Develop subarrays for each depth of key
+		for keyIndexEnd := 1; keyIndexEnd < (TypeAheadDepth + 1); keyIndexEnd++ {
+			
+			if keyIndexEnd > len(aName) {
+				break
+			}
+			key = aLowerName[0:keyIndexEnd]
+
+			_, ok:= targetMap[key]
+			if !ok {
+				targetMap[key] = make([]string, 0)
+			}
+
+			targetMap[key] = append(targetMap[key], aName)
+
+		}
+
+	}
 }

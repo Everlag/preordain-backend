@@ -100,7 +100,7 @@ func (aService *UserService) register() error {
 
 	userService:= new(restful.WebService)
 	userService.
-		Path("/Users").
+		Path("/api/Users").
 		Consumes(restful.MIME_JSON).
 		Produces(restful.MIME_JSON)
 

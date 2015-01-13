@@ -19,16 +19,17 @@ import(
 	"encoding/json"
 	"io/ioutil"
 
+	"./imageDB"
 	"./commanderDB"
 	"./similarityDB"
 
 )
 
 //the various locations our derived data goes
-const dataLoc string = "cardText"
-const imageLoc string = "cardFulls"
-const cropLoc string =  "cardCrops"
-const symbolsLoc string = "cardSymbols"
+const dataLoc string = "cardText/"
+const imageLoc string = "cardFulls/"
+const cropLoc string =  "cardCrops/"
+const symbolsLoc string = "cardSymbols/"
 
 func main() {
 	aLogger:= getLogger("core.log")
@@ -41,6 +42,8 @@ func main() {
 	cardData.addSimilarityData()
 
 	cardData.dumpToDisk(aLogger)
+
+	imageScraper.ScrapeImages(imageLoc, cropLoc, symbolsLoc)
 
 	fmt.Println(cardData["Chromatic Lantern"])
 	fmt.Println(cardData["Dimir Signet"])

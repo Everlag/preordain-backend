@@ -16,14 +16,23 @@ func setupSwagger() {
 	swaggerConfig:= swagger.Config{
 		WebServices:    restful.RegisteredWebServices(), // you control what services are visible
 		WebServicesUrl: "http://localhost:9032",
-		ApiPath:        "/apidocs.json",
+		ApiPath:        "/api/apidocs.json",
 
 		// Optionally, specifiy where the UI is located
-		SwaggerPath:     "/apidocs/",
+		SwaggerPath:     "/api/apidocs/",
 		SwaggerFilePath: "swaggerUI",
 	}
 	swagger.InstallSwaggerService(swaggerConfig)
 
+}
+
+func setupCors() {
+	cors:= restful.CrossOriginResourceSharing{
+		ExposeHeaders:  []string{"X-My-Header"},
+		AllowedHeaders: []string{"Content-Type"},
+		CookiesAllowed: false,
+		Container:       restful.DefaultContainer}
+	restful.DefaultContainer.Filter(cors.Filter)
 }
 
 func main() {
@@ -39,8 +48,10 @@ func main() {
 	//restful.DefaultContainer.EnableContentEncoding(true)
 
 	setupSwagger()
+	setupCors()
 
 	fmt.Println("ready")
 
 	http.ListenAndServe(":9032", nil)
+	
 }
