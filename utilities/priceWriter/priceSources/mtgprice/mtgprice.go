@@ -69,7 +69,8 @@ func getSetData(apiKey, set string,
 
 	priceData, err:= getRawSetData(finalUrl)
 	if err!=nil {
-		priceLogger.Println("mtgprice - ", err, "Set name : Cleaned Name",set," : ",cleanedName)
+		priceLogger.Println("mtgprice - ", err,
+			"Set name : Cleaned Name",set," : ",cleanedName)
 		return nil, err
 	}
 

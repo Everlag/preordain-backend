@@ -18,26 +18,33 @@ const setListLoc string = "setList.txt"
 
 // The keys residing on disk alongside the traits we need to ensure we don't
 // misuse them
-type apiKeys struct{
+type ApiKeys struct{
 
 	Mtgprice string
 	MtgpriceLastUpdate int64
 	MtgpriceWaitTime int64
 
+	MKMConsumerKey string
+	MKMSecretKey string
+	MKMLastUpdate int64
+	MKMPriceWaitTime int64
+
+	OpenexchangeratesKey string
+
 }
 
 // Acquires apikeys located at apiKeysLoc on disk
-func getApiKeys() (apiKeys, error) {
+func getApiKeys() (ApiKeys, error) {
 	
 	raw, err:= ioutil.ReadFile(apiKeysLoc)
 	if err!=nil {
-		return apiKeys{}, err
+		return ApiKeys{}, err
 	}
 
-	var keys apiKeys
+	var keys ApiKeys
 	err = json.Unmarshal(raw, &keys)
 	if err!=nil {
-		return apiKeys{}, err
+		return ApiKeys{}, err
 	}
 
 	return keys, nil
@@ -46,7 +53,7 @@ func getApiKeys() (apiKeys, error) {
 
 // Updates the api keys status on disk. This is used when timestamps for each
 // key are updated
-func (keys *apiKeys) updateOnDisk() error {
+func (keys *ApiKeys) updateOnDisk() error {
 	
 	data, err:= json.Marshal(keys)
 	if err!=nil {

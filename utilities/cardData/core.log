@@ -14244,3 +14244,5 @@ User 2014/12/07 00:21:03 cardInfo.go:54: Commencing dump to disk of cardMap
 User 2014/12/07 00:21:34 cardInfo.go:75: Dump complete
 User 2014/12/07 10:21:25 cardInfo.go:54: Commencing dump to disk of cardMap
 User 2014/12/07 10:22:05 cardInfo.go:75: Dump complete
+User 2015/01/14 16:38:54 cardInfo.go:57: Commencing dump to disk of cardMap
+User 2015/01/14 16:39:28 cardInfo.go:78: Dump complete

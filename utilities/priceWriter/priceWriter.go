@@ -29,7 +29,7 @@ const influxdbCredentials string = "influxdbCredentials.json"
 func main() {
 
 	aLogger:= priceSources.GetLogger("priceWriter.log", "priceWriter")
-
+	
 	creds, err:= getCredentials()
 	if err!=nil {
 		aLogger.Fatalln(err)
@@ -37,6 +37,7 @@ func main() {
 
 	aLogger.Println("Credentials read")
 
+	
 	aClient, err:= influxdbHandler.GetClient(creds.RemoteLocation, creds.DBName,
 	 creds.User, creds.Pass,
 	 creds.Read, creds.Write)
@@ -46,7 +47,7 @@ func main() {
 
 	aLogger.Println("Influxdb client active")
 
-	// Imports from a standard price source
+	// Imports from a standard price source mtgprice seeds
 	//Import(aClient)
 	//os.Exit(0)
 
@@ -62,6 +63,7 @@ func RunPriceLoop(aClient *influxdbHandler.Client, aLogger *log.Logger) {
 
 	for{
 
+		magiccardmarket(aClient, aLogger)
 		mtgprice(aClient, aLogger)
 
 		time.Sleep(time.Hour * time.Duration(1))
@@ -75,6 +77,24 @@ func mtgprice(aClient *influxdbHandler.Client, aLogger *log.Logger) {
 	if err!=nil {
 		if err.Error()!=priceSources.RateExceeded {
 			aLogger.Println(err)	
+		}else{
+			aLogger.Println("Sleeping for update, mtgprice")
+		}
+		return
+	}
+
+	uploadPriceResults([]priceSources.PriceMap{prices}, aClient, aLogger)
+
+}
+
+func magiccardmarket(aClient *influxdbHandler.Client, aLogger *log.Logger) {
+	
+	prices, err:= priceSources.GetMKMPrices(aLogger)
+	if err!=nil {
+		if err.Error()!=priceSources.RateExceeded {
+			aLogger.Println(err)	
+		}else{
+			aLogger.Println("Sleeping for update, magiccardmarket")
 		}
 		return
 	}
@@ -140,8 +160,24 @@ func uploadSingleSourceResults(aPriceResult priceSources.PriceMap,
 
 		for aCardName, aPrice:= range cardMap{
 
-			aPoint:= influxdbHandler.BuildPoint(aCardName,
-				aPriceResult.Time, aPrice, aSetName, aPriceResult.Source)
+			// Deal with the fact that some price sources may have multiple
+			// currencies that were massaged into USD
+			var aPoint influxdbHandler.Point
+			if aPriceResult.HasEuro {
+				// An original price in euros is recorded alongside the USD
+				// conversion
+				euroPrice:= aPriceResult.EURPrices[aSetName][aCardName]
+				
+				aPoint = influxdbHandler.BuildPointWithEuro(aCardName,
+					aPriceResult.Time, aPrice, euroPrice,
+					aSetName, aPriceResult.Source)
+			
+			}else{
+			
+				aPoint = influxdbHandler.BuildPoint(aCardName,
+					aPriceResult.Time, aPrice, aSetName, aPriceResult.Source)
+			
+			}
 
 			points = append(points, aPoint)
 

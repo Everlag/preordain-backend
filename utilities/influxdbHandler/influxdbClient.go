@@ -17,6 +17,8 @@ import(
 
 var Columns = []string{"time", "price", "set", "source"}
 var ColumnCount = len(Columns)
+var EuroColumns = []string{"time", "price", "euro", "set", "source"}
+var EuroColumnCount = len(EuroColumns)
 var UserColumns = []string{"time", "action", "actionParameters", "bodyContents"}
 var UserColumnCount = len(UserColumns)
 

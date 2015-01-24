@@ -64,3 +64,6 @@ priceWriter2014/12/27 15:47:00 priceComputer.go:34: Failed to add query for '%!(
 priceWriter2014/12/27 17:29:32 priceComputer.go:34: Failed to add query for '%!(EXTRA string=Look at Me, I'm R&D, string=', ', string=UnhingedFoil, string=', ', string=mtgprice, string=', , *errors.errorString=Request not explicit success)
 priceWriter2014/12/27 19:29:21 priceComputer.go:34: Failed to add query for '%!(EXTRA string=Look at Me, I'm R&D, string=', ', string=UnhingedFoil, string=', ', string=mtgprice, string=', , *errors.errorString=Request not explicit success)
 priceWriter2014/12/28 01:34:21 priceComputer.go:37: Success
+priceWriter2015/01/14 17:06:40 priceComputer.go:27: Clearing existing continuous queries
+priceWriter2015/01/14 17:07:48 priceComputer.go:34: Creating continuous queries
+priceWriter2015/01/14 21:37:09 priceComputer.go:41: Success

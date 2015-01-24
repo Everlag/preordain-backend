@@ -43,6 +43,7 @@ func (aPoint *Point) GetColumnIndex(columnName string) int {
 // We need to mix ints and strings so this gets us to where we need to be
 type PointData interface{}
 
+// Builds a standard point.
 func BuildPoint(seriesName string, time int64, price int64,
 	set, source string) Point {
 	
@@ -67,6 +68,36 @@ func BuildPoint(seriesName string, time int64, price int64,
 
 }
 
+// Builds a point suitable for use with prices that started as euros and
+// were converted into usd.
+func BuildPointWithEuro(seriesName string, time int64, price int64, euro int64,
+	set, source string) Point {
+	
+	cleanedSetName:= NormalizeName(set)
+
+	data:= make([]PointData, EuroColumnCount)
+	data[0] = PointData(time)
+	data[1] = PointData(price)
+	data[2] = PointData(euro)
+	data[3] = PointData(cleanedSetName)
+	data[4] = PointData(source)
+
+	wrappedData:= make([][]PointData, 1)
+	wrappedData[0] = data
+
+	aPoint:= Point{
+		Name: seriesName,
+		Columns: []string(EuroColumns),
+		Points: wrappedData,
+	}
+
+	return aPoint
+
+}
+
+// Builds a point with multiple prices associated with multiple times.
+//
+// Typical use is for importing external price history.
 func BuildPointMultiplePrices(seriesName string, times []int64, prices []int64,
 	set, source string) Point {
 	
