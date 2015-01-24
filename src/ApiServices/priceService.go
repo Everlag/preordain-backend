@@ -72,6 +72,22 @@ func (aService *PriceService) register() error {
 		ApiVersion("0.1")
 
 	priceService.Route(priceService.
+		GET("/SetList").To(aService.getSetList).
+		// Docs
+		Doc("Returns all available sets").
+		Operation("getSetList").
+		Writes([]string{}).
+		Returns(http.StatusOK, "All available sets", nil))
+
+	priceService.Route(priceService.
+		GET("/SourceList").To(aService.getPriceSourcesList).
+		// Docs
+		Doc("Returns all available price sources").
+		Operation("getPriceSourcesList").
+		Writes([]string{}).
+		Returns(http.StatusOK, "All available sources", nil))
+
+	priceService.Route(priceService.
 		GET("/Card/{cardName}").To(aService.getCard).
 		// Docs
 		Doc("Returns all prices for all printings of a card since the start of recording for all price sources").
@@ -135,7 +151,42 @@ func (aService *PriceService) register() error {
 
 }
 
-func (aService *PriceService) getCard(req *restful.Request, resp *restful.Response) {
+func (aService *PriceService) getSetList(req *restful.Request,
+	resp *restful.Response) {
+	
+	//
+	setList:= make([]string, 0)
+	for aSet, _:= range sets{
+		if aSet != "" {
+			setList = append(setList, aSet)	
+		}
+	}
+
+	setCacheHeader(resp)
+
+	resp.WriteEntity(setList)
+
+}
+
+func (aService *PriceService) getPriceSourcesList(req *restful.Request,
+	resp *restful.Response) {
+	
+	//
+	sourcesList:= make([]string, 0)
+	for aSource, _:= range validPriceSources{
+		if aSource != "" {
+			sourcesList = append(sourcesList, aSource)	
+		}
+	}
+
+	setCacheHeader(resp)
+
+	resp.WriteEntity(sourcesList)
+
+}
+
+func (aService *PriceService) getCard(req *restful.Request,
+	resp *restful.Response) {
 	
 	cardName:= req.PathParameter("cardName")
 
