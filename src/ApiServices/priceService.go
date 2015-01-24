@@ -18,6 +18,10 @@ const BadCard string = "Illegal Card Name"
 const BadSet string = "Illegal Set Name"
 const BadCardFilter string = BadCard + " || " + BadSet
 
+// Which sources we currently support specific queries for
+var validPriceSources = map[string]bool{"mtgprice":true,
+	"magiccardmarket":true}
+
 type PriceService struct{
 	client *influxdbHandler.Client
 	Service *restful.WebService
@@ -70,7 +74,7 @@ func (aService *PriceService) register() error {
 	priceService.Route(priceService.
 		GET("/Card/{cardName}").To(aService.getCard).
 		// Docs
-		Doc("Returns all prices for all printings of a card since the start of time").
+		Doc("Returns all prices for all printings of a card since the start of recording for all price sources").
 		Operation("getCard").
 		Param(priceService.PathParameter("cardName",
 			"The name of a Magic: the Gathering card card").DataType("string")).
@@ -88,15 +92,17 @@ func (aService *PriceService) register() error {
 			"The name of a Magic: the Gathering card").DataType("string")).
 		Param(priceService.PathParameter("setName",
 			"The name of a Magic: the Gathering set").DataType("string")).
+		Param(priceService.QueryParameter("source",
+			"The name of a valid price source").DataType("string")).
 		Writes(influxdbHandler.Points{}).
 		Returns(http.StatusInternalServerError, "Price DB lookup failed", nil).
 		Returns(http.StatusBadRequest, BadCardFilter, nil).
-		Returns(http.StatusOK, "All prices for a specific printing from DefaultPriceSource", nil))
+		Returns(http.StatusOK, "All prices for a specific printing from DefaultPriceSource or specific price source", nil))
 
 	priceService.Route(priceService.
 		GET("/Card/{cardName}/{setName}/WeeksMedian").To(aService.getCardWeeksMedian).
 		// Docs
-		Doc("Returns all prices for a printing of a card since the start of time; Price Data is granular down to a week").
+		Doc("Returns all prices for a printing of a card since the start of time; Price Data is granular down to a week. Only for mtgprice").
 		Operation("getCardWeeksMedian").
 		Param(priceService.PathParameter("cardName",
 			"The name of a Magic: the Gathering card").DataType("string")).
@@ -116,10 +122,12 @@ func (aService *PriceService) register() error {
 			"The name of a Magic: the Gathering card").DataType("string")).
 		Param(priceService.PathParameter("setName",
 			"The name of a Magic: the Gathering set").DataType("string")).
+		Param(priceService.QueryParameter("source",
+			"The name of a valid price source").DataType("string")).
 		Writes(influxdbHandler.Points{}).
 		Returns(http.StatusInternalServerError, "Price DB lookup failed", nil).
 		Returns(http.StatusBadRequest, BadCardFilter, nil).
-		Returns(http.StatusOK, "Latest price for a specific printing from DefaultPriceSource", nil))
+		Returns(http.StatusOK, "Latest price for a specific printing from DefaultPriceSource or a specific price source", nil))
 
 	aService.Service = priceService
 
@@ -165,8 +173,13 @@ func (aService *PriceService) getCardSpecificSet(req *restful.Request,
 		return
 	}
 
+	sourceName:= req.QueryParameter("source")
+	if !validPriceSources[sourceName] {
+		sourceName = DefaultPriceSource
+	}
+
 	cardPrices, err:= aService.client.SelectFilteredSeries(cardName,
-		setName, DefaultPriceSource, 0)
+		setName, sourceName, 0)
 	if err!=nil {
 		resp.WriteErrorString(http.StatusInternalServerError,
 			"Price DB lookup failed, ")
@@ -221,8 +234,13 @@ func (aService *PriceService) getCardLatestPoint(req *restful.Request,
 		return
 	}
 
+	sourceName:= req.QueryParameter("source")
+	if !validPriceSources[sourceName] {
+		sourceName = DefaultPriceSource
+	}
+
 	cardPrices, err:= aService.client.SelectFilteredSeriesLatestPoint(cardName,
-		setName, DefaultPriceSource, 0)
+		setName, sourceName, 0)
 	if err!=nil {
 		resp.WriteErrorString(http.StatusInternalServerError,
 			"Price DB lookup failed, ")

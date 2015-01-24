@@ -86,8 +86,8 @@ func (aService *TypeAheadService) getSuggestions(req *restful.Request,
 
 	suggestions, ok:= aService.cards[key]
 	if !ok{
-		resp.WriteErrorString(http.StatusBadRequest, BadKey)
-		return
+		// Return an empty list of suggestions rather than 404ing.
+		suggestions = []string{}
 	}
 
 	setCacheHeader(resp)
