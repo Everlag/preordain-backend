@@ -1,0 +1,8 @@
+This is a simple utility for distributing copies of setList.master.txt to a 
+specific directory tree.
+
+Usage:
+	(./)setlistDistributor(.exe) pathName
+
+All copies of setList.txt inside the directory of the tree will be populated 
+with the contents of setList.master.txt
