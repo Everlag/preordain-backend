@@ -41,6 +41,8 @@ func main() {
 	cardData.addCommanderData()
 	cardData.addSimilarityData()
 
+	cardData.cleanSetNames(aLogger)
+
 	cardData.dumpToDisk(aLogger)
 
 	imageScraper.ScrapeImages(imageLoc, cropLoc, symbolsLoc)
@@ -50,8 +52,8 @@ func main() {
 
 }
 
-//dumpToDisk commits each value of the card map and dumps it into
-//the dataLoc folder under the name.json file
+// dumpToDisk commits each value of the card map and dumps it into
+// the dataLoc folder under the name.json file
 func (cardData *cardMap) dumpToDisk(aLogger *log.Logger) {
 	
 	aLogger.Println("Commencing dump to disk of cardMap")
@@ -116,6 +118,48 @@ func (cardData *cardMap) addCommanderData() {
 		}
 
 		aCard.CommanderUsage = cardUsage
+
+	}
+
+}
+
+// Cleans the set names for the cards contained within.
+// IE, removed set names we don't support and adds foil sets if available.
+func (cardData *cardMap) cleanSetNames(aLogger *log.Logger) {
+	
+	// Grab the setlist
+	setMap, err:= getSupportedSetList()
+	if err!=nil {
+		aLogger.Fatalln("Failed to acquire supported setlist, ", err)
+	}
+
+	for _, aCard:= range *cardData {
+		
+		properPrintings:= make([]string, 0)
+
+		for _, aPrinting:= range aCard.Printings{
+
+			foilName, ok:= setMap[aPrinting]
+			if !ok {
+				// Not ok means this is a set not in the setlist
+				continue
+			}
+
+			// Add the non-foil name
+			properPrintings = append(properPrintings, aPrinting)
+			
+			// And the foil if available
+			if foilName != "" {
+				properPrintings = append(properPrintings, foilName)	
+			}
+
+		}
+
+		if len(properPrintings) == 0 {
+			aLogger.Println("Failed to get any printings for ", aCard.Name)
+		}
+
+		aCard.Printings = properPrintings
 
 	}
 
