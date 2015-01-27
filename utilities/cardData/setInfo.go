@@ -11,6 +11,8 @@ import(
 
 	"time"
 
+	"strings"
+
 )
 
 // YEAR-MONTH-DAY
@@ -134,9 +136,20 @@ func (setData *setMap) dumpToDisk(aLogger *log.Logger) {
 			continue
 		}
 
-		setPath = dataLoc + string(os.PathSeparator) + aSet.Name + ".json"
+		// Make the set name not explode for invalid characters on some
+		// file systems
+		cleanedSetName:= strings.Replace(aSet.Name, ":", "", -1)
+		cleanedSetName = strings.Replace(cleanedSetName, "–", "", -1)
+		cleanedSetName = strings.Replace(cleanedSetName, "\"", "", -1)
 
-		ioutil.WriteFile(setPath, serialSet, 0666)
+		setPath = dataLoc + string(os.PathSeparator) + cleanedSetName + ".json"
+
+		err:= ioutil.WriteFile(setPath, serialSet, 0666)
+		if err!=nil {
+			aLogger.Println("Failed to save set ", cleanedSetName, err)
+		}else{
+			aLogger.Println("Saved ", cleanedSetName)
+		}
 
 	}
 
