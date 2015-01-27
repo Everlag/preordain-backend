@@ -70,6 +70,8 @@ var symbolManaList = [...]string{
 	"y","z","zero","∞",
 }
 
+const symbolSetBaseUrl string = "http://mtgimage.com/symbol/set/"
+
 func getLogger(fName, name string) (aLogger *log.Logger) {
 	file, err:= os.OpenFile(fName, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err!=nil {
@@ -209,16 +211,54 @@ func getSymbols(symbolLoc string, aLogger *log.Logger) {
 
 	//now the other symbols that are much, much less meaty
 	for _, aSymbol:= range symbolOtherList{
-		url = symbolManaBaseUrl + aSymbol + symbolExtension
+		url = symbolOtherBaseUrl + aSymbol + symbolExtension
 		path = symbolLoc + aSymbol + symbolExtension
 
 		getDumbImage(url, path, aLogger)
+	}
+
+	err:= getSetSymbols(symbolLoc, aLogger)
+	if err!=nil {
+		aLogger.Fatalf("Failed to get set symbols, ", err)
 	}
 
 	aLogger.Println("All symbols acquired")
 
 }
 
+
+type setMap map[string] set
+type set struct{
+	Name string
+}
+
+func getSetSymbols(symbolLoc string, aLogger *log.Logger) error {
+
+	setData, err:= ioutil.ReadFile("AllSets-x.json")
+	if err!=nil {
+		return fmt.Errorf("Failed to read AllSets-x.json")
+	}
+
+	//unmarshal it into a map of string to card with image name
+	var aSetMap setMap
+	err = json.Unmarshal(setData, &aSetMap)
+	if err!=nil {
+		return fmt.Errorf("Failed to unmarshal card map")
+	}
+
+	var url string
+	var path string
+	for setCode, aSet := range aSetMap {
+		url = symbolSetBaseUrl + setCode + "/" + "c" + symbolExtension
+		path = symbolLoc + aSet.Name + symbolExtension
+		getDumbImage(url, path, aLogger)
+	}
+
+	return nil
+
+}
+
+// Acquires an image dumbly. If it fails then it is logged.
 func getDumbImage(url, outPath string, aLogger *log.Logger) {
 	
 	resp, err := http.Get(url)
