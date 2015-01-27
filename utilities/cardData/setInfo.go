@@ -81,6 +81,11 @@ func (setData *setMap) setTimestamps(aLogger *log.Logger) map[string]int64 {
 
 	for _, aSet:= range *setData{
 
+		// Skip mtgo only sets
+		if aSet.Type == "masters" {
+			continue
+		}
+
 		aSet.setTimestamp(aLogger)
 
 		timestampMap[aSet.Name] = aSet.Timestamp
@@ -129,6 +134,11 @@ func (setData *setMap) dumpToDisk(aLogger *log.Logger) {
 	var setPath string
 
 	for _, aSet:= range *setData {
+
+		// Skip mtgo only sets
+		if aSet.Type == "masters" {
+			continue
+		}
 
 		serialSet, err= json.Marshal(aSet)
 		if err!=nil {

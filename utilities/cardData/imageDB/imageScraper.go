@@ -14,6 +14,8 @@ import(
 	"io/ioutil"
 	"encoding/json"
 
+	"strings"
+
 	"io"
 	"net/http"
 
@@ -230,6 +232,7 @@ func getSymbols(symbolLoc string, aLogger *log.Logger) {
 type setMap map[string]set
 type set struct{
 	Name string
+	Type string
 }
 
 func getSetSymbols(symbolLoc string, aLogger *log.Logger) error {
@@ -249,8 +252,20 @@ func getSetSymbols(symbolLoc string, aLogger *log.Logger) error {
 	var url string
 	var path string
 	for setCode, aSet := range aSetMap {
+
+		// Promo sets may or may not have a specific symbol.
+		// We normalize them to the general promo symbol
+		if aSet.Type == "promo" {
+			setCode = "pwcq"
+		}
+
 		url = symbolSetBaseUrl + setCode + "/" + "c" + symbolExtension
-		path = symbolLoc + aSet.Name + symbolExtension
+
+		cleanedSetName:= strings.Replace(aSet.Name, ":", "", -1)
+		cleanedSetName = strings.Replace(cleanedSetName, "–", "", -1)
+		cleanedSetName = strings.Replace(cleanedSetName, "\"", "", -1)
+
+		path = symbolLoc + cleanedSetName + symbolExtension
 		getDumbImage(url, path, aLogger)
 	}
 
