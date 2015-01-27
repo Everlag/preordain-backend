@@ -227,7 +227,7 @@ func getSymbols(symbolLoc string, aLogger *log.Logger) {
 }
 
 
-type setMap map[string] set
+type setMap map[string]set
 type set struct{
 	Name string
 }
@@ -243,7 +243,7 @@ func getSetSymbols(symbolLoc string, aLogger *log.Logger) error {
 	var aSetMap setMap
 	err = json.Unmarshal(setData, &aSetMap)
 	if err!=nil {
-		return fmt.Errorf("Failed to unmarshal card map")
+		return fmt.Errorf("Failed to unmarshal set map")
 	}
 
 	var url string
