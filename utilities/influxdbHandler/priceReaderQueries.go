@@ -8,16 +8,23 @@ import(
 
 )
 
-const ListSeriesQuery string = "list series"
+// The queries we use
+const ListSeriesQuery string = "list series;"
 const ListContinuousQuery string = "list continuous queries;"
 
-const SelectEntireSeriesTemplate string = "select * from \"seriesName\""
+const SelectEntireSeriesTemplate string = "select * from \"seriesName\";"
 const SelectWeeksMedianTemplate string =
-"select median from \"seriesName\" where time > timeStart"
+"select median from \"seriesName\" where time > timeStart;"
 const SelectFilteredSeriesTemplate string = 
-"select price from \"seriesName\" where time > timeStart and set='setName' and source='sourceName'"
+"select price from \"seriesName\" where time > timeStart and set='setName' and source='sourceName';"
 const SelectFilteredSeriesLatestTemplate string = 
-"select price from \"seriesName\" where time > timeStart and set='setName' and source='sourceName' limit 1"
+"select price from \"seriesName\" where time > timeStart and set='setName' and source='sourceName' limit 1;"
+
+// How many cards we can string together in one query for completing a full set
+// query
+//
+// This takes into account the url limit of an effective 2048 characters.
+const CardsPerSetBatch int = 17
 
 func (aClient *Client) ListSeries() (Points, error) {
 
@@ -123,19 +130,8 @@ func (aClient *Client) SelectFilteredSeriesLatestPoint(cardName,
 		return nil, fmt.Errorf("Client does not have read permissions")
 	}
 
-	timeStartString:= TimestampToInfluxDBTime(timeStart)
-	setName = aClient.NormalizeName(setName)
-
-	fmt.Println(setName)
-
-	fullQueryText:= strings.Replace(SelectFilteredSeriesLatestTemplate, "seriesName",
-		cardName, -1)
-	fullQueryText = strings.Replace(fullQueryText, "setName",
-		setName, -1)
-	fullQueryText = strings.Replace(fullQueryText, "sourceName",
-		sourceName, -1)
-	fullQueryText = strings.Replace(fullQueryText, "timeStart",
-		timeStartString, -1)
+	fullQueryText:= aClient.buildSelectFilteredSeriesLatestPoint(cardName,
+		setName, sourceName, timeStart)
 
 	seriesBytes, err:= aClient.executeQuery(fullQueryText)
 	if err!=nil {
@@ -145,6 +141,81 @@ func (aClient *Client) SelectFilteredSeriesLatestPoint(cardName,
 	return pointsFromBytes(seriesBytes)
 
 }
+
+// Builds the query for SelectFilteredSeriesLatestPoint.
+//
+// Exposing the query building allows multiple exposed query methods to
+// take advantage of it.
+func (aClient *Client) buildSelectFilteredSeriesLatestPoint(cardName,
+	setName, sourceName string, timeStart int64) string {
+
+	timeStartString:= TimestampToInfluxDBTime(timeStart)
+	setName = aClient.NormalizeName(setName)
+
+	var fullQueryText string
+
+	fullQueryText = strings.Replace(SelectFilteredSeriesLatestTemplate,
+		"seriesName",
+		cardName, -1)
+	fullQueryText = strings.Replace(fullQueryText, "setName",
+		setName, -1)
+	fullQueryText = strings.Replace(fullQueryText, "sourceName",
+		sourceName, -1)
+	fullQueryText = strings.Replace(fullQueryText, "timeStart",
+		timeStartString, -1)
+
+	return fullQueryText
+
+}
+
+// Selects the prices for an entire set. Uses reasonable batching to enchance
+// performance and reduce the cost of round trip latency
+func (aClient *Client) SelectSetsLatest(cardList []string,
+	setName, sourceName string, timeStart int64) (Points, error) {
+	
+	
+	acquiredPoints:= make(Points, 0)
+
+	// Create and send batches of requests
+	batchedRequests:= make([]string, 0)
+	var aBatchRequest string
+
+	cardsInBatch:= 0
+	cardsLeft:= 0
+	for cardsDone, aCardName:= range cardList {
+
+		// Grab the next valid request
+		aBatchRequest = aClient.buildSelectFilteredSeriesLatestPoint(aCardName,
+			setName, sourceName, timeStart)
+
+		batchedRequests = append(batchedRequests, aBatchRequest)
+		cardsInBatch++
+
+		// Check if we need to fire off a batch.
+		cardsLeft = len(cardList) - cardsDone
+		if cardsInBatch >= CardsPerSetBatch || cardsInBatch > cardsLeft {
+
+			// Fire off a batch and add the result to the pool
+			batchPoints, err:= aClient.sendBatchQuery(batchedRequests)
+			if err!=nil {
+				return Points{},
+				fmt.Errorf("Failed to acquire set, ", err)
+			}
+
+			acquiredPoints = append(acquiredPoints, batchPoints...)
+
+			// Clean up for counting to next batch
+			batchedRequests = make([]string, 0)
+			cardsInBatch = 0
+		}
+
+	}
+
+	return acquiredPoints, nil
+
+}
+
+
 
 // Returns the WeeksMedian for a card with a given set and source without
 // unmarshalling the result.
@@ -156,6 +227,10 @@ func (aClient *Client) SelectWeeksMedian(cardName,
 	if !aClient.read {
 		return nil, fmt.Errorf("Client does not have read permissions")
 	}
+
+	setName = aClient.NormalizeName(setName)
+
+	fmt.Println(setName)
 
 	targetSeriesName:= aClient.GetMedianWeeksSeriesName(cardName,
 		setName, sourceName)

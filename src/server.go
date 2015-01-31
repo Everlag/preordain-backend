@@ -44,6 +44,9 @@ func main() {
 	restful.Add(priceService.Service)
 	restful.Add(userService.Service)
 	restful.Add(typeAheadService.Service)
+
+	// Ensure we aren't sending stack traces out in the event we panic.
+	restful.DefaultContainer.RecoverHandler(ApiServices.RecoverHandler)
 	// BUG - user service breaks when compression is enabled.
 	//restful.DefaultContainer.EnableContentEncoding(true)
 

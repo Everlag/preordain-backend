@@ -38,8 +38,14 @@ func (aManager *UserManager) AddUser(name, email, password string,
 		return "", fmt.Errorf("Password doesn't meet minimum requirements")
 	}
 
+	// Check if the user already exists
 	if aManager.userExists(name) {
 		return "", fmt.Errorf("User already exists")
+	}
+
+	// Check if the email is already in use
+	if aManager.emailUsed(email){
+		return "", fmt.Errorf("Email already used.")
 	}
 
 	nonce, passwordHash, err := passwordDerivation(password)
@@ -64,8 +70,15 @@ func (aManager *UserManager) AddUser(name, email, password string,
 	//setup the first session for this user
 	aFreshUser.Sessions[firstSession.Key] = &firstSession
 
-	//setup the user in the manager's memory
+	// setup the user in the manager's memory
+	aManager.userLock.Lock()
 	aManager.users[name] = &aFreshUser
+	aManager.userLock.Unlock()
+
+	// Reserve an email for the user
+	aManager.emailLock.Lock()
+	aManager.EmailsToUserNames[email] = name
+	aManager.emailLock.Unlock()
 
 	//write the user to persistent storage
 	err = aManager.userToStorage(name)

@@ -7,6 +7,8 @@ import(
 
 	"fmt"
 
+	"strings"
+
 	"io/ioutil"
 )
 
@@ -65,5 +67,28 @@ func (aClient *Client) executeQuery(someQueryString string) ([]byte, error){
 	seriesListBytes, err:= aClient.sendQuery(aQuery)
 
 	return seriesListBytes, err
+
+}
+
+// Build and send a batch of queries.
+//
+// These queries must each be terminated
+// with a semicolon or the batch will fail
+func (aClient *Client) sendBatchQuery(batchQueries []string) (Points, error) {
+	
+	batchRequestQuery:= strings.Join(batchQueries, "")
+
+	seriesBytes, err:= aClient.executeQuery(batchRequestQuery)
+	if err!=nil {
+		return Points{},
+		fmt.Errorf("Failed to acquire points for set", err)
+	}
+	batchPoints, err:= pointsFromBytes(seriesBytes)
+	if err!=nil {
+		return Points{},
+		fmt.Errorf("Failed to unmarshal points for set", err)
+	}
+
+	return batchPoints, nil
 
 }

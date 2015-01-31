@@ -95,7 +95,7 @@ func (aService *UserService) register() error {
 	// startup than to risk nuking every attempt at adding a trade.
 	err:= populateCardMaps()
 	if err!=nil {
-		return err
+		aService.logger.Fatalln("Failed to acquire ")
 	}
 
 	userService:= new(restful.WebService)

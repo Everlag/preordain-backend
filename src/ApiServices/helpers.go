@@ -14,11 +14,24 @@ import(
 
 	"github.com/emicklei/go-restful"
 
+	"net/http"
+
 )
+
+const PanicRecoverMessage string = "Something really bad happened while completing your request :("
 
 const setListLoc string = "setList.txt"
 const managerNameLoc string = "managerMeta.txt"
 const recaptchaKeyLoc string = "recaptchaPrivateKey.txt"
+
+// A basic handler for recovery to ensure that we don't accidently start
+// sending stack traces.
+func RecoverHandler(issue interface{}, writer http.ResponseWriter) {
+	
+	writer.WriteHeader(http.StatusInternalServerError)
+	writer.Write([]byte(PanicRecoverMessage))
+
+}
 
 func getUserNameAndSessionKey(req *restful.Request) (userName,
 	sessionKey string, err error) {

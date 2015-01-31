@@ -35,6 +35,12 @@ type UserManager struct {
 	// initiate action without their demand.
 	UserNames []string
 
+	// Records the email of each user which maps to their user name.
+	//
+	// This allows us to lookup account reset requests by email as well
+	// as ensure a single email has only a single account
+	EmailsToUserNames map[string]string
+
 	//contains users who have been fetched from the database to
 	//reside in memory.
 	//
@@ -63,6 +69,15 @@ type UserManager struct {
 
 	// nameLock ensures only one writer to the precious list of user names
 	nameLock sync.RWMutex
+
+	// emailLock ensures only one writer can touch the map at once. 
+	emailLock sync.RWMutex
+
+	// userLock ensures only a single writer to the user map.
+	//
+	// Normal access is through pointers but writing new users could cause
+	// issues
+	userLock sync.RWMutex
 
 	logger *log.Logger
 }
@@ -116,6 +131,10 @@ func (aManager *UserManager) userModified(name string) error {
 
 // Gets the user from the manager, returns an error if the user doesn't exist
 func (aManager *UserManager) getUser(name string) (*User, error) {
+
+	aManager.userLock.RLock()
+	defer aManager.userLock.RUnlock()
+
 	//check the manager's in memory cache
 	aUser, ok := aManager.users[name]
 	if ok {
@@ -141,7 +160,8 @@ func (aManager *UserManager) getUser(name string) (*User, error) {
 //attempts to acquire a user using the provided name. if the user exists,
 //the session is checked. if the session is valid, a valid user is returned.
 //if not, returns and error
-func (aManager *UserManager) authenticateUser(name, session string) (*User, error) {
+func (aManager *UserManager) authenticateUser(name, session string) (*User,
+	error) {
 
 	aUser, err := aManager.getUser(name)
 	if err != nil {
@@ -197,6 +217,15 @@ func (aManager *UserManager) userExists(name string) bool {
 
 	return true
 
+}
+
+func (aManager *UserManager) emailUsed(email string) bool {
+	
+	aManager.emailLock.RLock()
+	_, ok:= aManager.EmailsToUserNames[email]
+	aManager.emailLock.RUnlock()
+
+	return ok
 }
 
 //derives the backing database name for a manager with the provided suffix
