@@ -26,15 +26,6 @@ func setupSwagger() {
 
 }
 
-func setupCors() {
-	cors:= restful.CrossOriginResourceSharing{
-		ExposeHeaders:  []string{"X-My-Header"},
-		AllowedHeaders: []string{"Content-Type"},
-		CookiesAllowed: false,
-		Container:       restful.DefaultContainer}
-	restful.DefaultContainer.Filter(cors.Filter)
-}
-
 func main() {
 
 	priceService:= ApiServices.NewPriceService()
@@ -51,7 +42,6 @@ func main() {
 	//restful.DefaultContainer.EnableContentEncoding(true)
 
 	setupSwagger()
-	setupCors()
 
 	fmt.Println("ready")
 

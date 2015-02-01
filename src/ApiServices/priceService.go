@@ -35,6 +35,11 @@ const UncommonsPerBox float64 = 108
 const RaresPerBox float64 = 31.5
 const MythicsPerBox float64 = 4.5
 
+const MythicMinImpact float64 = 0.0
+const RareMinImpact float64 = 0.0
+const UncommonMinImpact float64 = 100.0
+const CommonMinImpact float64 = 100.0
+
 // Which sources we currently support specific queries for
 var validPriceSources = map[string]bool{"mtgprice":true,
 	"magiccardmarket":true}
@@ -475,13 +480,13 @@ func calculateEV(aSet string,
 
 	// Sum the values
 	MythicContributed:= calculateEVForRarity(valuation,
-		mythics, MythicsPerBox, &ev.IgnoredMythics)
+		mythics, MythicsPerBox, MythicMinImpact, &ev.IgnoredMythics)
 	RareContributed:= calculateEVForRarity(valuation,
-		rares, RaresPerBox, &ev.IgnoredRares)
+		rares, RaresPerBox, RareMinImpact, &ev.IgnoredRares)
 	UncommonContributed:= calculateEVForRarity(valuation,
-		uncommons, UncommonsPerBox, &ev.IgnoredUncommons)
+		uncommons, UncommonsPerBox, UncommonMinImpact, &ev.IgnoredUncommons)
 	CommonContributed:= calculateEVForRarity(valuation,
-		commons, CommonsPerBox, &ev.IgnoredCommons)
+		commons, CommonsPerBox, CommonMinImpact, &ev.IgnoredCommons)
 
 	sum:= MythicContributed + RareContributed +
 	UncommonContributed + CommonContributed
@@ -497,14 +502,18 @@ func calculateEV(aSet string,
 }
 
 // A small helper function to keep the calculation of rarities reasonable
+//
+// impactMinimum allows a selection of a minimum value to prevent bulk from
+// having too much of an impact
 func calculateEVForRarity(valuation map[string]int64, cards []string,
-	RarityPerBox float64,
+	RarityPerBox, impactMinimum float64,
 	ignoredContainer *[]string) (contribution float64) {
 	
 	possibleOthers:= float64(len(cards))
 	impactCoefficient:= RarityPerBox / possibleOthers
 
 	var price int64
+	var impact float64
 	var ok bool
 	for _, aCard:= range cards {
 		price, ok = valuation[aCard]
@@ -512,7 +521,11 @@ func calculateEVForRarity(valuation map[string]int64, cards []string,
 			*ignoredContainer = append(*ignoredContainer, aCard)
 			continue
 		}
-		contribution+= float64(price) * impactCoefficient
+
+		impact = float64(price) * impactCoefficient
+		if impact > impactMinimum {
+			contribution+= 	impact
+		}
 	}
 
 	return

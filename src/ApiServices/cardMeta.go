@@ -5,6 +5,8 @@ import(
 	"encoding/json"
 	"io/ioutil"
 
+	"strings"
+
 )
 
 // A global map used to ensure we only search for valid sets
@@ -168,6 +170,8 @@ func (aSetToCardsMap SetsToCards) getCardName(aSet string) []string {
 // An empty list is returned if provided an invalid set name
 func (aSetToCardsMap SetsToCards) getCardsWithRarity(aSet,
 	rarity string) []string {
+
+	aSet = strings.Replace(aSet, " Foil", "", -1)
 
 	cards, ok:= aSetToCardsMap[aSet]
 	if !ok {
