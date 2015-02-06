@@ -389,6 +389,8 @@ func (aService *PriceService) getSetLatestPrices(req *restful.Request,
 		return
 	}
 
+	setCacheHeader(resp)
+
 	resp.WriteEntity(cardPrices)
 
 }
@@ -424,6 +426,8 @@ func (aService *PriceService) getSetLatestBoxEV(req *restful.Request,
 			BadCalculation + err.Error())
 		return
 	}
+
+	setCacheHeader(resp)
 
 	resp.WriteEntity(ev)
 
