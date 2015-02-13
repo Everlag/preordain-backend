@@ -54,6 +54,11 @@ func setCacheHeader(resp *restful.Response) {
 	resp.Header().Set("Cache-Control", "max-age=18000,s-maxage=18000")
 }
 
+// Sets a cache header of 5 hours to a given request.
+func setPrivateHeader(resp *restful.Response) {
+	resp.Header().Set("Cache-Control", "private")
+}
+
 func getSetList() ([]string, error) {
 
 	sets, err:= ioutil.ReadFile(setListLoc)

@@ -176,38 +176,22 @@ func (aClient *Client) SelectSetsLatest(cardList []string,
 	
 	acquiredPoints:= make(Points, 0)
 
-	// Create and send batches of requests
-	batchedRequests:= make([]string, 0)
-	var aBatchRequest string
+	for _, aCardName:= range cardList {
+		fullQueryText:= aClient.buildSelectFilteredSeriesLatestPoint(aCardName,
+		setName, sourceName, timeStart)
 
-	cardsInBatch:= 0
-	cardsLeft:= 0
-	for cardsDone, aCardName:= range cardList {
-
-		// Grab the next valid request
-		aBatchRequest = aClient.buildSelectFilteredSeriesLatestPoint(aCardName,
-			setName, sourceName, timeStart)
-
-		batchedRequests = append(batchedRequests, aBatchRequest)
-		cardsInBatch++
-
-		// Check if we need to fire off a batch.
-		cardsLeft = len(cardList) - cardsDone
-		if cardsInBatch >= CardsPerSetBatch || cardsInBatch > cardsLeft {
-
-			// Fire off a batch and add the result to the pool
-			batchPoints, err:= aClient.sendBatchQuery(batchedRequests)
-			if err!=nil {
-				return Points{},
-				fmt.Errorf("Failed to acquire set, ", err)
-			}
-
-			acquiredPoints = append(acquiredPoints, batchPoints...)
-
-			// Clean up for counting to next batch
-			batchedRequests = make([]string, 0)
-			cardsInBatch = 0
+		seriesBytes, err:= aClient.executeQuery(fullQueryText)
+		if err!=nil {
+			return Points{}, err
 		}
+
+		batchPoints, err:= pointsFromBytes(seriesBytes)
+		if err!=nil {
+			return Points{},
+			fmt.Errorf("Failed to unmarshal points for set", err)
+		}
+
+		acquiredPoints = append(acquiredPoints, batchPoints...)
 
 	}
 
