@@ -7,6 +7,8 @@ import(
 
 	"encoding/json"
 	"io/ioutil"
+
+	"sort"
 	
 	"./commanderDB"
 	"./similarityDB"
@@ -16,14 +18,14 @@ import(
 func getAllCardData(aLogger *log.Logger) {
 	//acquire mtgjson basic data we get for effectively free
 	cardData:= buildBasicData(aLogger)
-	stapleOnSetSpecificData(cardData, aLogger)
+	//stapleOnSetSpecificData(cardData, aLogger)
 
 	cardData.addCommanderData()
-	cardData.addSimilarityData()
+	//cardData.addSimilarityData()
 
-	cardData.cleanSetNames(aLogger)
+	//cardData.cleanSetNames(aLogger)
 
-	cardData.dumpToDisk(aLogger)
+	//cardData.dumpToDisk(aLogger)
 }
 
 // dumpToDisk commits each value of the card map and dumps it into
@@ -76,12 +78,41 @@ func (cardData *cardMap) addSimilarityData() {
 
 }
 
-//initializes and queries the commanderData package for data regarding
-//commander usage for each card
+// We have a way to add to and sort the ratings of the most used cards
+type cardUsageArray []cardUsagePoint
+
+type cardUsagePoint struct{
+	Name string
+	CommanderUsage float64
+}
+
+func (someData cardUsageArray) Len() int {
+	return len(someData)
+}
+
+// Swap is part of sort.Interface.
+func (someData cardUsageArray) Swap(i, j int) {
+	someData[i], someData[j] = someData[j], someData[i]
+}
+
+// Less is part of sort.Interface. It is implemented by calling the "by" closure in the sorter.
+func (someData cardUsageArray) Less(i, j int) bool {
+	return someData[i].CommanderUsage > someData[j].CommanderUsage
+}
+
+
+// Initializes and queries the commanderData package for data regarding
+// commander usage for each card
+//
+// Has the side 
 func (cardData *cardMap) addCommanderData() {
 	
 	commanderData:= commanderData.GetQueryableCommanderData()
-	//grab the value of each card
+	
+	completeUsage:= make(cardUsageArray, 0)
+	var aUsagePoint cardUsagePoint
+
+	// Grab the value of each card
 	for _, aCard:= range *cardData {
 		
 		cardUsage, err:= commanderData.Query(aCard.Name)
@@ -93,7 +124,23 @@ func (cardData *cardMap) addCommanderData() {
 
 		aCard.CommanderUsage = cardUsage
 
+		aUsagePoint = cardUsagePoint{aCard.Name, cardUsage}
+		completeUsage = append(completeUsage, aUsagePoint)
+
 	}
+
+	
+	sort.Sort(completeUsage)
+	completeUsage = completeUsage[:topCommanderUsageCount]
+	serialUsage, err:= json.Marshal(completeUsage)
+	if err!=nil {
+		log.Println("Failed to marshal commander usage data")	
+		return
+	}
+
+	usagePath:= dataLoc + string(os.PathSeparator) + topCommanderUsageLoc + ".json"
+
+	ioutil.WriteFile(usagePath, serialUsage, 0666)
 
 }
 
