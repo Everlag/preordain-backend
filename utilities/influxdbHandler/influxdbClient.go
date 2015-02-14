@@ -111,6 +111,10 @@ func (aClient *Client) buildRequest(path, method string,
 
 }
 
+// Returns the body and an error, if encountered.
+//
+// The body is the server's error message in the event that an error
+// is also returned
 func (aClient *Client) sendRequest(req *http.Request) ([]byte, error) {
 	
 	response, err:= aClient.httpClient.Do(req)
@@ -120,8 +124,13 @@ func (aClient *Client) sendRequest(req *http.Request) ([]byte, error) {
 	defer response.Body.Close()
 
 	if response.StatusCode != 200 {
-		return nil, fmt.Errorf("Request not explicit success")
+		errMessage, err:= ioutil.ReadAll(response.Body)
+		if err!=nil {
+			return errMessage, fmt.Errorf("Request not explicit success, failed to read body", err)	
+		}
+		return nil, fmt.Errorf("Request not explicit success, failed to read message")
 	}
+
 
 	// copy the request body into a byte array which is less than efficient
 	// but frees up the httpclient to do other work
@@ -168,8 +177,11 @@ func (aClient *Client) SendPoints(somePoints Points) error {
 		return err
 	}
 
-	_, err = aClient.sendRequest(req)
+	errMessage, err:= aClient.sendRequest(req)
 	if err!=nil {
+		if errMessage!=nil {
+			return fmt.Errorf(err.Error(), " body is ", string(errMessage))	
+		}
 		return err
 	}
 

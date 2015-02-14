@@ -173,6 +173,7 @@ func (aClient *Client) buildSelectFilteredSeriesLatestPoint(cardName,
 func (aClient *Client) SelectSetsLatest(cardList []string,
 	setName, sourceName string, timeStart int64) (Points, error) {
 	
+	setName = aClient.NormalizeName(setName)
 	
 	acquiredPoints:= make(Points, 0)
 
