@@ -12,20 +12,23 @@ import(
 	
 	"./commanderDB"
 	"./similarityDB"
+	"./categoriesDB"
 
 )
 
 func getAllCardData(aLogger *log.Logger) {
 	//acquire mtgjson basic data we get for effectively free
 	cardData:= buildBasicData(aLogger)
-	//stapleOnSetSpecificData(cardData, aLogger)
+	stapleOnSetSpecificData(cardData, aLogger)
 
 	cardData.addCommanderData()
-	//cardData.addSimilarityData()
+	cardData.addSimilarityData()
 
-	//cardData.cleanSetNames(aLogger)
+	cardData.addCategoryData()
 
-	//cardData.dumpToDisk(aLogger)
+	cardData.cleanSetNames(aLogger)
+
+	cardData.dumpToDisk(aLogger)
 }
 
 // dumpToDisk commits each value of the card map and dumps it into
@@ -73,6 +76,37 @@ func (cardData *cardMap) addSimilarityData() {
 
 		aCard.SimilarCards = similarityResults.Others
 		aCard.SimilarCardConfidences = similarityResults.Confidences
+
+	}
+
+}
+
+func (cardData *cardMap) addCategoryData() {
+	
+	categoryData:= categoryBuilder.GetQueryableCategoryData()
+
+	//grab the value of each card
+	for _, aCard:= range *cardData {
+		
+		categories:= categoryData.Query(aCard.Name)
+
+		aCard.Categories = categories
+	}
+
+	// Pull down the categories and save them as well
+	completeCategories:= categoryData.GetCategories()
+	for aCategory, cards:= range completeCategories{
+
+		serialCategory, err:= json.Marshal(cards)
+		if err!=nil {
+			log.Println("Failed to marshal category, ", aCategory , err)	
+			return
+		}
+
+		usagePath:= dataLoc + string(os.PathSeparator) + aCategory +
+		"." + categorySuffix + ".json"
+
+		ioutil.WriteFile(usagePath, serialCategory, 0666)
 
 	}
 
@@ -189,7 +223,7 @@ func (cardData *cardMap) cleanSetNames(aLogger *log.Logger) {
 //we seed our initial card data off of AllCard-x.json
 type cardMap map[string]*card
 
-//the components of the card we use for similarity determination
+//the components of the card we use for exporting
 type card struct{
 	//What we get for free, or near free, from mtgjson
 	Name string
@@ -206,6 +240,7 @@ type card struct{
 	CommanderUsage float64
 	SimilarCards []string
 	SimilarCardConfidences []float64
+	Categories []string
 }
 
 //acquires basic card data for our process

@@ -15974,3 +15974,16 @@ User 2015/02/13 23:34:19 setInfo.go:161: Saved  Innistrad
 User 2015/02/13 23:34:19 setInfo.go:161: Saved  Magic 2015 Core Set
 User 2015/02/13 23:34:19 setInfo.go:161: Saved  Dissension
 User 2015/02/13 23:34:19 setInfo.go:166: Dump complete
+User 2015/02/20 14:42:58 cardInfo.go:36: test
+User 2015/02/20 14:43:17 cardData.go:24: test
+User 2015/02/20 16:26:40 cardData.go:37: Commencing dump to disk of cardMap
+User 2015/02/20 16:27:14 cardData.go:58: Dump complete
+User 2015/02/20 16:28:37 cardData.go:37: Commencing dump to disk of cardMap
+User 2015/02/20 16:29:08 cardData.go:58: Dump complete
+User 2015/02/20 16:54:03 cardData.go:37: Commencing dump to disk of cardMap
+User 2015/02/20 16:54:37 cardData.go:58: Dump complete
+User 2015/02/20 16:57:20 cardData.go:37: Commencing dump to disk of cardMap
+User 2015/02/20 16:57:48 cardData.go:37: Commencing dump to disk of cardMap
+User 2015/02/20 16:58:29 cardData.go:58: Dump complete
+User 2015/02/20 17:03:46 cardData.go:38: Commencing dump to disk of cardMap
+User 2015/02/20 17:04:22 cardData.go:59: Dump complete

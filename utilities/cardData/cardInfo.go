@@ -29,6 +29,8 @@ const symbolsLoc string = "cardSymbols/"
 const topCommanderUsageLoc string = "commanderUsage"
 const topCommanderUsageCount int = 1000
 
+const categorySuffix string = "category"
+
 func main() {
 	aLogger:= getLogger("core.log")
 
