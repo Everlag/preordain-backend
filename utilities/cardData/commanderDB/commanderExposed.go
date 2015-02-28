@@ -44,6 +44,32 @@ func (usableData *QueryableCommanderData) Query(name string) (float64, error) {
 	return percentValue, nil
 }
 
+// Attempts to sort cards based on their commander usage. Cards with no
+// recorded use are considered to have 0.0
+func (usableData *QueryableCommanderData) Sort(names []string) []string {
+	
+	// Build the card items for sorting
+	items:= make(cardItems, len(names))
+	for i, aName:= range names{
+
+		items[i] = cardItem{
+			Name: aName,
+			QueryableData: usableData,
+		}
+
+	}
+
+	sort.Sort(sort.Reverse(items))
+
+	// Convert back to strings
+	for i, anItem:= range items{
+		names[i] = anItem.Name
+	}
+
+	return names
+	
+}
+
 //populates the QueryableCommanderData with mtgsalvation data.
 //
 //a cache file is kept at cacheFile

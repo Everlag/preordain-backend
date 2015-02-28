@@ -24,6 +24,7 @@ const dataLoc string = "cardText/"
 const imageLoc string = "cardFulls/"
 const cropLoc string =  "cardCrops/"
 const symbolsLoc string = "cardSymbols/"
+const typeAheadLoc string = "typeAhead/"
 
 // The location and top count of the commander data we release
 const topCommanderUsageLoc string = "commanderUsage"
@@ -36,6 +37,10 @@ func main() {
 
 	// Dumps into dataLoc the data for each card
 	getAllCardData(aLogger)
+
+	// Dumps into typeAheadLoc the entire typeahead
+	// setup.
+	getAllTypeAheadData(aLogger)
 
 	
 	// Dumps into dataLoc the set data for each set

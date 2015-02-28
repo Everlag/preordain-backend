@@ -30,3 +30,31 @@ func normalizeCardName(cardName string) string {
 
 	return properName 
 }
+
+// Simple wrapper for allowing QueryableCommanderData the ability to sort cards
+// based on their usage.
+type cardItems []cardItem
+type cardItem struct{
+	Name string
+	QueryableData *QueryableCommanderData
+}
+
+func (someData cardItems) Len() int {
+	return len(someData)
+}
+
+// Swap is part of sort.Interface.
+func (someData cardItems) Swap(i, j int) {
+	someData[i], someData[j] = someData[j], someData[i]
+}
+
+// Less is part of sort.Interface.
+// It is implemented by calling the "by" closure in the sorter.
+func (someData cardItems) Less(i, j int) bool {
+	// The only possible error is that of a card not found, whose priority
+	// is set to zero
+	valueI, _:= someData[i].QueryableData.Query(someData[i].Name)
+	valueJ, _:= someData[j].QueryableData.Query(someData[j].Name)
+
+	return valueI < valueJ
+}

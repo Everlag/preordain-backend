@@ -10,10 +10,7 @@ import(
 
 const setListLoc string = "setList.txt"
 
-// Returns a map of set names located in setList.txt to their foil equivalent.
-// 
-// If no equivalent exists, a blank string is in place
-func getSupportedSetList() (map[string]string, error) {
+func getSupportedSetListFlat() ([]string, error) {
 
 	// Get the raw, newline delimited, list from disk
 	sets, err:= ioutil.ReadFile(setListLoc)
@@ -23,6 +20,21 @@ func getSupportedSetList() (map[string]string, error) {
 
 	// Clean it up to be an array
 	setList:= strings.Split(string(sets), "\n")
+
+	return setList, nil
+
+}
+
+// Returns a map of set names located in setList.txt to their foil equivalent.
+// 
+// If no equivalent exists, a blank string is in place
+func getSupportedSetList() (map[string]string, error) {
+
+	// Clean it up to be an array
+	setList, err:= getSupportedSetListFlat()
+	if err!=nil {
+		return nil, err
+	}
 
 	// A place to map from setName:foilName
 	setMap:= make(map[string]string)

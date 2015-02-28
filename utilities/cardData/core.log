@@ -15987,3 +15987,1164 @@ User 2015/02/20 16:57:48 cardData.go:37: Commencing dump to disk of cardMap
 User 2015/02/20 16:58:29 cardData.go:58: Dump complete
 User 2015/02/20 17:03:46 cardData.go:38: Commencing dump to disk of cardMap
 User 2015/02/20 17:04:22 cardData.go:59: Dump complete
+User 2015/02/28 15:31:21 typeAheadData.go:18: [Abzan Advantage Abzan Runemark Abuna Acolyte Abomination Abbey Matron Abomination of Gudul Abzan Kin-Guard Abandoned Outpost Aboroth Abzan Guide Abzan Skycaptain Abzan Beastmaster Abyssal Horror Abuna's Chant About Face Abyssal Nightstalker Abbey Griffin Aboshan's Desire Abandon Hope Abattoir Ghoul Abzan Banner Abyssal Hunter Absorb Vis Absolute Law Abzan Battle Priest Abbey Gargoyles Absolver Thrull Abu Ja'far Abzan Ascendancy Abundant Growth Absolute Grace Abzan Falconer Abjure Abyssal Specter Aboshan, Cephalid Emperor Abyssal Nocturnus Abeyance Abzan Charm Abolish Abduction Abyssal Persecutor Abyssal Gatekeeper Absorb Abhorrent Overlord Abrupt Decay Abundance]
+User 2015/02/28 15:32:04 typeAheadData.go:18: [Abuna's Chant Abundant Growth Abzan Runemark Abbey Griffin Abeyance Abzan Guide Abjure Aboshan's Desire About Face Abattoir Ghoul Absorb Vis Abhorrent Overlord Abbey Matron Abyssal Horror Abundance Aboshan, Cephalid Emperor Abyssal Hunter Abandon Hope Aboroth Abduction Abyssal Nocturnus Abzan Ascendancy Absorb Abrupt Decay Abuna Acolyte Abzan Skycaptain Abu Ja'far Absolver Thrull Abbey Gargoyles Abomination Abzan Battle Priest Abzan Beastmaster Absolute Grace Abolish Abyssal Persecutor Abomination of Gudul Absolute Law Abyssal Specter Abyssal Gatekeeper Abyssal Nightstalker Abzan Charm Abzan Advantage Abzan Falconer Abzan Banner Abandoned Outpost Abzan Kin-Guard]
+User 2015/02/28 15:37:02 typeAheadData.go:18: [Abzan Advantage Abbey Matron Abyssal Horror Abuna's Chant Abzan Skycaptain Aboroth Abomination of Gudul Abuna Acolyte Abandoned Outpost Abomination Abzan Guide Abzan Runemark Abzan Kin-Guard Abzan Beastmaster Abyssal Nightstalker Abandon Hope Abbey Griffin About Face Aboshan's Desire Abzan Banner Abattoir Ghoul Absorb Vis Absolute Law Abyssal Hunter Abzan Battle Priest Abbey Gargoyles Absolver Thrull Abzan Ascendancy Abu Ja'far Absolute Grace Abzan Falconer Abundant Growth Abjure Abyssal Specter Aboshan, Cephalid Emperor Abyssal Nocturnus Abeyance Abzan Charm Abduction Abolish Abyssal Persecutor Abyssal Gatekeeper Absorb Abhorrent Overlord Abrupt Decay Abundance]
+User 2015/02/28 15:37:35 typeAheadData.go:18: [Abomination Abuna Acolyte Abomination of Gudul Aboroth Abzan Skycaptain Abzan Guide Abzan Runemark Abyssal Horror Abzan Kin-Guard Abbey Matron Abzan Advantage Abuna's Chant Abzan Beastmaster Abandoned Outpost Aboshan's Desire Abyssal Nightstalker About Face Abandon Hope Abbey Griffin Abzan Banner Abattoir Ghoul Absolute Law Absorb Vis Abyssal Hunter Abbey Gargoyles Absolver Thrull Abzan Battle Priest Abzan Ascendancy Abu Ja'far Abundant Growth Abzan Falconer Absolute Grace Abjure Abyssal Specter Aboshan, Cephalid Emperor Abyssal Nocturnus Abeyance Abzan Charm Abduction Abolish Abyssal Persecutor Abyssal Gatekeeper Absorb Abhorrent Overlord Abrupt Decay Abundance]
+User 2015/02/28 15:37:49 typeAheadData.go:18: [Abyssal Horror Abuna Acolyte Abzan Guide Aboroth Abbey Matron Abomination of Gudul Abzan Advantage Abuna's Chant Abomination Abzan Runemark Abzan Beastmaster Abzan Kin-Guard Abandoned Outpost Abzan Skycaptain About Face Abbey Griffin Aboshan's Desire Abyssal Nightstalker Abandon Hope Abzan Banner Abattoir Ghoul Abyssal Hunter Absolute Law Absorb Vis Abbey Gargoyles Absolver Thrull Abzan Battle Priest Abu Ja'far Abzan Ascendancy Absolute Grace Abzan Falconer Abundant Growth Abjure Abyssal Specter Aboshan, Cephalid Emperor Abyssal Nocturnus Abeyance Abzan Charm Abduction Abolish Abyssal Persecutor Abyssal Gatekeeper Absorb Abhorrent Overlord Abrupt Decay Abundance]
+User 2015/02/28 15:37:53 typeAheadData.go:18: [Abuna's Chant Abandoned Outpost Abuna Acolyte Abzan Kin-Guard Abzan Advantage Abyssal Horror Abomination of Gudul Abzan Guide Abomination Abbey Matron Abzan Runemark Abzan Skycaptain Aboroth Abzan Beastmaster Abandon Hope Abyssal Nightstalker Aboshan's Desire About Face Abbey Griffin Abzan Banner Abattoir Ghoul Absorb Vis Abyssal Hunter Absolute Law Abbey Gargoyles Abzan Battle Priest Absolver Thrull Abzan Ascendancy Abu Ja'far Abundant Growth Abzan Falconer Absolute Grace Abjure Abyssal Specter Aboshan, Cephalid Emperor Abyssal Nocturnus Abeyance Abzan Charm Abduction Abolish Abyssal Persecutor Abyssal Gatekeeper Absorb Abhorrent Overlord Abrupt Decay Abundance]
+User 2015/02/28 15:38:35 typeAheadData.go:18: [Sword of the Ages Sword of the Chosen Sword of the Paruns Sword of the Meek Sword of Kaldra Sword of Vengeance Sword of Body and Mind Sword of War and Peace Sword of Light and Shadow Sword of Fire and Ice Sword of Feast and Famine]
+User 2015/02/28 15:42:07 typeAheadData.go:18: [Sword of Feast and Famine Sword of Fire and Ice Sword of Light and Shadow Sword of War and Peace Sword of Body and Mind Sword of Vengeance Sword of Kaldra Sword of the Meek Sword of the Paruns Sword of the Chosen Sword of the Ages]
+User 2015/02/28 15:43:35 typeAheadData.go:18: [Acidic Slime Austere Command Ancient Tomb Arid Mesa Academy Ruins Avenger of Zendikar Ashnod's Altar Aura of Silence Academy Rector All Is Dust Aura Shards Azorius Signet Arcane Denial Animate Dead Anger Akroma's Memorial Archaeomancer Avacyn, Angel of Hope Alchemist's Refuge Azorius Chancery Aven Mindcensor Armillary Sphere Asceticism Adarkar Wastes Arcane Sanctum Ancient Den Armageddon Angel of Serenity Awakening Zone Angel of Despair Attrition Arbor Elf Artisan of Kozilek Archon of Justice Azorius Guildgate Akroma's Vengeance Avatar of Woe Akoum Refuge Azusa, Lost but Seeking Ancestral Vision Arcanis the Omnipotent Aurelia, the Warleader Azami, Lady of Scrolls Akroma, Angel of Wrath Altar of Dementia Acquire Army of the Damned Ashes to Ashes Assemble the Legion Archangel of Thune Avacyn's Pilgrim Ant Queen Adarkar Valkyrie Ashen Rider Argentum Armor Ajani Vengeant Aggravated Assault Abundance Angel of Jubilation Angel of Finality Abrupt Decay Ajani Goldmane Akroma, Angel of Fury Ajani, Caller of the Pride Ancient Craving Archetype of Endurance Angelic Arbiter Ancient Ziggurat Ambition's Cost Aftershock Adaptive Automaton Azorius Guildmage Argothian Enchantress Angelic Skirmisher Anvil of Bogardan Athreos, God of Passage Auramancer Angelic Destiny Animar, Soul of Elements Azorius Keyrune Angelic Renewal Arcbound Reclaimer Amulet of Vigor Arcum Dagsson Armada Wurm Arashi, the Sky Asunder Aeon Chronicler Admonition Angel Archetype of Aggression Ad Nauseam Act of Authority Aegis Angel Ajani, Mentor of Heroes Arcane Melee Aluren Armadillo Cloak Arcane Laboratory Avalanche Riders Ascendant Evincar Arena Aurelia's Fury Ashiok, Nightmare Weaver Arrest Artifact Mutation Abhorrent Overlord Arcane Lighthouse Argivian Find Anowon, the Ruin Sage Auriok Champion Ashling the Pilgrim Ancient Amphitheater Ankh of Mishra Aura Thief Ancient Grudge Aphetto Alchemist Azorius Charm Ajani's Pridemate Astral Cornucopia Argothian Elder Augury Adept Archetype of Courage Absorb Aurification Ajani Steadfast Ancestral Mask Anarchist Aura Mutation Acidic Soil Act of Treason Abyssal Gatekeeper Auriok Steelshaper Anger of the Gods Avatar of Slaughter Apprentice Necromancer Apocalypse Angel of Glory's Rise Auramancer's Guise Abyssal Persecutor Amoeboid Changeling Azorius Cluestone Ajani's Chosen Archmage Ascension Altar of Shadows Agent of Erebos Archetype of Imagination Argivian Restoration Augury Owl Aqueous Form Avarice Totem Acorn Catapult Aegis of the Gods Altar's Reap Arcbound Crusher Allay Alexi's Cloak Archive Trap Angus Mackenzie Act of Aggression Armored Ascension Auntie's Hovel Arbor Colossus Arcbound Ravager Augur of Bolas Apocalypse Hydra Aspect of Mongoose Argivian Archaeologist All Suns' Dawn Archetype of Finality Angelic Overseer Angelic Accord Arctic Flats Abduction Artificer's Intuition Ash Zealot Abolish Arena of the Ancients Auratouched Mage Angel's Grace Agrus Kos, Wojek Veteran Alloy Myr Angel of Salvation Arbiter of the Ideal Avatar of Fury Anax and Cymede Adamaro, First to Desire Aven Brigadier Altar of Bone Ashling, the Extinguisher Angel's Trumpet Aven Riftwatcher Akroan Horse Archivist Awakening Auriok Salvagers Accorder Paladin Annul Alpha Authority Archon of Redemption Archon of the Triumvirate Azure Mage Azor's Elocutors Ambush Viper Avian Changeling Allosaurus Rider Arms Dealer Abzan Charm Arcbound Slith Alliance of Arms Ashenmoor Liege Ambassador Laquatus Archangel of Strife Academy Researchers Abeyance Ayumi, the Last Visitor Arcbound Stinger Ancient Hellkite Apprentice Wizard Arbiter of Knollridge Attunement Astral Slide Adun Oakenshield Auriok Windwalker Abyssal Nocturnus Arcbound Worker Afterlife Auratog Annex Archwing Dragon Angelic Chorus Angelic Benediction Acidic Sliver Aboshan, Cephalid Emperor Ashes of the Fallen Aven Cloudchaser Akroan Crusader Akroma's Blessing Alpha Status Ashen Powder Anathemancer Aquastrand Spider Aven Squire Aven Mimeomancer Angelheart Vial Akuta, Born of Ash Arcbound Bruiser Artful Dodge Aphetto Dredging Anthem of Rakdos Apostle's Blessing Assault Suit Advent of the Wurm Azorius Justiciar Abyssal Specter Attended Knight Alexi, Zephyr Mage Act on Impulse Aerie Mystics Arcanum Wings All Hallow's Eve Akki Blizzard-Herder Al-abara's Carpet Airborne Aid Arboria Autumn's Veil Aura Gnarlid Atalya, Samite Master Akki Lavarunner Ancestral Knowledge Academy Raider Asmira, Holy Avenger Ascended Lawmage Aquitect's Will Ambush Commander Ancestral Memories Ancestor's Prophet Anafenza, the Foremost Altar's Light Agadeem Occultist Alpha Brawl Annihilate Angel of Flight Alabaster Arcbound Hybrid Angel of the Dire Hour Angelsong Ankle Shanker Arc Trail Arcbound Fiend Axebane Guardian Ashen Ghoul Amber Prison Aven Warhawk Animal Boneyard Adventuring Gear Aven Fateshaper Arcbound Overseer Aerie Ouphes Annihilating Fire Arc-Slogger Altar of the Brood Augur of Skulls Amnesia Asha's Favor Abjure Amass the Components Avoid Fate Araba Mothrider Ardent Plea Archangel Abundant Growth Aggressive Mining Angelic Voices Akki Underminer Arcum's Whistle Abzan Falconer Akroan Hoplite Avatar of Might Arenson's Aura Absolute Grace Accorder's Shield Academy Elite Aura Graft Alter Reality Arcane Spyglass Ancestor's Chosen Aphetto Runecaster Artificial Evolution Avatar of Hope Algae Gharial Aura of Dominion Ageless Entity Arcbound Lancer Abu Ja'far Ashenmoor Gouger Afflicted Deserter Abzan Ascendancy Ambassador Oak Agent of Masks Amrou Scout Arrogant Bloodlord Aphetto Grifter Aura Blast Aphotic Wisps Avacyn, Guardian Angel Ashen-Skin Zubera Aven Liberator Angelic Page Arc Lightning Armory of Iroas Aura Fracture Archdemon of Unx Antler Skulkin Arctic Merfolk Aven Archer Amulet of Unmaking Ashnod's Transmogrant Angelic Armaments Allied Strategies Angelic Wall Atogatog Anarchy Ageless Sentinels Akki Rockspeaker Akrasan Squire Akroan Skyguard Aven Flock Aspect of Wolf Assault Strobe Autumn Willow Assassin's Blade Altar Golem Abzan Battle Priest Ajani's Sunstriker Akoum Battlesinger Ainok Bond-Kin Angelic Edict An-Zerrin Ruins Arc Runner Akroma's Devoted Anaba Spirit Crafter Assassinate Archangel's Light Avenging Druid Angelic Field Marshal Anthousa, Setessan Hero Assert Authority Architects of Will Abbey Gargoyles Addle Argent Sphinx Antagonism Aladdin Animate Artifact Autochthon Wurm Armored Guardian Asphyxiate Arachnus Spinner Acorn Harvest Absolver Thrull Aven Augur Anthroplasm Ashen Monstrosity Avenger en-Dal Arachnoid Ajani's Presence Acid Rain Anaba Ancestor Angelic Curator Arachnus Web Awesome Presence Advocate of the Beast Aladdin's Ring Aven Redeemer Agonizing Demise Accelerate Auntie's Snitch Azorius Arrester Armistice Appetite for Brains Archery Training Alchemist's Apprentice Apex Hawks Alpha Tyrranax Arc Blade Agent of the Fates Argothian Wurm Advice from the Fae Avenging Arrow Apathy Ancient Runes Akki Coalflinger Adarkar Windform Apprentice Sorcerer Aven Fisher Anoint Air Servant Angel of Mercy Artisan's Sorrow Aspect of Hydra Abyssal Hunter Avatar of Discord Absorb Vis Armored Griffin Aleatory Aerial Caravan Auriok Glaivemaster Aegis of Honor Auspicious Ancestor Angry Mob Anaba Shaman Awakener Druid Aura Finesse Angelic Favor Aysen Bureaucrats Auger Spree Armageddon Clock Ancient Spider Akki Drillmaster Ashling's Prerogative Absolute Law Akroan Conscriptor Arcane Teachings Army Ants Agony Warp Angel's Tomb Aura Extraction Aurora Eidolon Aladdin's Lamp Adarkar Sentinel Arctic Aven Amrou Seekers Ancient Ooze Aven Warcraft Atog Aquamorph Entity Ancient Hydra Anurid Brushhopper Armor Sliver Armored Skaab Abzan Banner Advance Scout Ashen Firebeast Artisan of Forms AWOL Avatar of Will Aquamoeba Auriok Edgewright Aurora Griffin Apothecary Initiate Abattoir Ghoul Ashcloud Phoenix Aggressive Urge Ancient Spring Armored Warhorse Armament Corps Angel's Feather Azorius Herald Air Elemental Alabaster Mage Alluring Siren Alley Grifters Anvilwrought Raptor Awe for the Guilds Angel of Retribution Aven Smokeweaver Ana Sanctuary Ark of Blight Armament Master Arena Athlete Aeolipile Ashcoat Bear Astrolabe Agent of Stromgald Alabaster Dragon Axegrinder Giant Ambush Party Auriok Bladewarden Apocalypse Chime Ayesha Tanaka Affa Guard Hound Ancient Stirrings Arsenal Thresher Avarice Amulet Aeronaut Tinkerer Aerial Predation Armor Thrull Aphetto Exterminator Arcades Sabboth Alaborn Grenadier Amok Ardent Recruit Aysen Highway Adaptive Snapjaw About Face Assault Griffin Arctic Foxes Abandon Hope Akki Raider Artificer's Hex Angelic Protector Abyssal Nightstalker Angelic Blessing Aven Soulgazer Axelrod Gunnarson Armored Cancrix Aura Flux Aura Barbs Aboshan's Desire Akroan Phalanx Auriok Survivors Angel of Fury Aven Fogbringer Avalanche Tusker Arrogant Vampire Arrogant Wurm Artifact Blast Ancestral Tribute Aysen Abbey Azorius First-Wing Aven Shrine Aven Fleetwing Arctic Nishoba Ancestral Recall Anurid Scavenger Archaeological Dig Andradite Leech Amrou Kithkin Airdrop Condor Ambush Aegis of the Meek Assassin's Strike Aven Farseer Ashnod's Cylix Ajani's Mantra Anti-Magic Aura Agility Alpha Myr Arc Mage Altar of the Lost Ashenmoor Cohort Anurid Swarmsnapper Agoraphobia Afiya Grove Arrow Volley Trap Artillerize Anavolver Armory Guard Augur il-Vec Ali Baba Aerie Worshippers Amphibious Kavu Arrows of Justice Axebane Stag Ali from Cairo Auriok Replica Alarum Arcbound Wanderer Anaba Bodyguard Alaborn Cavalier Abbey Griffin Animal Magnetism Alms Armored Galleon Anurid Murkdiver Angelic Shield Aspect of Gorgon Awaken the Ancient Auriok Siege Sled Alabaster Wall Ana Disciple Aven Trooper Animate Wall Artful Looter Aquus Steed Akoum Akron Legionnaire Atinlay Igpay An-Havva Township Arbalest Elite Ancestral Vengeance Armor of Faith Anodet Lurker Approach My Molten Realm Aesthetic Consultation AEther Barrier Artifact Possession Aisling Leprechaun Abandoned Outpost Adventurers' Guildhouse Anurid Barkripper Abuna's Chant AEther Spellbomb AEther Rift Akoum Boulderfoot Assault Armorer Guildmage Aretopolis Acolyte's Reward Armor of Thorns Ancient Silverback Abbey Matron Artifact Ward Amulet of Kroog AEther Shockwave Abzan Guide Animate Land Ashnod Angel of Light Academy at Tolaria West Armored Transport Ancient Kavu Alaborn Zealot AEther Tradewinds All Shall Smolder in My Wake Arrow Storm Azamuki, Treachery Incarnate AEther Searcher Ashnod's Coupon Armored Wolf-Rider Agent of Acquisitions Agonizing Memories Argothian Swine Akki Underling Astral Steel Arnjlot's Ascent Avacynian Priest Abzan Runemark AEtherflame Wall Argivian Blacksmith Ass Whuppin' Alpine Grizzly Alabaster Potion Arctic Wolves Accursed Spirit Aggravate Ashling, the Extinguisher Avatar AEtherling Archdemon of Greed Aphetto Vulture Arm with AEther Ainok Guide Altac Bloodseeker Acidic Dagger Aurochs Alesha's Vanguard An-Havva Inn Afflict Aerial Maneuver AEther Membrane Alive Acridian Ambush Krotiq AEther Web AEther Storm Alaborn Musketeer Angelfire Crusader AEther Burst Abzan Skycaptain Alluring Scent Arashin War Beast Ambiguity AEther Snap Astral Arena Alchor's Tomb Accumulated Knowledge Avizoa Amphin Cutthroat AEther Mutation Azimaet Drake Asphodel Wanderer Abzan Advantage Ashmouth Hound Acolyte of Xathrid AEtherize Archers of Qarsi Accursed Centaur Advantageous Proclamation Awe Strike Aboroth Akroma, Angel of Wrath Avatar Armored Pegasus Assault Zeppelid Armament of Nyx Acid Web Spider Argothian Pixies Abyssal Horror Abzan Kin-Guard Auriok Sunchaser Akroan Mastiff Abomination Abzan Beastmaster AEther Flash Adarkar Unicorn Akki Avalanchers AEther Figment Argothian Treefolk Abuna Acolyte AEther Gale Amugaba Amulet of Quoz Alms Beast Ana Battlemage Apes of Rath AEthertow Aven Envoy Ascending Aven Argent Mutation Advanced Hoverguard Ardent Militia Archfiend of Depravity Away Archweaver Arcanis, the Omnipotent Avatar Atarka, World Render A Display of My Dark Power Assembly-Worker Aerial Formation AEthersnipe Assquatch Albino Troll An-Havva Constable Avarax Alesha, Who Smiles at Death Alabaster Leech Agent of Horizons Aven Windreader AEther Adept Assembly Hall Alloy Golem Air Bladder Army of Allah Adder-Staff Boggart Avatar of Me Alaborn Veteran Accelerated Mutation Avalanche Agyrem Aysen Crusader Anaconda Angel's Herald Aven Surveyor Alpha Kavu AErathi Berserker Ainok Tracker Akroan Line Breaker Ashiok's Adept Aliban's Tower Arcum's Sleigh Azure Drake AEther Charge Armed Aggression Ashling the Pilgrim Avatar Agent of Shauku Ashnod's Battle Gear AEtherplasm Aku Djinn AEther Tide AEther Sting Awaken the Bear Arashin Cleric Acceptable Losses Arcbond Aesthir Glider All in Good Time Avenging Angel Arcum's Weathervane AEther Vial Ardent Soldier Archers' Parapet Arcbound Overseer Avatar Azorius Ploy Avacyn's Collar Armed Response Angel's Mercy Abomination of Gudul Aurochs Herd Alaborn Trooper AEthermage's Touch AEtherspouts Auriok Transfixer Aven Trailblazer Azorius AEthermage Amphin Pathmage Aven Skirmisher Alert Shu Infantry Autumn-Tail, Kitsune Sage Alabaster Kirin Active Volcano]
+User 2015/02/28 15:49:58 typeAheadData.go:18: [Grand Abolisher Grand Arbiter Augustin IV Grand Architect Grand Coliseum Grand Melee Grandmother Sengir Grand Ossuary]
+User 2015/02/28 16:05:57 typeAheadData.go:18: [Grand Prix Grand Abolisher Grand Arbiter Augustin IV Grand Architect Grand Coliseum Grand Melee Grandmother Sengir Grand Ossuary]
+User 2015/02/28 16:06:09 typeAheadData.go:18: [Innistrad Foil Invasion Foil Invasion Innistrad Increasing Ambition Insurrection Inferno Titan Inkmoth Nexus Intuition Into the Roil Innocent Blood Inquisition of Kozilek Indrik Stomphowler Inkwell Leviathan Ink-Eyes, Servant of Oni In the Web of War Incendiary Command Increasing Vengeance Insidious Dreams Increasing Devotion Into the Core Inexorable Tide Inundate Intrepid Hero Indestructibility Indomitable Archangel Intangible Virtue Invisible Stalker Intruder Alarm Ingot Chewer Into the Wilds Inquisitor's Flail Increasing Savagery Infernal Darkness Infiltration Lens Inferno Intet, the Dreamer Invoke the Firemind Infernal Tribute Infest Invoke Prejudice Instill Energy Iname, Death Aspect Into the North Incinerate Increasing Confusion Iname, Life Aspect Infernal Kirin Induce Paranoia Indomitable Ancients Instigator Gang In Garruk's Wake Infinite Reflection Invader Parasite Infiltrator's Magemark Invigorate Inspiration Indulgent Tormentor Intervention Pact Inner Fire Infectious Horror Inheritance Incandescent Soulstoke Invincible Hymn Inviolability Index Indrik Umbra Infernal Tutor Infected Vermin Inquisitor Exarch Inspired Sprite Insight Interdict Inkfathom Witch Infernal Genesis Incite War Invasion Plans Indebted Samurai Iname as One Incremental Blight In the Eye of Chaos Inner Calm, Outer Strength Intellectual Offering Inkfathom Infiltrator Infernal Offering Innocence Kami Insist Information Dealer Inner-Chamber Guard Invulnerability Intimidation Indentured Djinn Infernal Contract Infernal Caretaker Inner-Flame Igniter Inferno Elemental Infiltrate Insatiable Harpy Interpret the Signs Instigator Initiates of the Ebon Hand Intimidation Bolt Inaction Injunction Infiltrator il-Kor Invigorating Falls Inquisitor's Snare Incremental Growth Ink-Treader Nephilim Inner Sanctum Intimidator Initiate Incite Hysteria Infectious Host Induce Despair Infernal Medusa Invisibility Infernal Spawn of Evil Indentured Oaf Ingenious Thief Indigo Faerie Invasive Species Infectious Rage Infantry Veteran Intervene Into the Maw of Hell Insidious Bookworms Infernal Harvest Initiate of Blood Inquisition Instill Infection Inspired Charge Inkfathom Divers Incurable Ogre Infernal Denizen Infinite Hourglass Invigorating Boon Indestructible Aura Infernal Spawn of Infernal Spawn of Evil Incursion Specialist Infinite Authority Insubordination Infused Arrows Infernal Plunge Inspirit Inescapable Brute Inferno Fist Incite Into the Void Independent Troops Into the Fray Into the Earthen Maw Inner-Flame Acolyte Insatiable Souleater Into Thin Air Infuse Interplanar Tunnel Instill Furor Indomitable Will Incendiary Incite Rebellion Insectile Aberration Introductions Are in Order Inertia Bubble Incoming! Inside Out Infested Roothold Invert the Skies Ink-Eyes, Servant of Oni Avatar Ink Dissolver Inferno Trap Insolence Inflame]
+User 2015/02/28 16:09:58 typeAheadData.go:22: [Innistrad Foil Invasion Foil Invasion Innistrad Increasing Ambition Insurrection Inferno Titan Inkmoth Nexus Intuition Into the Roil Innocent Blood Inquisition of Kozilek Indrik Stomphowler Inkwell Leviathan Ink-Eyes, Servant of Oni In the Web of War Incendiary Command Increasing Vengeance Insidious Dreams Increasing Devotion Into the Core Inexorable Tide Intrepid Hero Inundate Indestructibility Indomitable Archangel Invisible Stalker Intangible Virtue Intruder Alarm Ingot Chewer Inquisitor's Flail Into the Wilds Increasing Savagery Infernal Darkness Infiltration Lens Inferno Intet, the Dreamer Invoke the Firemind Infernal Tribute Infest Invoke Prejudice Instill Energy Iname, Death Aspect Into the North Incinerate Increasing Confusion Iname, Life Aspect Infernal Kirin Indomitable Ancients Instigator Gang Induce Paranoia In Garruk's Wake Infinite Reflection Infiltrator's Magemark Invader Parasite Indulgent Tormentor Invigorate Inspiration Inner Fire Intervention Pact Infectious Horror Inheritance Incandescent Soulstoke Invincible Hymn Index Inviolability Infernal Tutor Indrik Umbra Inspired Sprite Inquisitor Exarch Interdict Inkfathom Witch Infernal Genesis Insight Infected Vermin Invasion Plans Incremental Blight Indebted Samurai Iname as One Incite War In the Eye of Chaos Infernal Offering Inkfathom Infiltrator Intellectual Offering Inner Calm, Outer Strength Innocence Kami Indentured Djinn Information Dealer Intimidation Invulnerability Inner-Chamber Guard Insist Initiates of the Ebon Hand Intimidation Bolt Infiltrate Instigator Infernal Contract Insatiable Harpy Infernal Caretaker Inaction Injunction Inferno Elemental Interpret the Signs Inner-Flame Igniter Invigorating Falls Incite Hysteria Inquisitor's Snare Incremental Growth Intimidator Initiate Inner Sanctum Ink-Treader Nephilim Infiltrator il-Kor Insidious Bookworms Ingenious Thief Invasive Species Intervene Indigo Faerie Infectious Host Infernal Medusa Infectious Rage Infantry Veteran Induce Despair Indentured Oaf Initiate of Blood Into the Maw of Hell Invisibility Infernal Spawn of Evil Infernal Harvest Inspired Charge Infernal Spawn of Infernal Spawn of Evil Infinite Hourglass Invigorating Boon Inquisition Infernal Denizen Inkfathom Divers Insubordination Instill Infection Infernal Plunge Inescapable Brute Incursion Specialist Indestructible Aura Infused Arrows Incurable Ogre Inferno Fist Inspirit Infinite Authority Independent Troops Insectile Aberration Introductions Are in Order Incoming! Indomitable Will Incite Rebellion Inferno Trap Into the Void Into the Fray Ink-Eyes, Servant of Oni Avatar Insatiable Souleater Instill Furor Into Thin Air Inside Out Infuse Incite Invert the Skies Insolence Inertia Bubble Ink Dissolver Inflame Infested Roothold Into the Earthen Maw Interplanar Tunnel Inner-Flame Acolyte Incendiary]
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\stormtide levi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\glo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thrumm.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\barrel down.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\earsplitt.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rebo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\talon s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\drowner ini.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\elemental .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chromatic s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fountain of .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kyok.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\faith's rewar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hellhole flaile.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\false defe.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\jet meda.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kithkin g.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\looming hover.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\scaled h.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chamber of manipulat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vexing devi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\riku of two.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\geist of saint traf.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flight sp.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\prognosti.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\phyrexian portal.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\giant cock.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\minotaur aggre.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\geistcatc.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\corpse har.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\soulme.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fertile g.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\uyo, silen.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gutwrencher o.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\magic: the gathering—conspiracy foi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wall of shadows.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gravelgill du.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\despotic .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fire snak.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\weathered bodyg.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ebon stronghol.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\aerathi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\parallax wa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\two-he.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\victory's he.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\belligerent hatch.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gryff vanguar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\arc trail.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hada spy pat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ascetici.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\towering .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thermopo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\yomiji, who b.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\garruk relentle.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\divinity of pr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\spoils of b.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sedraxis alchemist.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\immortal serv.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vene.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gale force.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\magus of the candela.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fortress cr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\nurturing .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\azusa,.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thada adel, acquisit.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hermit dr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kinsbaile borderg.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vizkopa c.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\stormscape ap.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\valiant.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dream sta.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\etched champ.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\bogbr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dormant volcano.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\loose lips.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vodalian zom.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\confess.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kazuul, tyrant of .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\arcbound lancer.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pharika's men.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\primal visitat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sins of the pa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fade into.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mistbind cli.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\brass-talon chime.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chimeric spher.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\goka the .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ior ruin expe.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\deal dam.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dwarven strike force.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\staff of the flame .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\zurgo hel.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans,.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mystic m.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\relentless rats.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rakdos cac.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\elvish ran.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\windriddle palace.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hidetsugu's se.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\call of the nigh.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ruinous min.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\timetwist.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ardent m.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ghost-lit stal.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\serum .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\spike ha.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shu yun, the s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\firestorm he.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cathedral o.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\killer.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hidden gibb.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\overbeing of myth.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\norwood r.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\devout li.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fledgling ospr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\enter the dungeon.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fault li.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\downhill cha.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flying crane te.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hoard-smelte.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\exoskelet.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\krumar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shape steal.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kami of fa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\realms unch.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\haunted.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\juntu stake.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\skull frac.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\bloodb.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shrine of loyal legions.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fortified .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\goblin ringleade.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ludevic's abom.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\avar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\steely resolve.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\orochi sustain.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\orim, samite hea.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\raving oni-sla.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fortr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\feast or f.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hollow dogs.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\treetop village.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\reinf.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\land grant.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sword da.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\craven knig.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\catalog.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dauntless dourb.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ib half.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thrun, the .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\prince of t.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\volrath's motion sen.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dakmor sal.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\jaya ballard, .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chilling sha.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\simic growth chambe.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\looming .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\looming hoverg.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\unholy fie.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\assassin's blade.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\urza's ba.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\craterhoof beh.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\stromkirk p.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tezzeret the see.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\triumph of the hordes.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\intervention.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flame javel.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\see the .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\arashin cle.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\quicksilver gargant.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wall of caltr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kor line-slin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\anvil of bog.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\soulfire gran.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dancing scimit.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\boros ga.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\warr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\talara's bane.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\towering thun.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ancient hellkite.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\complex .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\avalanche tu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\frightshroud courie.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\synod artifi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\neurok repl.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\merfolk seastalk.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\drown in fil.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\beastbreaker of bal.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\deepfire ele.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kaalia of the vas.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vandalbl.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\court street deni.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\infinite reflec.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\elvish house .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\honden of life's web.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gifts un.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\timberpack wo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\domri rad.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\treetop bracers.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rabid ele.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\korozda guildmag.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\phyrexian gho.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\serra be.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fire tempes.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\exclusio.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gods willi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\swiftfoot boots.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\slin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\severed leg.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\silent at.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\drowned rusa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\free-f.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chord of c.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\glen elendra prank.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\energy flux.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\springjack.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\two-headed giant of foriys avatar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\skarrg, the.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\princes.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\splendid gen.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\krake.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ragged .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lumbering sa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\favorable winds.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sealed fat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thundersong trumpete.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\evolution.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\veteran ca.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\noxious to.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\naya panoram.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hurky.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mikokoro, center of the s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ezuri's br.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vile dea.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gold-forged sent.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\b.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rix maadi gu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\our market research shows that players .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\that w.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sea gate oracle.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gilded dr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\stillm.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tamiyo, the moon.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\orcish veteran.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\raging s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hall of th.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\assa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ring of immort.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rew.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\bola war.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tempered.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rimewind taskmage.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vision ch.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shanod.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\goblin ti.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\heart-.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sultai skullkeep.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\eterni.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gurmag s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\glass asp.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rune-scarred demo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cateran brut.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\richard gar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\burning inqu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\great sable sta.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kaervek's.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\elder land.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\blinding powder.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cance.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ajani stead.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ghoulfle.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\foriysian intercepto.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rise of the hobgoblins.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ramosian comman.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tree mon.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lady c.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\runic repeti.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\peak er.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\syphon .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chitterin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\squea.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\highspire ma.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\myr quadropo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gem.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\denizen of the .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\volrath's stro.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\stingsc.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rosheen mea.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\imperial s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sword of feast and famine.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\antagon.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\goblin war .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sentinel dis.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sage's knowledge.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\waning w.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dragonmaster outcas.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\parallax inhibit.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\glaring spot.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lunk erran.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wild mi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\preferred select.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\clau.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\grand ar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\temple of malad.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\jor kadeen, the prevail.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kilnspire dis.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\aesthe.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\stride.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tyrranax.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\beasts of bogardan.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\the very s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\foul f.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fiss.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\infinite.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\quarry.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\riders of ga.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\maralen of the mornsong avatar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chain lightni.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\war mamm.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kindled f.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\felhide br.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\owl .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\merfolk of the pear.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\blinding an.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\astral a.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\runes of the deu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\look at me, i'm the .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\deadshot mino.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pathbreaker.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\containment pr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ivy lane deni.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mystic specu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thwa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\orchard spir.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\jandor's saddlebag.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pillar of flame.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ivorytusk fortress.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\prey's veng.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hidden string.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\goblin flo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sigil of th.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\diamond faerie .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vanqui.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\warped rese.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tectonic i.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\orni.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cytoplast roo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hunting c.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\recumbent bliss.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fun.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\farseek.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cultural exchan.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fledgling os.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hankyu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\greater forgelin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\catapult squa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gaea's embr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\levita.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\nullm.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\moss mons.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cant.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\proclamati.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\essence filt.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\greven il-.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\bladewing's thra.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\psychic intrusi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sci.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cabal interrogat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\duskmantle guildmag.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\quest for the n.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\engineered e.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\drifter il.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\waking ni.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flamestick courie.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mannichi, .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wormf.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kithkin greathear.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cruel tuto.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mirror entit.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\soldevi exca.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\high tide.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hot spr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lu .json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\seventh editi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\goblin razeru.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\caustic r.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vedalken plotter.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vanquish th.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\absorb vi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\nantuko m.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sliptide se.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\filigree fra.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\knight of the whit.json: The system cannot find the path specified.
+User 2015/02/28 16:10:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shinen of fear's ch.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\onakke cataco.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\grinning tot.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\keranos, god of s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sidewi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\boreal griff.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\radiant foun.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mind har.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\every last vestige sh.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\keldon halberdi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\manor ga.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\increasing s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mizzium mo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gelatinous .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pay no hee.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\nighteyes the des.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\foundry champi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\atogat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\charging paladi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\coral fighte.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sheep .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\skyshroud senti.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\steward of vale.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\trigon of thou.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\jhovall q.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\quiet contem.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\bear's co.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\scrapskin dr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\urborg uprisin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\verdeloth the anci.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hundred-handed o.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\spellwild o.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sultai skullkeepe.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dregscape zombi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lagonna-band eld.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\the ultimat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chambered n.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\yellow scarves cava.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kitsune riftwalker.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tempered steel.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sungrass prairi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\inquisitor's fla.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\enchanted b.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hunting wilds.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kresh the bloodbraided.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wanderwi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\abyssal nightsta.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\auntie's sni.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\burrenton shield-bearer.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\argivian fi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\natural sp.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mournfu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cloudgoat r.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sharuum the hegemo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\warm.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\verdant succes.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lureboun.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\spring.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rotting fensnak.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\insidious dr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\doran, the siege tower.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dauthi gho.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\bonescythe sliver.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\endless obedienc.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\battering sli.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\frost l.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hero's blade.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\decree of silence.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\frostwind i.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\revelson.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dark f.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\breaking p.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\unfulfilled .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dispense justic.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tower of the m.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tomoya the r.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\graypelt hun.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\skirk fire marsha.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\worldslayer.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ire of.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\seer's sundi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\martyr of bo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\endless ranks of the dead.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\evil present.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\erase (not the urza's legacy one.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\arcane teachings.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hearthfire hobg.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ghost-.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ramses.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wandering grayb.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\bonethorn.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\markov patri.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mirror entity avat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tooth of chiss-g.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\loxodon a.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cemetery ga.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\infec.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\inquisitor e.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\magmatic cor.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kiku's shado.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flitter.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\charmb.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\basandr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\oblit.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tropical is.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\blind phant.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\aspect of go.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cavern of soul.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\metathran e.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\midsumme.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\caltro.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tyrant of discor.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\leafdrake.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hoppin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tomb of the spirit dr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sowe.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\alluring si.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\reviving melo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\disma.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\setessan oathswor.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\armor thrull.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\skyshroud ridg.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\savage knuckl.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flurry of win.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\elephant am.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\grixis panor.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gaea's revenge.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\minion of leshrac.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gargoyle sent.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tattoo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\blast from the pa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\phyrexian bloodsto.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\surgical e.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\massa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\simian spi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\coalhauler swin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\horde .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\marble titan.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\swordwise c.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\araba mothrid.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mistral .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pendelhaven el.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lorese.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\impetuous suncha.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\barbarian riftcutter.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\malakir blo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mahamoti dji.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rhystic deluge.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flame sla.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vectis agents.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chimeric coils.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\grixis cha.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fire-fie.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mask of ava.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\marau.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\whispering madness.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\only bloo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\worry bea.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\diregraf capta.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gigantomancer.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\weapon surge.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\demoni.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sage-e.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hickory woo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dust eleme.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kathari bom.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rubblebelt r.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kavu g.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ramses over.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\blessing.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ravenous dem.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flurry of wi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hidden predat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\death mutation.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gravelgill.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hoverguard sw.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\jund c.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\humble def.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\eternal domin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\reach through mist.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vedalken her.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\deep-sea ser.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cephalid r.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\game-trail chan.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\surge of thoughtw.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flicker.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\swiftfoot boot.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\spearb.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\leyline of punishment.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\archers of qar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hysterical.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sarcoman.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\firebre.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rattleclaw mysti.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\soul shre.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\savageborn.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\repentance.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flameborn hellion.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\beetleback chie.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\silhana st.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thromok th.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tainted pac.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\accumu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sturd.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cou.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\whiptail wu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\runeflare .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\supplant f.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\defense o.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lotus-eye mystic.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\samite censer-bea.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\miscalculati.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\immob.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dark witherin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\control of the co.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pulmonic.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\bulwar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pitfall .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\nezumi shadow-wa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gruul gu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\unyaro bees.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fist o.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\null chamb.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vampiric sli.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\weatherli.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ugin's const.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\organ.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kurkesh, onakke ancien.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wydwen, the biting gal.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\quiet contemplati.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\steel hellk.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\prophetic flame.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\zuran enc.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mothdust ch.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gryff vang.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hint of insani.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thrashi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\temple of the f.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\coldst.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kelsinko rang.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hedron-field puri.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shauku's minion.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\jackal .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\courier's capsule.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\my wish is y.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cloudthre.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\squirr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\possessed no.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mold sham.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\calming l.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rushwood elem.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thunderscape appr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chain of silenc.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\breach.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\aerial fo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hawkeat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\anowon,.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\divinity of p.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\imperial edict.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\warrior's hono.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\battlefield thaumatu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\advance sco.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ghitu encampment.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shrieking affliction.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\high pries.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\customs .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\quest for r.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\storm cro.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shinka gat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hollowbo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thirst for knowledg.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sylvan primordial.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thelonite.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\nantuko shri.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cessation.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\toxic ste.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\path of anger's .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kheru spel.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\elderscale.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shieldmage eld.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\artificer's .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\harmless.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wall of putrid flesh.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\black man.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lava.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\jud.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dream thrus.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\b.f.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\howling b.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\armored as.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ayesha.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\blunt th.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cavern c.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\doomw.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\golgothian .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\riptide pilfer.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\zombie cutthroat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\scourge of the t.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flash consc.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\geth,.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\amoeboid change.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\inspiri.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\domestica.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\spiritual asylu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\godhead of aw.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mudbrawler r.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\risen.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\quirion ra.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\evil eye of urbor.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kuldotha flame.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\merrow grimeblot.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\butcher of the .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dune-brood nep.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gravel.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\boros ba.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\zombie t.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\giant'.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\electric.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\crucible of the .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thermal flux.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\barrage of bould.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\nacatl outland.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\guerrilla .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\nivmagus elementa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\bellowing fi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans, run!".json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\spiritual vi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\magus of the baza.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wooded footh.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\baku al.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\iron-h.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\fusion elemental.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\phenax, god.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\martyrdom.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\classic .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\angelic field ma.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\skeletal va.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mart.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\eyes of .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sparkspi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mage's guil.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ivy lane deniz.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gibbering.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shauku, endbringer.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mystic of the hidden way.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\master of the ve.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\solemn sim.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shif.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\frostwield.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\blade of the sixt.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\back fro.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\soulsworn spir.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\winds of change.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\flooded woodland.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\nether vo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\snare the skie.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pin to th.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\oppressive wil.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vish kal,.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\caldera kav.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ram.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\voodoo d.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cunning stri.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\boros fu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dakra m.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\final judg.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\release the ant.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\caverns of despa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kaervek t.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\demonic hordes.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\birthing p.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\brigid, h.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\bog witch.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\aether membra.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hint .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\angelic arb.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shattered percepti.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chalice of the .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hunter's prowe.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\unchecked gro.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\troll.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\aphetto runecas.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ultimate pric.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\abyssal n.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sentry of t.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\abyssal specte.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\game-trail changeli.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\game preserve.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\village bell-ringe.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\every hope shall v.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mist drago.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\men.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\netcaster s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\angelic destin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\consuming aberr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\neurok invi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\symbiotic bea.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mind gam.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rain of.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\banishing li.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\counterfl.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\voice of reason.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\summoner's.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\maggot carri.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\zealous co.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\brush wi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ohran.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pyrote.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vassal's d.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\jund ba.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\great sable stag.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\petalma.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\eagle of the watch.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\emerge unsca.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\diabolic revelat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hunted horror.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\havenwo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cephalid aristocr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\twinstr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\circu, dimir lobo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lay of.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\stinging bar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\impaler shrik.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\outmaneuve.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thassa's devo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tel-jilad lifebreath.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\glyph.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\unexpectedly abs.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\crumbling necropoli.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\revered eld.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ekundu grif.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\glueti.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\deadeye navigat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lost in a .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\molting snakeskin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\angelic field marsh.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\slimy ka.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\phyrexian broodlings.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\aysen.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\krumar bond-ki.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rowan .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mana flar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\coursers.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sosuke, son of sesh.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\krovikan scoundre.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\magus of the scr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\observant alsei.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\demon of.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\snare the .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\alpha authority.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ventif.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lunar av.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\jeska, wa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thragtu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\cinderhaze wr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sanctum of serr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\seraph.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\errant doo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gerrard capashen.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wort, the raidmo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dong zhou, the tyr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\trap di.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\parallax nexu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\drastic reve.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\unquest.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\skylash.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\chartoo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\soltari foot.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\blunt the assa.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\akroan hor.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sangr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\breaking w.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\painfu.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rakavolver.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hua tuo, h.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\crypt sl.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vengeful va.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\skeletonize.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\forced fru.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\power of.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lost in the woo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\paliano, the high cit.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\krosan cloudscrap.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\vassal.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\nullmage advoc.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kjeldoran jave.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\faerie inva.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kodama of the north tree.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\zephid's e.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\soratami minds.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\unbreathing ho.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wirewood guardia.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\lost in the mi.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\exped.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\sprouting phytoh.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\numo.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kozilek, butcher of truth.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kraken's .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\minotaur abominat.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\aeon chron.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\glissa, the traito.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\opaline brace.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\trait .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\viridian joine.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shatterskul.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\creepin.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tormented thou.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rugge.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\unravel the aet.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kruphix, god of horiz.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\increasing ambition.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\glutton.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\goblin dea.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\bear um.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\thopter a.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\dinrova horr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\phyrexian furn.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wasteland viper.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ragebl.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\scuttling doom eng.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\uyo,.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\worldgorger dra.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\wojek ap.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\tala.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\halfda.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\soulbound guar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\inner-ch.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ring .json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\gravelgill axeshar.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\rappell.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\impaler s.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hideous laughter.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\benevolent of.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\shrieking gr.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\treetop v.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\ulvenwald mysti.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\veilborn gho.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\mycosynth wellspri.json: The system cannot find the path specified.
+User 2015/02/28 16:10:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\hypno.json: The system cannot find the path specified.
+User 2015/02/28 16:10:45 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, ".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:10:49 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "timeshifted" foil.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:10:52 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans, run.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:00 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, ".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:02 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young ph.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:05 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "slee.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:09 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "you.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:18 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sle.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:19 typeAheadData.go:156: Failed to write choices,  open typeAhead/\".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:21 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:25 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young phoen.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:29 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young phoenix.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:32 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "time.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:34 typeAheadData.go:156: Failed to write choices,  open typeAhead/\question elemental?.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:34 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! han.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:44 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "timeshi.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:47 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young .json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:48 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young p.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:48 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "ti.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:11:58 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping d.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:12:06 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! .json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:12:18 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:12:23 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young pho.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:12:40 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "timeshifted" f.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:12:44 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping dr.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:12:54 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans,.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:12:59 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleepin.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:13:00 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans, run!.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:13:00 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! h.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:13:06 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping dra.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:13:20 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping .json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:13:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ac.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:13:36 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! ha.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:13:47 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "y.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:14:01 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans, r.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:14:27 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "youn.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:14:30 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans, ru.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:14:34 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans, .json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:14:35 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:14:37 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "timeshifted" foi.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:14:38 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans, run!".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:14:40 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping dragon".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:14:44 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"a.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:14:55 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "timeshifte.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:14:57 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "tim.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:20 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleepi.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:20 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral ".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:20 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young phoe.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:22 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "s.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:22 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "youn.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:22 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young pho.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:31 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping dragon".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:34 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, ".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:35 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "yo.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:35 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "timeshifted.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:40 typeAheadData.go:156: Failed to write choices,  open typeAhead/\question elemental?.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:41 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "timeshifted".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:43 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "timeshift.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:47 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! h.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:49 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "tim.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:52 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! .json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:54 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young phoenix".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:19:56 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young ph.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:20:00 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "ti.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:20:07 typeAheadData.go:156: Failed to write choices,  open typeAhead/\which of you burns brightest?.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:20:08 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "timeshifted" fo.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:20:16 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "t.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:20:21 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sl.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:20:28 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! ha.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:20:36 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:20:37 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "time.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:20:43 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, ".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:20:58 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleepin.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:21:03 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:21:05 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ac.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:21:26 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "timeshifte.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:21:38 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "y.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:21:48 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans, .json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:21:49 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach!.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:00 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "slee.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:06 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping dra.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:23 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young phoenix.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:24 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans, run!".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:37 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young p.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:37 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans,.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:38 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping drago.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:39 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans, r.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:44 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:49 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sle.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:51 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping dragon.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:51 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "times.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:22:53 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young .json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:23:05 typeAheadData.go:156: Failed to write choices,  open typeAhead/\".json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:23:10 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! han.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:23:13 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping drag.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:23:24 typeAheadData.go:156: Failed to write choices,  open typeAhead/\time spiral "timeshif.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:23:31 typeAheadData.go:156: Failed to write choices,  open typeAhead/\"ach! hans, run!.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:23:50 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping dr.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:24:02 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleeping d.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:24:02 typeAheadData.go:156: Failed to write choices,  open typeAhead/\kongming, "sleep.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:24:11 typeAheadData.go:156: Failed to write choices,  open typeAhead/\pang tong, "young phoen.json: The filename, directory name, or volume label syntax is incorrect.
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Heartwood Storyteller Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Hermit Druid Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Tahngarth
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Chronatog Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Diamond Faerie Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Gix
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Gerrard
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Splendid Genesis
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Tradewind Rider Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Mirri the Cursed Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Mayael the Anima Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Mirror Entity Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Shichifukujin Dragon
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Titania
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Squee, Goblin Nabob Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Karona, False God Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Sidar Kondo
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Akroma, Angel of Wrath Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Stalking Tiger Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Royal Assassin Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Sisters of Stone Death Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Eladamri, Lord of Leaves Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Sliver Queen, Brood Mother
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Urza
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Maro Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Jhoira of the Ghitu Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Rofellos
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Dauntless Escort Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Dakkon Blackblade Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Ashling, the Extinguisher Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Xantcha
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Enigma Sphinx Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Orim
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Sakashima the Impostor Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Barrin
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Kresh the Bloodbraided Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Peacekeeper Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Tawnos
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Mishra
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  1996 World Champion
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Multani
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Proposal
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Grinning Demon Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Squee
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Loxodon Hierarch Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Nekrataal Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Bosh, Iron Golem Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Goblin Warchief Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Phage the Untouchable Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Viridian Zealot Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Braids, Conjurer Adept Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Oni of Wild Places Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Rumbling Slum Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Hell's Caretaker Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Maraxus
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Serra Angel Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Arcbound Overseer Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Master of the Wild Hunt Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Sisay
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Hanna
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Teysa, Orzhov Scion Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Maralen of the Mornsong Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Elvish Champion Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Arcanis, the Omnipotent Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Seshiro the Anointed Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Necropotence Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Eladamri
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Stonehewer Giant Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Jaya Ballard Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Etched Oracle Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Fallen Angel Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Erhnam Djinn Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Vampire Nocturnus Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Birds of Paradise Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Serra
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Ertai
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Reaper King Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Selenia
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Frenetic Efreet Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Takara
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Eight-and-a-Half-Tails Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Higure, the Still Wind Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Two-Headed Giant of Foriys Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Prodigal Sorcerer Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Mirri
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Platinum Angel Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Sliver Queen Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Rith, the Awakener Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Orcish Squatters Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Volrath
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Haakon, Stromgald Scourge Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Karn
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Murderous Redcap Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Stuffy Doll Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Oracle
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Fraternal Exaltation
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Starke
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Momir Vig, Simic Visionary Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Robot Chicken
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Greven il-Vec
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Figure of Destiny Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Lyna
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Raksha Golden Cub Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Flametongue Kavu Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Ashnod
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Ashling the Pilgrim Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Crovax
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Maelstrom Archangel Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Malfegor Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Lyzolda, the Blood Witch Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Morinfen Avatar
+User 2015/02/28 16:28:57 cardData.go:214: Failed to get any printings for  Ink-Eyes, Servant of Oni Avatar
+User 2015/02/28 16:28:57 cardData.go:38: Commencing dump to disk of cardMap
