@@ -93,9 +93,13 @@ func (cardData *cardMap) addCategoryData() {
 		aCard.Categories = categories
 	}
 
-	// Pull down the categories and save them as well
+	// Pull down the categories, sort them by commander play,
+	// and save them as well
+	commanderData:= commanderData.GetQueryableCommanderData()
 	completeCategories:= categoryData.GetCategories()
 	for aCategory, cards:= range completeCategories{
+
+		commanderData.Sort(cards)
 
 		serialCategory, err:= json.Marshal(cards)
 		if err!=nil {

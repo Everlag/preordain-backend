@@ -59,7 +59,7 @@ func (usableData *QueryableCommanderData) Sort(names []string) []string {
 
 	}
 
-	sort.Sort(sort.Reverse(items))
+	sort.Stable(sort.Reverse(items))
 
 	// Convert back to strings
 	for i, anItem:= range items{

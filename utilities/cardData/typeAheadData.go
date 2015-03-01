@@ -5,6 +5,7 @@ import(
 	"log"
 
 	"strings"
+	"sort"
 
 	"os"
 	"io/ioutil"
@@ -18,8 +19,6 @@ func getAllTypeAheadData(aLogger *log.Logger) {
 	// Build the card specific data.
 	aTypeAhead:= buildTypeAheadCardData(aLogger)
 	aTypeAhead.dumpToDisk(aLogger)
-
-	aLogger.Println(aTypeAhead["in"])
 }
 
 
@@ -123,9 +122,16 @@ func (aTypeAhead *typeAhead) prependList(names []string) {
 }
 
 // Sorts all fields of the typeAhead based on commander usage
+//
+// Additionally, each field is pre-sorted alphabetically so cards
+// without significant commander usage can have some order.
+//
+// This assumes that commanderUsage uses a STABLE sort.
 func (aTypeAhead *typeAhead) sortByCommanderUsage(commanderUsage *commanderData.QueryableCommanderData) {
 	
 	for aKey, names:= range *aTypeAhead{
+
+		sort.Strings(names)
 
 		(*aTypeAhead)[aKey] = commanderUsage.Sort(names)
 
