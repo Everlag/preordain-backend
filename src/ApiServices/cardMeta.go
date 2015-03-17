@@ -6,6 +6,7 @@ import(
 	"io/ioutil"
 
 	"strings"
+	"sort"
 
 )
 
@@ -84,6 +85,15 @@ func populateCardsTranslationMap(validSets map[string]bool) (map[string]bool,
 		return cards, cardsToSets, err
 	}
 
+	// Also acquire the sets we support and sort them so
+	// we can easily search
+	setList, err:= getSetList()
+	if err!=nil {
+		return cards, cardsToSets, err
+	}
+
+	sort.Strings(setList)
+
 	for aCardName, aCard:= range aCardList{
 		cards[aCardName] = true
 
@@ -93,6 +103,13 @@ func populateCardsTranslationMap(validSets map[string]bool) (map[string]bool,
 			_, ok:= validSets[aPrinting]
 			if ok{
 				cardsToSets[aCardName][aPrinting] = true
+
+				// Make a check to add the foil as well if such
+				// a printing exists
+				foilCandidate:= aPrinting + " Foil"
+				if sort.SearchStrings(setList, foilCandidate)!=-1{
+					cardsToSets[aCardName][foilCandidate] = true
+				}
 			}
 
 		}

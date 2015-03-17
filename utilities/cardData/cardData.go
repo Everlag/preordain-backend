@@ -99,6 +99,7 @@ func (cardData *cardMap) addCategoryData() {
 	completeCategories:= categoryData.GetCategories()
 	for aCategory, cards:= range completeCategories{
 
+		// Sorting by desirability is quite helpful
 		commanderData.Sort(cards)
 
 		serialCategory, err:= json.Marshal(cards)

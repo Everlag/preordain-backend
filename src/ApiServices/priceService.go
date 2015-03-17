@@ -171,6 +171,34 @@ func (aService *PriceService) register(aClient *influxdbHandler.Client) error {
 		Returns(http.StatusOK, "Latest price for a specific printing from DefaultPriceSource or a specific price source", nil))
 
 	priceService.Route(priceService.
+		GET("/Card/{cardName}/LatestLowest").To(aService.getCardLatestLowestPoint).
+		// Docs
+		Doc("Returns latest price for a printing of a card").
+		Operation("getCardLatestLowestPoint").
+		Param(priceService.PathParameter("cardName",
+			"The name of a Magic: the Gathering card").DataType("string")).
+		Param(priceService.QueryParameter("source",
+			"The name of a valid price source").DataType("string")).
+		Writes(ExtremaResponse{}).
+		Returns(http.StatusInternalServerError, "Price DB lookup failed", nil).
+		Returns(http.StatusBadRequest, BadCardFilter, nil).
+		Returns(http.StatusOK, "Lowest price across every printing from DefaultPriceSource or a specific price source", nil))
+
+	priceService.Route(priceService.
+		GET("/Card/{cardName}/LatestHighest").To(aService.getCardLatestHighestPoint).
+		// Docs
+		Doc("Returns latest price for a printing of a card").
+		Operation("getCardLatestHighestPoint").
+		Param(priceService.PathParameter("cardName",
+			"The name of a Magic: the Gathering card").DataType("string")).
+		Param(priceService.QueryParameter("source",
+			"The name of a valid price source").DataType("string")).
+		Writes(ExtremaResponse{}).
+		Returns(http.StatusInternalServerError, "Price DB lookup failed", nil).
+		Returns(http.StatusBadRequest, BadCardFilter, nil).
+		Returns(http.StatusOK, "Highest price across every printing from DefaultPriceSource or a specific price source", nil))
+
+	priceService.Route(priceService.
 		GET("/Set/{setName}/Latest").To(aService.getSetLatestPrices).
 		// Docs
 		Doc("Returns latest price for every card in a set").
@@ -363,6 +391,165 @@ func (aService *PriceService) getCardLatestPoint(req *restful.Request,
 
 	resp.WriteEntity(cardPrices)
 
+}
+
+
+// A response for a lowest latest price is minimalistic and aimed at providing
+// exactly what is required
+type ExtremaResponse struct{
+
+	Name string
+
+	Set string
+
+	Price int64
+}
+
+const invalidPrice int64 = -1
+
+func (aService *PriceService) getCardLatestLowestPoint(req *restful.Request,
+	resp *restful.Response) {
+	
+	cardName:= req.PathParameter("cardName")
+	if !cards[cardName] {
+		resp.WriteErrorString(http.StatusBadRequest, BadCard)
+		return
+	}
+
+	sourceName:= req.QueryParameter("source")
+	if !validPriceSources[sourceName] {
+		sourceName = DefaultPriceSource
+	}
+
+	prices, priceToSet, err:= aService.fetchAllPrices(cardName, sourceName)
+	if err!=nil {
+		// If we completely failed to grab a single price, then we can error out
+		resp.WriteErrorString(http.StatusInternalServerError,
+			"Price DB lookup failed, ")
+		return
+	}
+
+	lowestPrice:= findLowestPrice(prices)
+
+	lowest:= ExtremaResponse{
+		Name: cardName,
+		Set: priceToSet[lowestPrice],
+		Price: lowestPrice,
+	}
+
+	// Set cache header to reduce load.
+	setCacheHeader(resp)
+
+	resp.WriteEntity(lowest)
+
+}
+
+func (aService *PriceService) getCardLatestHighestPoint(req *restful.Request,
+	resp *restful.Response) {
+	
+	cardName:= req.PathParameter("cardName")
+	if !cards[cardName] {
+		resp.WriteErrorString(http.StatusBadRequest, BadCard)
+		return
+	}
+
+	sourceName:= req.QueryParameter("source")
+	if !validPriceSources[sourceName] {
+		sourceName = DefaultPriceSource
+	}
+
+	prices, priceToSet, err:= aService.fetchAllPrices(cardName, sourceName)
+	if err!=nil {
+		// If we completely failed to grab a single price, then we can error out
+		resp.WriteErrorString(http.StatusInternalServerError,
+			"Price DB lookup failed, ")
+		return
+	}
+
+	highestPrice:= findHighestPrice(prices)
+
+	highest:= ExtremaResponse{
+		Name: cardName,
+		Set: priceToSet[highestPrice],
+		Price: highestPrice,
+	}
+
+	// Set cache header to reduce load.
+	setCacheHeader(resp)
+
+	resp.WriteEntity(highest)
+
+}
+
+// Helper that grabs all possible prices for a card and dumps them into
+// an array and map
+func (aService *PriceService) fetchAllPrices(cardName,
+	sourceName string) ([]int64, map[int64]string, error) {
+	// Grab the prices across all sets
+	priceToSet:= make(map[int64]string)
+	prices:= make([]int64, len(cardsToSets[cardName]))
+
+	i:= 0
+	for setName, _:= range cardsToSets[cardName] {
+
+		// Grind out the price for the card
+		cardPrice, err:= aService.client.SelectFilteredSeriesLatestPoint(cardName,
+		setName, sourceName, 0)
+		if err!=nil {
+			// Set the price to be unusable
+			prices[i] = invalidPrice
+			continue
+		}
+		parsedPriceMap, err := priceMapFromPoints(cardPrice)
+		if err!=nil {
+			// Set the price to be unusable
+			prices[i] = invalidPrice
+			continue
+		}
+		parsedPrice, ok:= parsedPriceMap[cardName]
+		if !ok {
+			// Set the price to be unusable
+			prices[i] = invalidPrice
+			continue
+		}
+
+		prices[i] = parsedPrice
+		priceToSet[parsedPrice] = setName
+		i++
+	}
+
+	// In the case to grab any prices, the map will be empty
+	if len(priceToSet) == 0 {
+		return nil, nil, fmt.Errorf("Failed to acquire any prices")
+	}
+
+	return prices, priceToSet, nil
+}
+
+// Returns the lowest price among an array of prices
+func findLowestPrice(prices []int64) int64 {
+	var lowest int64 = 1e10
+
+	for _, aPrice:= range prices{
+		if aPrice < lowest && aPrice!=invalidPrice {
+			lowest = aPrice
+		}
+	}
+
+	return lowest
+}
+
+// Returns the lowest price among an array of prices
+func findHighestPrice(prices []int64) int64 {
+	var highest int64 = -1
+
+	for _, aPrice:= range prices{
+		if aPrice > highest && aPrice!=invalidPrice {
+			highest = aPrice
+		}
+	}
+
+	return highest
 }
 
 func (aService *PriceService) getSetLatestPrices(req *restful.Request,
