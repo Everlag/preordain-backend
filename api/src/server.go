@@ -43,7 +43,7 @@ func main() {
 
 	setupSwagger()
 
-	fmt.Println("ready")
+	fmt.Println("goPrices server ready")
 
 	http.ListenAndServe(":9032", nil)
 	

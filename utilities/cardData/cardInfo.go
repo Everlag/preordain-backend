@@ -16,7 +16,10 @@ import(
 	"fmt"
 	"io"
 
-	"./imageDB"
+	// Images are totally broken because mtgimage
+	// got the DMCA
+	// TODO: Implement import from archives.
+	//"./imageDB"
 )
 
 // The various locations our derived data goes
@@ -46,7 +49,7 @@ func main() {
 	// Dumps into dataLoc the set data for each set
 	getAllSetData(aLogger)
 
-	imageScraper.ScrapeImages(imageLoc, cropLoc, symbolsLoc)
+	//imageScraper.ScrapeImages(imageLoc, cropLoc, symbolsLoc)
 	
 }
 

@@ -12,11 +12,11 @@ import(
 
 )
 
-//we have places where we put our data
+//Location of cache so we don't have to hit remote often
 const cacheFile string = "commanderData.cache.json"
 
-//an exposable type that allows users to query for data regarding
-//our commander data.
+// An exposable type that allows users to query for data regarding
+// our commander data.
 type QueryableCommanderData struct{
 	data map[string]int
 	Accuracy int
@@ -30,7 +30,7 @@ func GetQueryableCommanderData() QueryableCommanderData {
 	return usableData
 }
 
-//attempts to query the usable commander data for card appearances
+// Attempts to query the usable commander data for card appearances
 func (usableData *QueryableCommanderData) Query(name string) (float64, error) {
 	usableName:= normalizeCardName(name)
 	appearance, ok:= usableData.data[usableName]
