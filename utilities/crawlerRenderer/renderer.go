@@ -20,6 +20,8 @@ import(
 
 const twitterRenderLoc string = "twitterRenders/"
 
+const index string = "index"
+
 const metaName string = "meta.json"
 const logName string = "renderLog.txt"
 
@@ -59,7 +61,7 @@ func renderTwitter(someMeta meta, aLogger *log.Logger) {
 		}
 
 		// Apply an effectively blank printing to the card to ensure sanity.
-		aCard.Printings = append(aCard.Printings, "index")
+		aCard.Printings = append(aCard.Printings, index)
 
 		// Send the card to disk for each printing it's had
 		for _, aPrinting:= range aCard.Printings{
@@ -232,7 +234,15 @@ const commanderStapleUsage float64 = 10.0
 
 // Fills a PageContent as well as possible with the provided metadata
 func fillContent(someMeta *meta, aCard *card, printing string) *PageContent {
-	title:= strings.Join([]string{aCard.Name, "|", printing}, " ")
+	
+	var title string
+	if printing == index {
+		// If this is the special case index printing for sanity then
+		// we just grab the first real printing available.
+		title = strings.Join([]string{aCard.Name, "|", aCard.Printings[0]}, " ")
+	}else{
+		title = strings.Join([]string{aCard.Name, "|", printing}, " ")
+	}
 
 	metaItems:= make([]string, 0)
 	if aCard.Reserved {
