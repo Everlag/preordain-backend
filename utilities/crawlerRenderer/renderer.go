@@ -58,6 +58,9 @@ func renderTwitter(someMeta meta, aLogger *log.Logger) {
 			aLogger.Println("Failed to acquire ", aDatum)
 		}
 
+		// Apply an effectively blank printing to the card to ensure sanity.
+		aCard.Printings = append(aCard.Printings, "index")
+
 		// Send the card to disk for each printing it's had
 		for _, aPrinting:= range aCard.Printings{
 			target = filepath.Join(someMeta.LocalCardRenders, aCard.Name, aPrinting)
@@ -246,7 +249,7 @@ func fillContent(someMeta *meta, aCard *card, printing string) *PageContent {
     for i, similar:= range aCard.SimilarCards{
     	similarCardDatums[i] = SimilarDatums{
     		Name: similar,
-    		Link: getCanonicalLink(someMeta, similar, "somePrinting"),
+    		Link: getCanonicalLink(someMeta, similar, ""),
     	}
     }
 
