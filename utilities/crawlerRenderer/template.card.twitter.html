@@ -1,0 +1,94 @@
+<html>
+	<!--
+	This is a template for our representation to robots
+	such as bingbot, googlebot, twitterbot, and company.
+
+	A static template prerendered minimizes loading times for
+	crawlers and lets us ensure that we present exactly what
+	we wish to.
+
+	The homepage, index as nginx would consider it, is
+	just one of these generated from a pre-selected
+	number of interesting cards
+
+	Make sure to populate a sitemap so google can gag on
+	~33K pages. Luckily a lot of the content differs between
+	them!
+
+	Limited to card data for now because that's the wide majority of
+	cases.
+
+	To fill in, provide:
+		.Creator
+		.Domain
+		.Title
+		.Image
+		.FirstHeader
+		.FirstData
+		.SecondHeader
+		.SecondData
+		.Url
+		.Description
+		.MetaItems -> as a comma separated list
+		.SimilarItems -> as a comma separated list
+	-->
+
+	<head lang=en>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<meta name="twitter:card" content="product">
+		<meta name="twitter:site" content="@{{.Creator}}">
+		<meta name="twitter:creator" content="@{{.Creator}}">
+		<meta name="twitter:domain" content="{{.Domain}}">
+		<meta name="twitter:title" content="{{.Title}}">
+		<meta name="twitter:image" content="{{.Image}}">
+		<meta name="twitter:label1" content="{{.FirstHeader}}">
+		<meta name="twitter:data1" content="{{.FirstData}}">
+		<meta name="twitter:label2" content="{{.SecondHeader}}">
+		<meta name="twitter:data2" content="{{.SecondData}}">
+
+		<title>{{.Title}} - Preorda.in</title>
+		<meta name="description" content="Yet another Magic finance site. Much more than prices. Beta">
+		<link rel="canonical" href="{{.Url}}"/>
+	</head>
+
+	<body>
+		<h1>{{.Title}}</h1>
+
+		<!-- The full text of the card-->
+		<div id="description">
+			{{.Description}}
+		</div>
+
+		<!--Metadata (ie, commander usage, banned, etc)-->
+		<div id="metaData">
+			{{.MetaItems}}
+		</div>
+
+		<!-- Static -->
+		<div id="Prices">
+			<span>MTG Pricing available in live version. EU and Fair currently supported.</span>
+		</div>
+
+		<!--Similar Items-->
+		<div id="similarItems">
+			{{range .SimilarItems}}
+				<a href="{{.Link}}">{{.Name}}</a>
+			{{end}}
+		</div>
+
+		<div id="footer">
+			<div>
+				<a href="https://twitter.com/excessivelag">Twitter</a>
+			</div>
+			<div>
+				<a href="https://www.reddit.com/r/collManagerAlpha">Reddit</a>
+			</div>
+			<div>Magic: the Gathering is a Hasbro brand; they do not endorse nor are they affiliated with preorda.in</div>
+		</div>
+
+	</body>
+
+</html>
