@@ -91,7 +91,7 @@ func renderTwitter(someMeta meta, aLogger *log.Logger) {
 type meta struct{
 
 	// Data for populating twitter fields
-	Creator, Site, Domain string
+	Creator, Site, Domain, TwitterDescription string
 
 	// Where card text is kept in the local filesystem
 	LocalCardTextLoc string
@@ -155,7 +155,7 @@ func fillTemplate(mold *template.Template,
 
 type PageContent struct{
 	Creator, Domain, Title, Image string
-	FirstHeader, FirstData, SecondHeader, SecondData string
+	FirstHeader, FirstData, SecondHeader, SecondData, TwitterDescription string
 	Url string
 	Description, MetaItems string
 	SimilarItems []SimilarDatums
@@ -252,7 +252,7 @@ func fillContent(someMeta *meta, aCard *card, printing string) *PageContent {
     if (aCard.CommanderUsage * 100) >= commanderStapleUsage{
 		metaItems = append(metaItems, "Commander Staple")
     }else if (aCard.CommanderUsage * 100) >= commanderFringeUsage{
-		metaItems = append(metaItems, "Playable")
+		metaItems = append(metaItems, "Commander Playable")
     }
 
     similarCardDatums:= make([]SimilarDatums, len(aCard.SimilarCards))
@@ -269,6 +269,7 @@ func fillContent(someMeta *meta, aCard *card, printing string) *PageContent {
 		Domain: someMeta.Domain,
 		Url: getCanonicalLink(someMeta, aCard.Name, printing),
 		Image: strings.Join([]string{someMeta.RemoteImageLoc, aCard.ImageName + someMeta.RemoteImageExtension}, "/"),
+		TwitterDescription: someMeta.TwitterDescription,
 
 		// Card
 		Title: title,
@@ -284,11 +285,6 @@ func fillContent(someMeta *meta, aCard *card, printing string) *PageContent {
 
 	return &freshContent
 }
-/* TO FINISH
-type PageContent struct{
-	FirstHeader, FirstData, SecondHeader, SecondData string
-}
-*/
 
 func getCanonicalLink(someMeta *meta, cardName string, printing string) string {
 	return strings.Join([]string{someMeta.RemoteCardLoc,

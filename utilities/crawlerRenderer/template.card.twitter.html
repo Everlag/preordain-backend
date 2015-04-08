@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html>
 	<!--
 	This is a template for our representation to robots
@@ -17,6 +19,8 @@
 
 	Limited to card data for now because that's the wide majority of
 	cases.
+
+	The site index must be manually built from generated cards.
 
 	To fill in, provide:
 		.Creator
@@ -43,6 +47,7 @@
 		<meta name="twitter:creator" content="@{{.Creator}}">
 		<meta name="twitter:domain" content="{{.Domain}}">
 		<meta name="twitter:title" content="{{.Title}}">
+		<meta name="twitter:description" content="{{.TwitterDescription}}">
 		<meta name="twitter:image" content="{{.Image}}">
 		<meta name="twitter:label1" content="{{.FirstHeader}}">
 		<meta name="twitter:data1" content="{{.FirstData}}">
