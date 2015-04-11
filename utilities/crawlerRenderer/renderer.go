@@ -23,16 +23,20 @@ func main() {
 
 	aLogger:= getLogger(logName)
 
-	metaData:= getMeta(aLogger)
-	aLogger.Println(metaData)
+	someMeta:= getMeta(aLogger)
+	aLogger.Println(someMeta)
 
-	renderTwitter(metaData, aLogger)
+	urls:= renderTwitter(someMeta, aLogger)
+	renderSiteMap(someMeta, urls, aLogger)
 }
 
-func renderTwitter(someMeta meta, aLogger *log.Logger) {
+// Renders the template specified out to the location specified in meta.
+//
+// Returns a list of urls created.
+func renderTwitter(someMeta meta, aLogger *log.Logger) []string {
 
 	// Acquire our template which we shall be pouring into
-	mold, err:= getTemplate(someMeta.TwitterCardTemplate)
+	mold, err:= getHTMLTemplate(someMeta.TwitterCardTemplate)
 	if err!=nil {
 		aLogger.Fatalf("Failed to acquire template, ", err)
 	}
@@ -42,6 +46,8 @@ func renderTwitter(someMeta meta, aLogger *log.Logger) {
 	if err!=nil {
 		aLogger.Fatalf("Failed to acquire list of datums, ", err)
 	}
+
+	urls:= make([]string, 0)
 
 	var aCard card
 	var someContent *PageContent
@@ -75,16 +81,21 @@ func renderTwitter(someMeta meta, aLogger *log.Logger) {
 			err = fillTemplate(mold, someContent, target)
 			if err!=nil {
 				aLogger.Println("Failed to fill template, ", err)
+				continue
 			}
+
+			// Add a successfully generated templated url to our page list
+			urls = append(urls, someContent.Url)
 		}
 
 	}
 
+	return urls
 }
 
 // Takes a template location and returns a ready to run template
 // assuming no errors
-func getTemplate(loc string) (*template.Template, error) {
+func getHTMLTemplate(loc string) (*template.Template, error) {
 	
 	return template.ParseFiles(loc)
 

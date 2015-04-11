@@ -118,7 +118,7 @@ type meta struct{
 	LocalCardTextLoc string
 
 	// Where our various templates our kept in the local
-	TwitterCardTemplate string
+	TwitterCardTemplate, SiteMapTemplate string
 
 	// To be able to associate a page and image with a card
 	RemoteImageLoc, RemoteImageExtension string
