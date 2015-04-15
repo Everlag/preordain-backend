@@ -4,7 +4,6 @@ import(
 
 	"testing"
 
-	"fmt"
 	"time"
 
 )
@@ -26,9 +25,9 @@ func TestSessions(t *testing.T) {
 		user = randString(int(randByte()))
 		users = append(users, user)
 
-		key, err = AddSession(pool, users[i])
+		key, err = AddUser(pool, user, "bar", "foo")
 		if err!=nil {
-			t.Fatal(err)
+			t.Fatal("failed to add user ", err)
 		}
 
 		keys = append(keys, key)
@@ -70,6 +69,11 @@ func TestResets(t *testing.T) {
 		user = randString(int(randByte()))
 		users = append(users, user)
 
+		_, err = AddUser(pool, user, "bar", "foo")
+		if err!=nil {
+			t.Fatal("failed to add user ", err)
+		}
+
 		key, err = RequestReset(pool, users[i])
 		if err!=nil {
 			t.Fatal(err)
@@ -91,23 +95,4 @@ func TestResets(t *testing.T) {
 		}
 	}
 
-}
-
-// Tests to ensure a user with a long than acceptable name
-// is incapable of adding a session or reset
-func TestInvalidEphemName(t *testing.T) {
-	t.Parallel()
-
-	user:= randString(int(randByte()) * 256)
-
-	_, err:= AddSession(pool, user)
-	if err == nil {
-		t.Fatal(fmt.Errorf("username was too long, session accepted"))
-	}
-
-	_, err = RequestReset(pool, user)
-	if err == nil {
-		t.Fatal(fmt.Errorf("username was too long, reset accepted"))
-	}
-	
 }

@@ -143,7 +143,7 @@ delete from usersessions where endValid <= startValid;
 End should be updated rather than adding a new session.
 */
 CREATE TABLE users.sessions (
-	name standardText NOT NULL,
+	name standardText NOT NULL references users.meta(name),
 	sessionKey bytea NOT NULL,
 	
 	startValid timestamp NOT NULL,
@@ -159,7 +159,7 @@ CREATE INDEX session_key_index on users.sessions(sessionKey);
 Create our reset request. It is very similar to the sessions table
 */
 CREATE TABLE users.resets (
-	name standardText NOT NULL,
+	name standardText NOT NULL references users.meta(name),
 	resetKey bytea NOT NULL,
 	
 	startValid timestamp DEFAULT now(),
@@ -175,7 +175,7 @@ Create the table that stores the collection metadata of our users.
 CREATE TABLE users.collections (
 
 	name standardText NOT NULL,
-	owner standardText NOT NULL,
+	owner standardText NOT NULL references users.meta(name),
 	
 	lastUpdate timestamp DEFAULT now(),
 	
@@ -211,6 +211,8 @@ CREATE TABLE users.collectionContents (
 	
 	lastUpdate timestamp NOT NULL,
 
+	FOREIGN KEY (owner, collection) REFERENCES users.collections (owner, name),
+
 	CONSTRAINT uniqueContentsKey UNIQUE (owner, collection,
 										cardName, setName,
 										quality, lang)
@@ -238,6 +240,8 @@ CREATE TABLE users.collectionHistory (
 	collection standardText NOT NULL,
 	
 	lastUpdate timestamp NOT NULL,
+
+	FOREIGN KEY (owner, collection) REFERENCES users.collections (owner, name),
 
 	CONSTRAINT uniqueHistoryKey UNIQUE (owner, collection,
 										cardName, setName,
