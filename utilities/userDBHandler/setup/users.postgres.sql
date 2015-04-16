@@ -225,6 +225,11 @@ A table that stores the changes each collection undergoes.
 
 This single table allows us to rebuild the complete, publicly visible
 database.
+
+NOTICE: No foreign key dependency as we want to be capable of rebuilding from
+        this single table.
+
+        Thus, we track when a row was created to avoid potential future issues
 */
 CREATE TABLE users.collectionHistory (
 
@@ -241,7 +246,7 @@ CREATE TABLE users.collectionHistory (
 	
 	lastUpdate timestamp NOT NULL,
 
-	FOREIGN KEY (owner, collection) REFERENCES users.collections (owner, name),
+	creationTime timestamp DEFAULT now(),
 
 	CONSTRAINT uniqueHistoryKey UNIQUE (owner, collection,
 										cardName, setName,
@@ -306,7 +311,7 @@ LANGUAGE plpgsql;
 
 
 /*
-Finally, lock all permissions down to minimum.
+Lock all permissions down to minimum.
 
 NOTE: Do this as user 'postgres' in the userdata table!
 
@@ -322,8 +327,11 @@ users.CollectionHistory - insert
 /*Make sure all permissions are OFF by default*/
 REVOKE all privileges ON SCHEMA PUBLIC FROM usermanager;
 REVOKE all ON DATABASE POSTGRES FROM usermanager;
+REVOKE all ON DATABASE userdata FROM usermanager;
+REVOKE create ON DATABASE userdata FROM usermanager;
 
 /*Need to use to do anything else*/
+GRANT connect ON DATABASE userdata TO usermanager;
 GRANT usage ON SCHEMA PUBLIC TO usermanager;
 GRANT usage ON SCHEMA users TO usermanager;
 
@@ -341,3 +349,21 @@ GRANT select, insert, update ON TABLE users.collectionContents to userManager;
 
 /*Append only collection history is VERY important*/
 GRANT select, insert ON TABLE users.collectionHistory to userManager;
+
+/*
+Set a backup user up so we are able to remotely dump table contents and
+nothing else.
+
+Backups can be safely run using
+'pg_dump -d userdata -U usermanager -f TARGET.sql'
+or -f omitted and piped to gzip!
+*/
+
+CREATE ROLE backupper WITH
+	LOGIN
+	ENCRYPTED
+	PASSWORD '$insertAnotherPasswordHere';
+
+GRANT usage ON SCHEMA public, users to backupper; 
+GRANT connect ON DATABASE userdata TO backupper;
+GRANT select ON ALL TABLES IN SCHEMA users TO backupper;
