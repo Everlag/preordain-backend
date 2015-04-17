@@ -28,4 +28,6 @@ Testing Setup:
 	
 	Copy the server.crt to certs as 'server.crt'
 	
+	Configure the connection by editing postgres.config.json
+	
 	Run tests with 'go test . -cpu=3 -parallel=20 -cover'

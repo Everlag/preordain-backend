@@ -7,6 +7,7 @@ import(
 	"github.com/jackc/pgx"
 
 	"io/ioutil"
+	"encoding/json"
 	"path/filepath"
 
 	"time"
@@ -14,6 +15,8 @@ import(
 	"crypto/tls"
 
 )
+
+const configLog string = "postgres.config.json"
 
 const certLoc string = "certs/server.crt"
 
@@ -92,7 +95,45 @@ func errorHandle(prompt error, message string) error {
 	return fmt.Errorf(message, prompt)
 }
 
+// Connects to the remote postgres server defined in postgres.config.json
+//
+// Uses the certificate found in certs/server.crt to establish trust
 func Connect() (*pgx.ConnPool, error) {
+
+	// Create our pool.
+	//
+	// In most cases InsecureSkipVerify would be very poor but since
+	// we are handling our cert chain ourselves with self signed certs
+	// this is not an issue.
+	connPoolConfig, err:= readConfig(configLog) 
+	if err!=nil {
+		return nil, err
+	}
+
+	pool, err:= pgx.NewConnPool(*connPoolConfig)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create connection pool,", err)
+	}
+
+	return pool, nil
+
+}
+
+type Config struct{
+	Host, User, Password, Database string
+}
+
+func readConfig(loc string) (*pgx.ConnPoolConfig, error) {
+	raw, err:= ioutil.ReadFile(loc)
+	if err!= nil{
+		return nil, fmt.Errorf("failed to acquire config", err)
+	}
+
+	var c Config
+	err = json.Unmarshal(raw, &c)
+	if err!=nil {
+		return nil, fmt.Errorf("failed to unmarshal config", err)
+	}
 	
 	// Acquire our trust chain so we can connect
 	trustRoot, err:= grabCert(certLoc)
@@ -100,17 +141,12 @@ func Connect() (*pgx.ConnPool, error) {
 		return nil, err
 	}
 
-	// Create our pool.
-	//
-	// In most cases InsecureSkipVerify would be very poor but since
-	// we are handling our cert chain ourselves with self signed certs
-	// this is not an issue.
 	connPoolConfig := pgx.ConnPoolConfig{
 		ConnConfig: pgx.ConnConfig{
-			Host:     "127.0.0.1",
-			User:     "usermanager",
-			Password: "$insertPasswordHere",
-			Database: "userdata",
+			Host:     c.Host,
+			User:     c.User,
+			Password: c.Password,
+			Database: c.Database,
 			TLSConfig: &tls.Config{
 				RootCAs: trustRoot,
 				InsecureSkipVerify: true,
@@ -120,11 +156,6 @@ func Connect() (*pgx.ConnPool, error) {
 		AfterConnect:   afterConnect,
 	}
 
-	pool, err:= pgx.NewConnPool(connPoolConfig)
-	if err != nil {
-		return nil, fmt.Errorf("failed to create connection pool,", err)
-	}
-
-	return pool, nil
+	return &connPoolConfig, nil
 
 }
