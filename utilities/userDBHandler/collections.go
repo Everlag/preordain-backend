@@ -13,7 +13,7 @@ import(
 type Collection struct{
 	Name, Owner string
 	LastUpdate time.Time
-	PublicViewing, PublicHistory bool
+	Privacy string
 }
 
 // Commits a new collection to the database only if the user has less than
@@ -73,10 +73,14 @@ func SetCollectionPrivacy(pool *pgx.ConnPool, sessionKey []byte,
 func GetCollectionMeta(pool *pgx.ConnPool, sessionKey []byte,
 	user, collection string) (*Collection, error) {
 	
+	var err error
+
 	// Authenticate the request
-	err:= SessionAuth(pool, user, sessionKey)
-	if err!=nil{
-		return nil, errorHandle(err, "authorization Failed, invalid session key")
+	if sessionKey != nil {
+		err = SessionAuth(pool, user, sessionKey)
+		if err!=nil{
+			return nil, errorHandle(err, "authorization Failed, invalid session key")
+		}	
 	}
 
 	c:= Collection{}
@@ -84,7 +88,7 @@ func GetCollectionMeta(pool *pgx.ConnPool, sessionKey []byte,
 	err = pool.QueryRow("getCollectionMeta",
 		user, collection).Scan(&c.Name, &c.Owner,
 			&c.LastUpdate,
-			&c.PublicViewing, &c.PublicHistory)
+			&c.Privacy)
 	if err!=nil {
 		return nil, errorHandle(err, ScanError)
 	}
@@ -93,7 +97,8 @@ func GetCollectionMeta(pool *pgx.ConnPool, sessionKey []byte,
 
 }
 
-func GetCollectionList(pool *pgx.ConnPool, user string) ([]string, error) {
+// Acquire metadata for all collections for a given user.
+func GetCollectionList(pool *pgx.ConnPool, user string) ([]Collection, error) {
 
 	rows, err := pool.Query("getCollectionList", user)
 	if err!=nil {
@@ -101,10 +106,10 @@ func GetCollectionList(pool *pgx.ConnPool, user string) ([]string, error) {
 	}
 	defer rows.Close()
 
-	var collections []string
+	var collections []Collection
 	for rows.Next(){
-		c:= ""
-		err = rows.Scan(&c)
+		c:= Collection{}
+		err = rows.Scan(&c.Name, &c.Privacy)
 		if err!=nil {
 			return nil, errorHandle(err, ScanError)
 		}

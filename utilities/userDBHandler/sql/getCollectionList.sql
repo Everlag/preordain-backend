@@ -7,6 +7,6 @@ Takes:
 */
 
 SELECT
-name
+name, privacy
 FROM
 users.collections WHERE owner=$1

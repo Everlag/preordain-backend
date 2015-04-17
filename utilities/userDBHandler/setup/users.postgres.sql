@@ -180,8 +180,6 @@ CREATE TABLE users.collections (
 	lastUpdate timestamp DEFAULT now(),
 	
 	Privacy possiblePrivacy DEFAULT 'Contents',
-	PublicViewing bool DEFAULT true,
-	PublicHistory bool DEFAULT false,
 
 	CONSTRAINT uniqueCollectionKey UNIQUE (name, owner)
 );

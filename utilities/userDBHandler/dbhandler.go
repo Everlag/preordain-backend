@@ -11,7 +11,11 @@ import(
 
 	"time"
 
+	"crypto/tls"
+
 )
+
+const certLoc string = "certs/server.crt"
 
 // A list of all statements we support, these are prepared on a per
 // connection basis.
@@ -90,14 +94,27 @@ func errorHandle(prompt error, message string) error {
 
 func Connect() (*pgx.ConnPool, error) {
 	
-	// TODO: add tls support!
+	// Acquire our trust chain so we can connect
+	trustRoot, err:= grabCert(certLoc)
+	if err!=nil {
+		return nil, err
+	}
+
+	// Create our pool.
+	//
+	// In most cases InsecureSkipVerify would be very poor but since
+	// we are handling our cert chain ourselves with self signed certs
+	// this is not an issue.
 	connPoolConfig := pgx.ConnPoolConfig{
 		ConnConfig: pgx.ConnConfig{
 			Host:     "127.0.0.1",
 			User:     "usermanager",
 			Password: "$insertPasswordHere",
 			Database: "userdata",
-			TLSConfig: nil,
+			TLSConfig: &tls.Config{
+				RootCAs: trustRoot,
+				InsecureSkipVerify: true,
+			},
 		},
 		MaxConnections: 50,
 		AfterConnect:   afterConnect,
@@ -111,15 +128,3 @@ func Connect() (*pgx.ConnPool, error) {
 	return pool, nil
 
 }
-
-/*
-func main() {
-
-	cards, err:= getCollectionContents(pool, nil, "everlag", "specs")
-	if err!=nil {
-		fmt.Println("failed to get card list, ", err)
-		os.Exit(1)
-	}
-	fmt.Println(cards)
-}
-*/

@@ -58,6 +58,10 @@ func TestCardsContents(t *testing.T) {
 	if err!=nil {
 		t.Fatal("failed to add user ", err)
 	}
+
+	// Wait for the db to catch up
+	time.Sleep(stepSleepTime)
+	
 	collection:= randString(int(randByte()))
 	err = AddCollection(pool, key, user, collection)
 	if err!=nil {

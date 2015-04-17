@@ -83,6 +83,85 @@ func TestCollections(t *testing.T) {
 
 }
 
+// Test to make sure we can retrieve the meta for a collection.
+func TestCollList(t *testing.T) {
+	t.Parallel()
+
+	var users []string
+	var keys [][]byte
+	var collections [][]string
+
+	var user string
+	var key []byte
+	var collection string
+	var err error
+	for i := 0; i < testCount; i++ {
+		// Each user has a random name of length < 256
+		user = randString(int(randByte()))
+		users = append(users, user)
+
+		// They need a session key to add or look at collections
+		key, err = AddUser(pool, user, "bar", "foo")
+		if err!=nil {
+			t.Fatal("failed to add user ", err)
+		}
+
+		keys = append(keys, key)
+		
+		// Wait for the db to catch up
+		time.Sleep(stepSleepTime)
+
+		// Add each collection using a sane session
+		userCollections:= make([]string, CollectionCountPerUser)
+		collections = append(collections, userCollections)
+		for k:= 0; k < CollectionCountPerUser; k++ {
+
+			collection = randString(int(randByte()))
+
+			err = AddCollection(pool, key, user, collection)
+			if err!=nil {
+				t.Fatal(err)
+			}
+
+			collections[i][k] = collection
+
+		}
+	}
+
+	time.Sleep(testSleepTime)
+	
+	var acquiredCollections []Collection
+	var userCollections []string
+	for i := 0; i < testCount; i++ {
+		
+		user = users[i]
+		userCollections = collections[i]
+
+		acquiredCollections, err = GetCollectionList(pool, user)
+		if err!=nil {
+			t.Fatal("failed to acquire collection list", err)
+		}
+		for _, generated:= range userCollections{
+
+			found:= false
+
+			for _, acquired:= range acquiredCollections{
+
+				if generated == acquired.Name {
+					found = true
+				}
+
+			}
+
+			if !found {
+				t.Fatal("failed to retrieve all collections")
+			}
+
+		}
+	}
+
+}
+
 // Tests to ensure a user is incapable of adding more than their alloted
 // collections.
 func TestCollPermissions(t *testing.T) {

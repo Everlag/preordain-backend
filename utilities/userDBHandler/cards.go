@@ -137,10 +137,14 @@ func insertCard(tx *pgx.Tx,
 func GetCollectionHistory(pool *pgx.ConnPool, sessionKey []byte,
 	user, collection string) ([]Card, error) {
 	
+	var err error
+
 	// Authenticate the request
-	err:= SessionAuth(pool, user, sessionKey)
-	if err!=nil{
-		return nil, errorHandle(err, "authorization Failed, invalid session key")
+	if sessionKey != nil {
+		err = SessionAuth(pool, user, sessionKey)
+		if err!=nil{
+			return nil, errorHandle(err, "authorization Failed, invalid session key")
+		}	
 	}
 
 	// Grab everything and pack it nicely to be returned
@@ -172,9 +176,11 @@ func GetCollectionContents(pool *pgx.ConnPool, sessionKey []byte,
 	user, collection string) ([]Card, error) {
 	
 	// Authenticate the request
-	err:= SessionAuth(pool, user, sessionKey)
-	if err!=nil{
-		return nil, errorHandle(err, "authorization Failed, invalid session key")
+	if sessionKey != nil {
+		err:= SessionAuth(pool, user, sessionKey)
+		if err!=nil{
+			return nil, errorHandle(err, "authorization Failed, invalid session key")
+		}	
 	}
 	
 	// Grab everything and pack it nicely to be returned

@@ -1,0 +1,31 @@
+Deployment Notes:
+	
+	Copy sql into directory beside binary.
+	
+	Create certs directory beside binary and follow instructions in testing for generating the trust chain.
+	
+	NOTE: This package is not safe for use with anything except self signed certificates where the root ca is equal to the server certificate.
+	
+Testing Setup:
+
+	Generate a key for the server if it doesn't already have one:
+		openssl genrsa -aes256 -out server.key 2048
+	Decrypt the key
+		openssl rsa -in server.key -out server.key
+	Build the cert
+		openssl req -new -key server.key -days 3650 -out server.crt -x509
+	Make the trust root the same as the server cert
+		cp server.key root.key
+	
+	Drop the cert, key, and root cert into the postgres data directory.
+	Set appropriate permissions if production.
+	
+	Uncomment the 'ssl = on' line in postgresql.conf
+	
+	Restart the server.
+	
+	Login with psql as usermanager or postgres, it should state that it is using ssl.
+	
+	Copy the server.crt to certs as 'server.crt'
+	
+	Run tests with 'go test . -cpu=3 -parallel=20 -cover'

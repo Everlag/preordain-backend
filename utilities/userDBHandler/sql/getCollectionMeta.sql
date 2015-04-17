@@ -7,6 +7,6 @@ Takes:
 */
 
 SELECT
-name, owner, lastUpdate, publicViewing, publicHistory
+name, owner, lastUpdate, privacy
 FROM
 users.collections WHERE owner=$1 AND name=$2

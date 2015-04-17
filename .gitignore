@@ -1,7 +1,4 @@
-Users/
-goPricesTest/
-
-
+goPricesTest/
 goPricesTestUsers/
 uploadFailures/
 swaggerUI/
@@ -18,3 +15,5 @@ twitterRenders/
 *.7z
 *.zip
 *.exe
+*.crt
+*.key
