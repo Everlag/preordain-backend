@@ -275,7 +275,7 @@ BEGIN
         UPDATE users.collectionContents
 			SET 
 				comment = specComment,
-				quantity = specQuantity,
+				quantity = quantity + specQuantity,
 				lastUpdate = specTime
 			WHERE
 				cardName = specCardName AND
