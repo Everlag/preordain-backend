@@ -7,6 +7,10 @@ import(
 	"github.com/jackc/pgx"
 	"./../../../utilities/userDBHandler"
 
+	"./../../../utilities/mailer"
+
+	"./../../../utilities/recaptcha"
+
 	"net/http"
 	"log"
 )
@@ -21,11 +25,19 @@ const BadTradeContents string = "Invalid trade contents"
 const SignupFailure string = "Failed to create user"
 const BodyReadFailure string = "Failed to parse body parameter"
 
+const DBfailure string = "Database read failed"
+
+const mailGunMetaLoc string = "mailgunMeta.json"
+const recaptchaMetaLoc string = "recaptchaMeta.json"
+
 type UserService struct{
 
 	pool *pgx.ConnPool
 	Service *restful.WebService
 	logger *log.Logger
+
+	mailer *mailer.Mailer
+	validator *recaptcha.Validator
 
 }
 
@@ -46,11 +58,11 @@ func NewUserService() *UserService {
 		pool: pool,
 	}
 
-	// Acquire and set up recaptcha
-	err = setupRecaptcha()
-	if err!=nil {
-		userLogger.Fatalln("Failed to setup recaptcha, ", err)
-	}
+	// Acquire and set up all requisites for sending mail
+	aService.setupMailing(mailGunMetaLoc)
+
+	// Make sure we can rate limit expensive operations
+	aService.setupRecaptcha(recaptchaMetaLoc)
 
 	// Finally, register the service
 	err = aService.register()
@@ -60,6 +72,31 @@ func NewUserService() *UserService {
 
 	return &aService
 
+}
+
+// Builds all the mailing systems needed for a Users node to function.
+//
+// Mailer templates can be used from the mailer by referencing the template
+// and providing a struct suitable for filling it.
+func (aService *UserService) setupMailing(metaLoc string) {
+
+	mailer, err:= mailer.GetMailerFromFile(mailGunMetaLoc)
+	if err!=nil {
+		aService.logger.Fatalln("Failed to get mailer", err)
+	}
+
+	aService.mailer = mailer
+
+}
+
+// Readies our ability to accept recaptcha 2.0 responses.
+func (aService *UserService) setupRecaptcha(loc string) {
+	validator, err:=  recaptcha.GetValidatorFromFile(loc)
+	if err!=nil {
+		aService.logger.Fatalln("Failed to get recaptcha validator", err)
+	}
+
+	aService.validator = validator
 }
 
 func (aService *UserService) register() error {

@@ -3,12 +3,18 @@ package ApiServices
 import(
 
 	"./../../../utilities/userDBHandler"
+	"./../../../utilities/mailer"
 
 	"github.com/emicklei/go-restful"
 
 	"net/http"
 
 )
+
+// The contents of a reset email formatted to match the template.
+type resetEmailContents struct{
+	Name, ResetCode string
+}
 
 // Creates a user after validating the password. The remote database
 // should prevent duplicates
@@ -75,7 +81,7 @@ func (aService *UserService) loginUser(req *restful.Request,
 
 // Requests that a valid reset token be created, recorded, and sent to the user's email.
 //
-// TODO, actually email user
+// Sends mail to the user via the service embedded mailer
 func (aService *UserService) requestPasswordReset(req *restful.Request,
 	resp *restful.Response) {
 	
@@ -89,7 +95,7 @@ func (aService *UserService) requestPasswordReset(req *restful.Request,
 	}
 
 	/*
-	validCaptcha:= ValidateRecaptcha(req, resetRequestContainer.RecaptchaChallengeField,
+	validCaptcha:= ValidateRecaptcha(req,
 		resetRequestContainer.RecaptchaResponseField)
 	if !validCaptcha {
 		resp.WriteErrorString(http.StatusBadRequest, BadCaptcha)
@@ -97,11 +103,27 @@ func (aService *UserService) requestPasswordReset(req *restful.Request,
 	}
 	*/
 
-	_, err = userDB.RequestReset(aService.pool, userName) 
+	code, err:= userDB.RequestReset(aService.pool, userName) 
 	if err!=nil {
 		resp.WriteErrorString(http.StatusBadRequest, BadCredentials)
 		return
 	}
+
+	// Fetch the user so we know their email
+	u, err:= userDB.GetUser(aService.pool, userName)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusBadRequest, BodyReadFailure)
+		return
+	}
+
+	contents:= resetEmailContents{
+		Name: userName,
+		ResetCode: code,
+	}
+	targetAddress:= mailer.FormatAddress(userName, u.Email)
+	aService.mailer.SendPrepared("reset", contents,
+		targetAddress, "Password Reset - Preorda.in")
+
 
 	resp.WriteEntity(true)
 

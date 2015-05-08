@@ -10,8 +10,6 @@ import(
 	"os"
 	"fmt"
 
-	"github.com/dpapathanasiou/go-recaptcha"
-
 	"github.com/emicklei/go-restful"
 
 	"net/http"
@@ -81,40 +79,8 @@ func getManagerName() (string, error) {
 	return cleanedName, nil
 }
 
-func getRecaptchaKey() (string, error) {
-	key, err:= ioutil.ReadFile(recaptchaKeyLoc)
-	if err!=nil {
-		return "", err
-	}
-
-	cleanedKey:= strings.TrimSpace(string(key))
-
-	return cleanedKey, nil
-}
-
-func setupRecaptcha() error {
-	key, err:= getRecaptchaKey()
-	if err!=nil {
-		return err
-	}
-
-	recaptcha.Init(key)
-
-	return nil
-
-}
-
 func getIP(req *restful.Request) string {
 	return strings.Split(req.Request.RemoteAddr, ":")[0]
-}
-
-//ensures that the captcha input is valid
-func ValidateRecaptcha(req *restful.Request,
-	challengeField, responseField string) bool {
-
-	remoteIP:= getIP(req)
-
-	return recaptcha.Confirm( remoteIP, challengeField, responseField )
 }
 
 func GetLogger(fName, name string) (aLogger *log.Logger) {

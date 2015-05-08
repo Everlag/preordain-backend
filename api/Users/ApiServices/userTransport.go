@@ -11,7 +11,7 @@ import(
 type NewUserData struct{
 
 	Email, Password string
-	RecaptchaChallengeField, RecaptchaResponseField string
+	RecaptchaResponseField string
 
 }
 
@@ -37,7 +37,7 @@ type TradeAddBody struct{
 
 type PasswordResetRequestBody struct{
 
-	RecaptchaChallengeField, RecaptchaResponseField string
+	RecaptchaResponseField string
 
 }
 
