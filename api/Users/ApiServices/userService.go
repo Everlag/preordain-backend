@@ -291,7 +291,7 @@ func (aService *UserService) register() error {
 		Returns(http.StatusBadRequest, BodyReadFailure, nil).
 		Returns(http.StatusBadRequest, BadCaptcha, nil).
 		Returns(http.StatusUnauthorized, BadCredentials, nil).
-		Writes("A Valid Session Key").
+		Writes(true).
 		Returns(http.StatusOK, "Successfully reset", nil))
 
 

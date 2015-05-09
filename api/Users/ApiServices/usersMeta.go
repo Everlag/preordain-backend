@@ -94,10 +94,9 @@ func (aService *UserService) requestPasswordReset(req *restful.Request,
 		return
 	}
 
-	/*
-	validCaptcha:= ValidateRecaptcha(req,
-		resetRequestContainer.RecaptchaResponseField)
-	if !validCaptcha {
+	/* Commented out for debugging!
+	valid, err:= aService.validator.Validate(resetRequestContainer.RecaptchaResponseField)
+	if err!=nil || !valid {
 		resp.WriteErrorString(http.StatusBadRequest, BadCaptcha)
 		return
 	}
