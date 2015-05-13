@@ -4,6 +4,8 @@ import(
 	
 	"fmt"
 
+	"time"
+
 	"crypto/subtle"
 
 	"github.com/jackc/pgx"
@@ -14,6 +16,7 @@ type User struct{
 	Name, Email string
 	PassHash, Nonce []byte	
 	MaxCollections int32
+	Longestview time.Duration
 }
 
 // Acquires the provided user from the database with no authentication.
@@ -23,13 +26,16 @@ func GetUser(pool *pgx.ConnPool, user string) (*User, error) {
 
 	u:= User{}
 	
+	var LongestviewAsInt int64
 	err := pool.QueryRow("getUser",
 		user).Scan(&u.Name, &u.Email,
 			&u.PassHash, &u.Nonce,
-			&u.MaxCollections)
+			&u.MaxCollections, &LongestviewAsInt)
 	if err!=nil {
 		return nil, errorHandle(err, ScanError)
 	}
+
+	u.Longestview = time.Duration(LongestviewAsInt)
 
 	return &u, nil
 
@@ -42,6 +48,14 @@ func GetUser(pool *pgx.ConnPool, user string) (*User, error) {
 func AddUser(pool *pgx.ConnPool, user,
 	email, password string) ([]byte, error) {
 	
+	tx, err:= pool.Begin()
+	if err!=nil {
+		return nil,
+		fmt.Errorf("failed to grab a transaction,", err)
+	}
+	// Make sure we can safely exit at any time
+	defer tx.Rollback()
+
 	// Hash their password and get a complementary nonce.
 	passHash, nonce, err:= derivePassword([]byte(password))
 	if err!=nil {
@@ -49,10 +63,20 @@ func AddUser(pool *pgx.ConnPool, user,
 	}
 
 	// Send the user away to the db
-	_, err = pool.Exec("addUser", user, email, passHash, nonce)
+	_, err = tx.Exec("addUser", user, email, passHash, nonce)
 	if err!=nil {
 		return nil, fmt.Errorf("failed to send user", err)
 	}
+
+	err = addSub(tx, user)
+	if err!=nil {
+		return nil, fmt.Errorf("failed to setup sub", err)
+	}
+
+	// A user needs to have a subscription as well as a meta entry.
+	//
+	// Failing to add either results in a broken user so we avoid that!
+	tx.Commit()
 
 	// Send a new session off to the db
 	return AddSession(pool, user)

@@ -16,6 +16,30 @@ import(
 
 )
 
+// The basic free tier of subs.
+const DefaultSubLevel = "Peek"
+
+// Which collections we allow
+var SubTiers = []string{
+	DefaultSubLevel,
+	"Preordain",
+	"Sensei's Top",
+}
+
+// How many collections each tier is allowed to own
+var SubTiersToCollections = map[string]int{
+	DefaultSubLevel: 1,
+	"Preordain": 4,
+	"Sensei's Top": 10,
+}
+
+// 290 years from now there should be no back records.
+var noTimeLimit = time.Duration(31560000000000000 * 270)
+
+// A full year!
+var defaultTimeLimit = time.Duration(31560000000000000)
+		
+
 const configLog string = "postgres.config.json"
 
 const certLoc string = "certs/server.crt"
@@ -28,7 +52,8 @@ var statements = []string{"addCard", "addCardHistorical" , "getCard",
 						"getSessions", "addSession", "removeSession",
 						"getReset", "addReset",
 						"addUser", "getUser", "setPassword",
-						"setMaxCollections", "setCollectionPermissions"}
+						"setMaxCollections", "setCollectionPermissions",
+						"getSub", "modSub", "setSubEffects"}
 const statementLoc string = "sql"
 const statementExtension string = ".sql"
 

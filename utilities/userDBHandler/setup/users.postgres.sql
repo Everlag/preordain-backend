@@ -96,6 +96,12 @@ CREATE DOMAIN possiblePrivacy TEXT CHECK(
 	VALUE = 'History'
 );
 
+CREATE DOMAIN possibleSub TEXT CHECK(
+	VALUE = 'Peek' OR
+	VALUE = 'Preordain' OR
+	VALUE = 'Sensei''s Top'
+);
+
 /*Add a schema to work under*/
 CREATE SCHEMA users;
 
@@ -108,10 +114,7 @@ passhash and nonce require a value.
 
 No valid sessions or collections is the default state.
 
-Sessions is an array of keys mapping to unique sessions inside
-the userSessions table.
-Collections is an array of keys mapping to unique collections
-inside the userCollections table.
+longestview is a duration, which is nanoseconds since epoch.
 */
 CREATE TABLE users.meta (
 	name standardText NOT NULL,
@@ -121,12 +124,81 @@ CREATE TABLE users.meta (
 	nonce bytea NOT NULL,
 	
 	maxcollections int DEFAULT 3,
+	longestview bigint DEFAULT 31560000000000000,
 	
 	CONSTRAINT uniquename UNIQUE (name)
 );
 
 CREATE UNIQUE INDEX meta_name_index on users.meta(name);
 CREATE INDEX meta_email_index on users.meta(email);
+
+/*
+Create the table holding the user subscription information.
+
+Adding a user should also fill in a new sub. A single sub entry
+can exist per user, this avoids double-charging users.
+
+Changing users.subs should, also, change the all applicable
+fields for the user.
+*/
+CREATE TABLE users.subs (
+	name standardText NOT NULL references users.meta(name),
+	
+	startTime timestamp NOT NULL,
+
+	plan possibleSub NOT NULL,
+
+	customerID TEXT NOT NULL,
+	subID TEXT NOT NULL,
+	
+	CONSTRAINT unique_sub_name UNIQUE (name)
+);
+
+CREATE UNIQUE INDEX subs_name_index on users.subs(name);
+
+/*
+Create a function that allows us to mostly atomically upsert
+into users.subs
+
+select mod_sub('everlag', 'Sensei\'s Top', now,
+	'someCustomerToken', 'someSubToken');
+*/
+CREATE FUNCTION
+	mod_sub(specName TEXT, specPlan possibleSub, specTime timestamp,
+			specCustomerID TEXT, specSubID TEXT)
+	RETURNS VOID AS
+$$
+BEGIN
+    LOOP
+        -- first try to update the key
+        UPDATE users.subs
+			SET 
+				startTime = specTime,
+				plan = specPlan,
+				customerID = specCustomerID,
+				subID = specSubID
+			WHERE
+				name = specName;
+        IF found THEN
+            RETURN;
+        END IF;
+        -- not there, so try to insert the key
+        -- if someone else inserts the same key concurrently,
+        -- we could get a unique-key failure
+        BEGIN
+            INSERT INTO users.subs
+				(name, startTime, plan, customerID, subID) 
+			VALUES
+				(specName, specTime, specPlan,
+				specCustomerID, specSubID);
+            RETURN;
+        EXCEPTION WHEN unique_violation THEN
+            -- do nothing, and loop to try the UPDATE again
+        END;
+    END LOOP;
+END;
+$$
+LANGUAGE plpgsql;
 
 /*
 Create the table holding the user sessions.
@@ -335,6 +407,9 @@ GRANT usage ON SCHEMA users TO usermanager;
 
 /*Whitelist all usage per table*/
 GRANT select, insert, update ON TABLE users.meta to userManager;
+
+/*Subs cannot be deleted, only added or altered*/
+GRANT select, insert, update ON TABLE users.subs to userManager;
 
 /*Sessions and resets can be deleted with no issue*/
 GRANT select, insert, delete ON TABLE users.sessions to userManager;
