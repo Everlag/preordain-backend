@@ -12,15 +12,6 @@ import(
 // Mostly just a dummy that allows us to retain state as an object.
 type Merch struct{}
 
-func GetMerchant(key string) *Merch {
-
-	// Set the global stripe key
-	stripe.Key = key
-
-	return &Merch{}
-	
-}
-
 // Subscribes a given customer to a plan.
 //
 // Customer must be an customer id provided by stripe.
@@ -43,15 +34,14 @@ func (merch *Merch) SubCustomer(customer, plan string) (string, error) {
 
 }
 
-// Removes a given customer from their plan
+// Removes a given customer from stripe.
 //
 // Requires both the customer's id and their accompanying
 // subscription id
-func UnSubCustomer(subID, customerID string) error {
-	return sub.Cancel(
-			subID,
-			&stripe.SubParams{Customer: customerID},
-			)
+func (merch *Merch) UnSubCustomer(subID, customerID string) error {
+
+	return customer.Del(customerID)
+
 }
 
 // Adds a new customer with a given email and payment token.
@@ -59,11 +49,14 @@ func UnSubCustomer(subID, customerID string) error {
 // token must be a stripe provided token.
 //
 // Returns a valid customer id if successful
-func (merch *Merch) AddCustomer(token, email string) (string, error) {
+func (merch *Merch) AddCustomer(token, email, coupon string) (string, error) {
 
 	customerParams := &stripe.CustomerParams{
 	  Email: email,
-	  Token: token,
+	  Coupon: coupon,
+	  Source: &stripe.SourceParams{
+	  	Token: token,
+	  	},
 	}
 
 	// Send the new customer off
