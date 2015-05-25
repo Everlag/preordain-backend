@@ -29,6 +29,7 @@ var dirtySetNames = map[string]string{
 	//"Duels of the Planeswalkers": "",
 
 	//specific supplementary product
+	"Modern Masters 2015 Edition": "Modern Masters 2015",
 	"Magic: The Gathering-Commander":"Commander",
 	"Commander 2013 Edition": "Commander_2013",
 	"Deckmasters": "Deckmasters_Box_Set",

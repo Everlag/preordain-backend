@@ -29,6 +29,7 @@ var dirtyToCleanSetNames = map[string]string{
 	"Commander 2013":"Commander 2013 Edition",
 	"Commander": "Magic: The Gathering-Commander",
 	"Planechase 2012": "Planechase 2012 Edition",
+	"Modern Masters 2015": "Modern Masters 2015 Edition",
 
 	"Magic 2015":"Magic 2015 Core Set",
 	"Magic 2014":"Magic 2014 Core Set",
