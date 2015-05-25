@@ -50,7 +50,7 @@ func GetMailerFromFile(loc string) (*Mailer, error) {
 	for id, loc:= range meta.Templates{
 		err = mailer.Prepare(id, loc)
 		if err!=nil {
-			return nil, err	
+			return nil, err
 		}
 	}
 
