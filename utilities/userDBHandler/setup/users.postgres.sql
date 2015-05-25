@@ -123,7 +123,7 @@ CREATE TABLE users.meta (
 	passhash bytea NOT NULL,
 	nonce bytea NOT NULL,
 	
-	maxcollections int DEFAULT 3,
+	maxcollections int DEFAULT 1,
 	longestview bigint DEFAULT 31560000000000000,
 	
 	CONSTRAINT uniquename UNIQUE (name)

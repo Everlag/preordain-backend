@@ -30,15 +30,16 @@ var SubTiers = []string{
 var SubTiersToCollections = map[string]int{
 	DefaultSubLevel: 1,
 	"Preordain": 4,
-	"Sensei's Top": 10,
+	"Sensei's Top": 30,
 }
 
 // 290 years from now there should be no back records.
-var noTimeLimit = time.Duration(31560000000000000 * 270)
-
+const noTimeLimit = time.Duration(31560000000000000 * 270)
 // A full year!
-var defaultTimeLimit = time.Duration(31560000000000000)
-		
+const defaultTimeLimit = time.Duration(31560000000000000)
+
+
+const DefaultID string = "invalidByDesign"
 
 const configLog string = "postgres.config.json"
 

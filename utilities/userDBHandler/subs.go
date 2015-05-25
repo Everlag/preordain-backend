@@ -22,13 +22,23 @@ type Subscription struct{
 // A unique key provision prevents users from getting double charged
 // as long as we check to ensure that we aren't setting the same twice.
 func ModSub(pool *pgx.ConnPool, user, sub,
-	customerID, subID string) (error) {
+	customerID, subID string, sessionKey []byte) (error) {
 
-	s, err:= GetSub(pool, user)
+	if sessionKey!=nil {
+		err:= SessionAuth(pool, user, sessionKey)
+		if err!=nil{
+			return errorHandle(err,
+				"authorization Failed, invalid session key")
+		}	
+	}
+
+	// Get the sub but avoid another round trip to validate an already
+	// valid session.
+	validChoice, err:= DifferentPlan(pool, user, sub)
 	if err!=nil {
 		return err
 	}
-	if s.Plan == sub {
+	if !validChoice {
 		return fmt.Errorf("Duplicated sub attempt")
 	}
 
@@ -59,10 +69,34 @@ func ModSub(pool *pgx.ConnPool, user, sub,
 
 }
 
+// Checks if adding a plan to a user would actually change the user's plan
+//
+// No authentication as no user data apart from sub plan is revealed.
+func DifferentPlan(pool *pgx.ConnPool, user, sub string) (bool, error) {
+	s, err:= GetSub(pool, user, nil)
+	if err!=nil {
+		return false, err
+	}
+	if s.Plan == sub {
+		return false, fmt.Errorf("Duplicated sub attempt")
+	}
+
+	return true, nil
+}
+
 
 // Acquires the subscription details of a given user.
-func GetSub(pool *pgx.ConnPool, user string) (*Subscription, error) {
+func GetSub(pool *pgx.ConnPool, user string,
+	sessionKey []byte) (*Subscription, error) {
 	
+	if sessionKey!=nil {
+		err:= SessionAuth(pool, user, sessionKey)
+		if err!=nil{
+			return nil,
+			errorHandle(err, "authorization Failed, invalid session key")
+		}
+	}
+
 	s:= Subscription{}
 
 	err:= pool.QueryRow("getSub", user).Scan(
@@ -81,6 +115,8 @@ func GetSub(pool *pgx.ConnPool, user string) (*Subscription, error) {
 //
 // Currently, this sets maxcollections and longestview for a users.meta
 // entry matching this user.
+//
+// Use as a transaction to work alongside changing the sub status.
 func setSubEffects(tx *pgx.Tx, user, sub string) error {
 	var maxCollections int
 	var longestview time.Duration

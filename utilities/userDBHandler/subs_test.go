@@ -13,11 +13,13 @@ func TestSubAdd(t *testing.T) {
 	t.Parallel()
 
 	var users []string
+	sessions:= make([][]byte, 0)
 	var subs []string
 	var custIDs []string
 	var subIDs []string
 
 	var user string
+	var session []byte
 	var sub string
 	var custID string
 	var subID string
@@ -29,7 +31,7 @@ func TestSubAdd(t *testing.T) {
 
 		// Add the user
 		user = randString(int(randByte()))
-		_, err = AddUser(pool, user, "bar", "foo")
+		session, err = AddUser(pool, user, "bar", "foo")
 		if err!=nil {
 			t.Fatal("failed to add user ", err)
 		}
@@ -42,12 +44,13 @@ func TestSubAdd(t *testing.T) {
 		}
 		custID = randString(int(randByte()))
 		subID = randString(int(randByte()))
-		err = ModSub(pool, user, sub, custID, subID)
+		err = ModSub(pool, user, sub, custID, subID, session)
 		if err!=nil {
 			t.Fatal("failed to change add sub", err)
 		}
 
 		users = append(users, user)
+		sessions = append(sessions, session)
 		subs = append(subs, sub)
 		custIDs = append(custIDs, custID)
 		subIDs = append(subIDs, subID)
@@ -60,12 +63,13 @@ func TestSubAdd(t *testing.T) {
 	for i := 0; i < testCount; i++ {
 		
 		user = users[i]
+		session = sessions[i]
 		sub = subs[i]
 		custID = custIDs[i]
 		subID = subIDs[i]
 
 		// Make sure the sub details stuck
-		s, err = GetSub(pool, user)
+		s, err = GetSub(pool, user, session)
 		if s.Plan != sub ||
 		   s.CustomerID != custID ||
 		   s.SubID != subID{
@@ -82,19 +86,20 @@ func TestSubEffects(t *testing.T) {
 	t.Parallel()
 
 	var user string
+	var session []byte
 	var err error
 
 	for sub, count:= range SubTiersToCollections{
 
 		// Add the user
 		user = randString(int(randByte()))
-		_, err = AddUser(pool, user, "bar", "foo")
+		session, err = AddUser(pool, user, "bar", "foo")
 		if err!=nil {
 			t.Fatal("failed to add user ", err)
 		}
 
 		// Switch them to the plan we desire
-		err = ModSub(pool, user, sub, "42", "12")
+		err = ModSub(pool, user, sub, "42", "12", session)
 		if err!=nil {
 			if sub == DefaultSubLevel{
 				// We shouldn't be able to as this is where they start at

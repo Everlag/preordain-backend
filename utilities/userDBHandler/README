@@ -1,3 +1,7 @@
+Security Notice:
+
+	Most session authentication can be bypassed by passing a nil sessionKey. It is the caller's responsibility to ensure that they are acquiring a non-nil session key when exposing this package to external sources.
+
 Deployment Notes:
 	
 	Copy sql into directory beside binary.
