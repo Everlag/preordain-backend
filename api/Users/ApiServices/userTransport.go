@@ -52,3 +52,8 @@ type CollectionContents struct{
 	Current []userDB.Card
 	Historical []userDB.Card
 }
+
+type SubBody struct{
+	Plan, PaymentMethod, Coupon string
+	SessionKey []byte
+}

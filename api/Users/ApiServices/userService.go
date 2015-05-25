@@ -11,6 +11,8 @@ import(
 
 	"./../../../utilities/recaptcha"
 
+	"./../../../utilities/goGetPaid"
+
 	"net/http"
 	"log"
 )
@@ -26,9 +28,16 @@ const SignupFailure string = "Failed to create user"
 const BodyReadFailure string = "Failed to parse body parameter"
 
 const DBfailure string = "Database read failed"
+const DBWriteFailure string = "Database read failed"
+
+const BadPlanChoice string = "Invalid plan choice!"
+
+const StripeCustFailure string = "Stripe did not allow customer"
+const StripeSubFailure string = "Stripe did not allow subscription change"
 
 const mailGunMetaLoc string = "mailgunMeta.json"
 const recaptchaMetaLoc string = "recaptchaMeta.json"
+const merchantMetaLoc string  = "merchMeta.json"
 
 type UserService struct{
 
@@ -38,6 +47,7 @@ type UserService struct{
 
 	mailer *mailer.Mailer
 	validator *recaptcha.Validator
+	merch *getPaid.Merch
 
 }
 
@@ -63,6 +73,8 @@ func NewUserService() *UserService {
 
 	// Make sure we can rate limit expensive operations
 	aService.setupRecaptcha(recaptchaMetaLoc)
+
+	aService.setupMerchant(merchantMetaLoc)
 
 	// Finally, register the service
 	err = aService.register()
@@ -97,6 +109,16 @@ func (aService *UserService) setupRecaptcha(loc string) {
 	}
 
 	aService.validator = validator
+}
+
+// Sets up our stripe merchant so we can actually make money!
+func (aService *UserService) setupMerchant(loc string) {
+	merch, err:=  getPaid.GetMerchantFromFile(loc)
+	if err!=nil {
+		aService.logger.Fatalln("Failed to get recaptcha validator", err)
+	}
+
+	aService.merch = merch
 }
 
 func (aService *UserService) register() error {
@@ -293,6 +315,58 @@ func (aService *UserService) register() error {
 		Returns(http.StatusUnauthorized, BadCredentials, nil).
 		Writes(true).
 		Returns(http.StatusOK, "Successfully reset", nil))
+
+	userService.Route(userService.
+		POST("/{userName}/Sub").
+		To(aService.addSubUser).
+		// Docs
+		Doc("Attempts to subscribe a user with the provided plan").
+		Operation("subscribe").
+		Param(userService.PathParameter("userName",
+			"The name that identifies a user to our service").DataType("string")).
+		Reads(SubBody{}).
+		Returns(http.StatusBadRequest, BodyReadFailure, nil).
+		Returns(http.StatusUnauthorized, BadCredentials, nil).
+		Returns(http.StatusBadRequest, DBfailure, nil).
+		Returns(http.StatusBadRequest, BadPlanChoice, nil).
+		Returns(http.StatusBadRequest, StripeCustFailure, nil).
+		Returns(http.StatusBadRequest, StripeSubFailure, nil).
+		Writes(true).
+		Returns(http.StatusOK, "Successfully subbed", nil))
+
+	userService.Route(userService.
+		DELETE("/{userName}/Sub").
+		To(aService.unSubUser).
+		// Docs
+		Doc("Attempts to unsubscribe a user with the provided plan").
+		Operation("unSubscribe").
+		Param(userService.PathParameter("userName",
+			"The name that identifies a user to our service").DataType("string")).
+		Reads(SubBody{}).
+		Returns(http.StatusBadRequest, BodyReadFailure, nil).
+		Returns(http.StatusUnauthorized, BadCredentials, nil).
+		Returns(http.StatusBadRequest, DBfailure, nil).
+		Returns(http.StatusBadRequest, StripeSubFailure, nil).
+		Writes(true).
+		Returns(http.StatusOK, "Successfully unsubbed", nil))
+
+	userService.Route(userService.
+		POST("/{userName}/SubStatus").
+		To(aService.getSubUser).
+		// Docs
+		Doc("Acquires the plan a given user is subscribed to").
+		Operation("subscribe").
+		Param(userService.PathParameter("userName",
+			"The name that identifies a user to our service").DataType("string")).
+		Reads(SessionKeyBody{}).
+		Returns(http.StatusBadRequest, BodyReadFailure, nil).
+		Returns(http.StatusUnauthorized, BadCredentials, nil).
+		Returns(http.StatusBadRequest, DBfailure, nil).
+		Returns(http.StatusBadRequest, BadPlanChoice, nil).
+		Returns(http.StatusBadRequest, StripeCustFailure, nil).
+		Returns(http.StatusBadRequest, StripeSubFailure, nil).
+		Writes(userDB.DefaultSubLevel).
+		Returns(http.StatusOK, "userDB.DefaultSubLevel", nil))
 
 
 	aService.Service = userService
