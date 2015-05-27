@@ -29,14 +29,11 @@ func (aService *UserService) createUser(req *restful.Request,
 		return
 	}
 
-	/* COMMENTED OUT FOR TESTING
-	validCaptcha:= ValidateRecaptcha(req, someUserData.RecaptchaChallengeField,
-		someUserData.RecaptchaResponseField)
-	if !validCaptcha {
+	valid, err:= aService.validator.Validate(someUserData.RecaptchaResponseField)
+	if err!=nil || !valid {
 		resp.WriteErrorString(http.StatusBadRequest, BadCaptcha)
 		return
 	}
-	*/
 
 	if !passwordMeetsRequirements(someUserData.Password) {
 		resp.WriteErrorString(http.StatusBadRequest, BadPassword)
@@ -94,13 +91,12 @@ func (aService *UserService) requestPasswordReset(req *restful.Request,
 		return
 	}
 
-	/* Commented out for debugging!
+
 	valid, err:= aService.validator.Validate(resetRequestContainer.RecaptchaResponseField)
 	if err!=nil || !valid {
 		resp.WriteErrorString(http.StatusBadRequest, BadCaptcha)
 		return
 	}
-	*/
 
 	code, err:= userDB.RequestReset(aService.pool, userName) 
 	if err!=nil {
