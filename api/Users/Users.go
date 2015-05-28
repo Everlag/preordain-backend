@@ -29,6 +29,6 @@ func main() {
 
 	fmt.Println("goPrices user server ready")
 
-	http.ListenAndServe(":9032", nil)
+	http.ListenAndServe(":9035", nil)
 	
 }
