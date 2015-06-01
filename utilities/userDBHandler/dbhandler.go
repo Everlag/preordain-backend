@@ -51,7 +51,7 @@ var statements = []string{"addCard", "addCardHistorical" , "getCard",
 						"addCollection", "getCollectionMeta", "getCollectionList",
 						"getCollectionContents", "getCollectionHistory",
 						"getSessions", "addSession", "removeSession",
-						"getReset", "addReset",
+						"getReset", "getAllResets", "addReset",
 						"addUser", "getUser", "setPassword",
 						"setMaxCollections", "setCollectionPermissions",
 						"getSub", "modSub", "setSubEffects"}
@@ -60,6 +60,9 @@ const statementExtension string = ".sql"
 
 // Each session can be valid for up to a month and
 // each reset request valid up to one day
+//
+// The total time a reset is valid is also the time between resets
+// being able to be sent to that user
 const hoursPerDay int = 24
 const hoursPerMonth int = 30 * hoursPerDay
 const sessionValidTime = time.Duration(hoursPerMonth) * time.Hour

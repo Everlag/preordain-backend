@@ -125,14 +125,30 @@ func SendReset(pool *pgx.ConnPool, reset Reset) error {
 
 }
 
-// Generates a request reset by inserting a reset key valid for
+// Generates a request reset by inserting a reset key valid for this user
 func RequestReset(pool *pgx.ConnPool, user string) (string, error) {
-	
+
+	// Ensure the user hasn't received a reset code within
+	// the possible duration of another valid reset code
+	now:= time.Now()
+	resets, err:= getAllResets(pool, user)
+	if err!=nil {
+		return "", errorHandle(err, "failed to acquire all resets")
+	}
+
+	for _, r:= range resets{
+		// A reset code valid after the now + resetValidTime
+		// means we don't send another token.
+		delta:= now.Sub(r.EndValid)
+		if delta < resetValidTime {
+			return "", fmt.Errorf("requested reset when valid already exists")
+		}
+	}
+
 	// Acquire a fresh session key of length 256 bits
 	key:= randString(ResetLength)
 	
 	// Setup a session to send to the db
-	now:= time.Now()
 	freshReset:= Reset{
 		Name: user,
 		ResetKey: []byte(key),
@@ -141,7 +157,7 @@ func RequestReset(pool *pgx.ConnPool, user string) (string, error) {
 	}
 
 	// Send the session off
-	err:= SendReset(pool, freshReset)
+	err = SendReset(pool, freshReset)
 	if err!=nil {
 		return "", errorHandle(err, "failed to send fresh reset off to db")
 	}
@@ -178,4 +194,29 @@ func ValidateReset(pool *pgx.ConnPool, user, resetKey string) error {
 
 	return fmt.Errorf("invalid Authentication")
 
+}
+
+// Acquires all valid resets for a given user
+func getAllResets(pool *pgx.ConnPool, user string) ([]Reset, error) {
+
+	rows, err := pool.Query("getAllResets", user)
+	if err!=nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	resets:= make([]Reset, 0)
+
+	for rows.Next(){
+		r:= Reset{}
+		err = rows.Scan(&r.Name, &r.ResetKey,
+			&r.StartValid, &r.EndValid)
+		if err!=nil {
+			return nil, errorHandle(err, ScanError)
+		}
+
+		resets = append(resets, r)
+	}
+
+	return resets, nil
 }

@@ -96,3 +96,30 @@ func TestResets(t *testing.T) {
 	}
 
 }
+
+// Add a user, request a reset for that user,
+// and ensure that we can't request another due to the wait
+// period enforced upon reset requests to be resetValidTime
+func TestRestRateLimit(t *testing.T) {
+	user:= randString(210)
+
+	_, err:= AddUser(pool, user, "bar", "foo")
+	if err!=nil {
+		t.Fatal("failed to add user", err)
+	}
+
+	time.Sleep(testSleepTime)
+
+	_, err = RequestReset(pool, user)
+	if err!=nil {
+		t.Fatal(err)
+	}
+
+	time.Sleep(testSleepTime)
+
+	_, err = RequestReset(pool, user)
+	if err==nil {
+		t.Fatal("was capable of requesting a reset code within resetValidTime of another reset code")
+	}
+
+}
