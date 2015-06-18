@@ -13,6 +13,7 @@ import(
 	"./commanderDB"
 	"./similarityDB"
 	"./categoriesDB"
+	"./deckDB"
 
 )
 
@@ -21,10 +22,12 @@ func getAllCardData(aLogger *log.Logger) {
 	cardData:= buildBasicData(aLogger)
 	stapleOnSetSpecificData(cardData, aLogger)
 
+	
 	cardData.addCommanderData()
 	cardData.addSimilarityData()
 
 	cardData.addCategoryData()
+	cardData.addDeckData()
 
 	cardData.cleanSetNames(aLogger)
 
@@ -69,8 +72,6 @@ func (cardData *cardMap) addSimilarityData() {
 		
 		similarityResults, err:= similarityData.Query(aCard.Name)
 		if err!=nil {
-			//cards not being present is not at all unusual
-			aCard.CommanderUsage = 0.0
 			continue
 		}
 
@@ -115,6 +116,23 @@ func (cardData *cardMap) addCategoryData() {
 
 	}
 
+}
+
+func (cardData *cardMap) addDeckData() error {
+	deckData, err:= deckData.GetQueryableDeckData()
+	if err!=nil {
+		return err
+	}
+
+	for _, aCard:= range *cardData{
+
+		result:= deckData.QueryCard(aCard.Name)
+
+		aCard.ModernPlay = result
+
+	}
+
+	return nil
 }
 
 // We have a way to add to and sort the ratings of the most used cards
@@ -246,6 +264,7 @@ type card struct{
 	SimilarCards []string
 	SimilarCardConfidences []float64
 	Categories []string
+	ModernPlay deckData.CardResult
 }
 
 //acquires basic card data for our process
