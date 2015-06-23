@@ -6,6 +6,7 @@ import(
 	"time"
 
 	"crypto/subtle"
+	"crypto/sha256"
 
 	"github.com/jackc/pgx"
 
@@ -43,12 +44,15 @@ func AddSession(pool *pgx.ConnPool, user string) ([]byte, error) {
 	if err!=nil {
 		return nil, fmt.Errorf("failed to derive new session key, ", err)
 	}
+
+	// Store the hash of the key so read-only exploits are ineffective
+	hashed:= sha256.Sum256(key)
 	
 	// Setup a session to send to the db
 	now:= time.Now()
 	freshSession:= Session{
 		Name: user,
-		SessionKey: key,
+		SessionKey: hashed[:],
 		StartValid: now,
 		EndValid: now.Add(sessionValidTime),
 	}
@@ -70,7 +74,10 @@ func AddSession(pool *pgx.ConnPool, user string) ([]byte, error) {
 func SessionAuth(pool *pgx.ConnPool, user string, 
 	sessionKey []byte) error {
 	
-	rows, err := pool.Query("getSessions", user, sessionKey)
+	// Hash the key so we compare hashes instead of contents
+	hashed:= sha256.Sum256(sessionKey)
+
+	rows, err := pool.Query("getSessions", user, hashed[:])
 	if err!=nil {
 		return err
 	}
@@ -87,7 +94,7 @@ func SessionAuth(pool *pgx.ConnPool, user string,
 
 		// Perform validation
 		if s.Name == user &&
-		subtle.ConstantTimeCompare(sessionKey, s.SessionKey) == 1 &&
+		subtle.ConstantTimeCompare(hashed[:], s.SessionKey) == 1 &&
 		now.Before(s.EndValid) && now.After(s.StartValid) {
 			return nil
 		}
@@ -147,11 +154,13 @@ func RequestReset(pool *pgx.ConnPool, user string) (string, error) {
 
 	// Acquire a fresh session key of length 256 bits
 	key:= randString(ResetLength)
+	// Store the hash of the key and use that for comparisons
+	hashed:= sha256.Sum256([]byte(key))
 	
 	// Setup a session to send to the db
 	freshReset:= Reset{
 		Name: user,
-		ResetKey: []byte(key),
+		ResetKey: hashed[:],
 		StartValid: now,
 		EndValid: now.Add(resetValidTime),
 	}
@@ -168,7 +177,10 @@ func RequestReset(pool *pgx.ConnPool, user string) (string, error) {
 
 func ValidateReset(pool *pgx.ConnPool, user, resetKey string) error {
 	
-	rows, err := pool.Query("getReset", user, resetKey)
+	// Request a hash matching the key's hash.
+	hashed:= sha256.Sum256([]byte(resetKey))
+
+	rows, err := pool.Query("getReset", user, hashed[:])
 	if err!=nil {
 		return err
 	}
@@ -185,7 +197,7 @@ func ValidateReset(pool *pgx.ConnPool, user, resetKey string) error {
 
 		// Perform validation
 		if r.Name == user &&
-		subtle.ConstantTimeCompare([]byte(resetKey),
+		subtle.ConstantTimeCompare(hashed[:],
 			[]byte(r.ResetKey)) == 1 &&
 		now.Before(r.EndValid) && now.After(r.StartValid) {
 			return nil
