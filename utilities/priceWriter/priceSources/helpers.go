@@ -70,12 +70,19 @@ func (keys *ApiKeys) updateOnDisk() error {
 
 func getSetList() ([]string, error) {
 
-	sets, err:= ioutil.ReadFile(setListLoc)
+	setsRaw, err:= ioutil.ReadFile(setListLoc)
 	if err!=nil {
 		return nil, err
 	}
 
-	return strings.Split(string(sets), "\n"), nil
+	sets:= strings.Split(string(setsRaw), "\n")
+	for i, set:= range sets{
+		set = strings.TrimSpace(set)
+
+		sets[i] = set
+	}
+
+	return sets, nil
 
 }
 

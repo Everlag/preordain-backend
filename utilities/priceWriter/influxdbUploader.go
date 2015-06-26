@@ -1,5 +1,5 @@
 package main
-
+/*
 import(
 
 	"./../influxdbHandler"
@@ -51,3 +51,4 @@ func uploadSingleSourceResults(aPriceResult priceSources.PriceMap,
 	return err
 
 }
+*/

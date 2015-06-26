@@ -124,7 +124,7 @@ func retrieveRawSetData(url string) (SetData, error) {
 	}
 
 
-	if string(body) == badSetName {
+	if strings.TrimSpace(string(body)) == badSetName {
 		return SetData{}, fmt.Errorf("Set parsing failed, ", err)
 	}
 

@@ -2,7 +2,6 @@ package main
 
 import(
 
-	"fmt"
 	"log"
 
 	"./priceSources"
@@ -38,27 +37,4 @@ func storeFailedUpload(aPriceResult priceSources.PriceMap, err error,
 	}
 
 	ioutil.WriteFile(failureLocation, resultData, 0666)
-}
-
-type credentials struct{
-	RemoteLocation, DBName, User, Pass string
-
-	Write, Read bool
-}
-
-func getCredentials() (credentials, error) {
-	
-	data, err:=ioutil.ReadFile(influxdbCredentials)
-	if err!=nil {
-		return credentials{}, fmt.Errorf("Failed to read influxdbCredentials, ", err)
-	}
-
-	var someCreds credentials
-	err = json.Unmarshal(data, &someCreds)
-	if err!=nil {
-		return credentials{}, fmt.Errorf("Failed to unmarshal influxdbCredentials, ", err)
-	}
-
-	return someCreds, nil
-
 }

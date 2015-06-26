@@ -3,58 +3,48 @@ package main
 import(
 
 	"log"
+	"time"
 
-	"./../influxdbHandler"
+	"./../priceDBHandler.v2"
 
 	"./priceSources"
 
-	"time"
+	"github.com/jackc/pgx"
 )
 
 func main() {
 
 	aLogger:= priceSources.GetLogger("priceWriter.log", "priceWriter")
-	
-	creds, err:= getCredentials()
-	if err!=nil {
-		aLogger.Fatalln(err)
-	}
-
-	aLogger.Println("Credentials read")
 
 	
-	aClient, err:= influxdbHandler.GetClient(creds.RemoteLocation, creds.DBName,
-	 creds.User, creds.Pass,
-	 creds.Read, creds.Write)
+	pool, err:= priceDB.Connect()
 	if err!=nil {
 		aLogger.Fatalln("Failed to ping remote server at client creation, ", err)
 	}
 
-	aLogger.Println("Influxdb client active")
+	aLogger.Println("priceDB client active")
 
-	// Imports from a standard price source mtgprice seeds
-
-	RunPriceLoop(aClient, aLogger)
+	RunPriceLoop(pool, aLogger)
 	
 }
 
 // Attempts to run an update once an hour for each available price source.
 // It is likely that rate limiting will be experienced so we log any errors
 // received that aren't explicity rate limiting
-func RunPriceLoop(aClient *influxdbHandler.Client, aLogger *log.Logger) {
+func RunPriceLoop(pool *pgx.ConnPool, aLogger *log.Logger) {
 	aLogger.Println("Starting price loop")
 
 	for{
 
-		magiccardmarket(aClient, aLogger)
-		mtgprice(aClient, aLogger)
+		magiccardmarket(pool, aLogger)
+		mtgprice(pool, aLogger)
 
 		time.Sleep(time.Hour * time.Duration(1))
 
 	}
 }
 
-func mtgprice(aClient *influxdbHandler.Client, aLogger *log.Logger) {
+func mtgprice(pool *pgx.ConnPool, aLogger *log.Logger) {
 
 	prices, err:= priceSources.GetmtgpricePrices(aLogger)
 	if err!=nil {
@@ -66,11 +56,11 @@ func mtgprice(aClient *influxdbHandler.Client, aLogger *log.Logger) {
 		return
 	}
 
-	uploadPriceResults([]priceSources.PriceMap{prices}, aClient, aLogger)
+	uploadPriceResults([]priceSources.PriceMap{prices}, pool, aLogger)
 
 }
 
-func magiccardmarket(aClient *influxdbHandler.Client, aLogger *log.Logger) {
+func magiccardmarket(pool *pgx.ConnPool, aLogger *log.Logger) {
 	
 	prices, err:= priceSources.GetMKMPrices(aLogger)
 	if err!=nil {
@@ -82,7 +72,7 @@ func magiccardmarket(aClient *influxdbHandler.Client, aLogger *log.Logger) {
 		return
 	}
 
-	uploadPriceResults([]priceSources.PriceMap{prices}, aClient, aLogger)
+	uploadPriceResults([]priceSources.PriceMap{prices}, pool, aLogger)
 
 }
 
@@ -90,14 +80,14 @@ func magiccardmarket(aClient *influxdbHandler.Client, aLogger *log.Logger) {
 //
 // Logs Failures to upload
 func uploadPriceResults(pricingResults []priceSources.PriceMap,
-	aClient *influxdbHandler.Client,
+	pool *pgx.ConnPool,
 	aLogger *log.Logger) {
 
 	for _, aPriceResult:= range pricingResults{
 
 		aLogger.Println("Uploading data from ", aPriceResult.Source)
 
-		err:= uploadSingleSourceResults(aPriceResult, aClient)
+		err:= uploadSingleSourceResults(aPriceResult, pool)
 		if err!=nil {
 			// Write the data to a local file so we don't lose it
 			storeFailedUpload(aPriceResult, err, aLogger)
