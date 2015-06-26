@@ -64,8 +64,8 @@ CREATE TABLE prices.mtgprice (
 );
 
 CREATE INDEX mtgprice_name_index on prices.mtgprice(name);
-CREATE INDEX mtgprice_set_index on prices.mtgprice(set);
-CREATE INDEX mtgprice_time_index on prices.mtgprice(time);
+CREATE INDEX mtgprice_set_index on prices.mtgprice("set");
+CREATE INDEX mtgprice_time_index on prices.mtgprice("time");
 
 CREATE TABLE prices.magiccardmarket (
 
@@ -81,8 +81,8 @@ CREATE TABLE prices.magiccardmarket (
 );
 
 CREATE INDEX mkm_name_index on prices.magiccardmarket(name);
-CREATE INDEX mkm_set_index on prices.magiccardmarket(set);
-CREATE INDEX mkm_time_index on prices.magiccardmarket(time);
+CREATE INDEX mkm_set_index on prices.magiccardmarket("set");
+CREATE INDEX mkm_time_index on prices.magiccardmarket("time");
 
 /*The aggregate median is very necessary*/
 CREATE FUNCTION _final_median(anyarray) RETURNS int AS $$ 
