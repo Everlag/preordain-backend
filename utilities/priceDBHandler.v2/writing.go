@@ -69,6 +69,10 @@ func insertPrice(tx *pgx.Tx, p Price) (err error) {
 		return SourceError
 	}
 
+	// Normalize the price's usage of EM dash as it varies in
+	// our ecosystem for some reason.
+	p.Set = NormalizeEMDash(p.Set)
+
 	// Ignore the euro unless the price originates from a euro based source.
 	if p.Source == mkmpriceSource {
 		_, err = tx.Exec(statement, p.Name, p.Set,
