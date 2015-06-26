@@ -113,7 +113,9 @@ CREATE AGGREGATE median(anyelement) (
   INITCOND='{}'
 );
 
-/*Privleges for the pricewriter*/
+/*
+Privileges for the pricewriter
+*/
 REVOKE all privileges ON SCHEMA PUBLIC FROM priceWriter;
 GRANT connect ON DATABASE priceData TO priceWriter;
 GRANT usage ON SCHEMA PUBLIC TO priceWriter;
@@ -123,5 +125,13 @@ GRANT select, insert ON TABLE prices.magiccardmarket to priceWriter;
 GRANT select, insert ON TABLE prices.mtgprice to priceWriter;
 
 /*
-Privleges for the pricereader
+Privileges for the pricereader
 */
+
+REVOKE all privileges ON SCHEMA PUBLIC FROM priceReader;
+GRANT connect ON DATABASE priceData TO priceReader;
+GRANT usage ON SCHEMA PUBLIC TO priceReader;
+GRANT usage ON SCHEMA prices TO priceReader;
+
+GRANT select ON TABLE prices.magiccardmarket to priceWriter;
+GRANT select ON TABLE prices.mtgprice to priceWriter;
