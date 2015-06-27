@@ -133,5 +133,5 @@ GRANT connect ON DATABASE priceData TO priceReader;
 GRANT usage ON SCHEMA PUBLIC TO priceReader;
 GRANT usage ON SCHEMA prices TO priceReader;
 
-GRANT select ON TABLE prices.magiccardmarket to priceWriter;
-GRANT select ON TABLE prices.mtgprice to priceWriter;
+GRANT select ON TABLE prices.magiccardmarket to priceReader;
+GRANT select ON TABLE prices.mtgprice to priceReader;

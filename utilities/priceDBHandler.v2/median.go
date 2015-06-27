@@ -22,7 +22,7 @@ func GetCardMedianHistory(pool *pgx.ConnPool,
 func getMKMMedianHistory(pool *pgx.ConnPool,
 	name, set string) (Prices, error) {
 
-	rows, err := pool.Query(mtgpriceMedian, name, set)
+	rows, err := pool.Query(mkmMedian, name, set)
 	if err != nil {
 		return nil, err
 	}

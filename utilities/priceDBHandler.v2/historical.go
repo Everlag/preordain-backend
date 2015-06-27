@@ -22,6 +22,35 @@ func GetCardHistory(pool *pgx.ConnPool,
 func getMKMHistory(pool *pgx.ConnPool,
 	name, set string) (Prices, error) {
 
+	rows, err := pool.Query(mkmpriceHistory, name, set)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var prices Prices
+	for rows.Next() {
+		p := Price{}
+
+		var t time.Time
+		err = rows.Scan(&p.Name, &p.Set, &t, &p.Price, &p.Euro)
+		if err != nil {
+			return nil, ScanError
+		}
+
+		p.Time = Timestamp(t)
+		p.Source = magiccardmarket
+
+		prices = append(prices, p)
+	}
+
+	return prices, nil
+
+}
+
+func getmtgpriceHistory(pool *pgx.ConnPool,
+	name, set string) (Prices, error) {
+
 	rows, err := pool.Query(mtgpriceHistory, name, set)
 	if err != nil {
 		return nil, err
@@ -39,34 +68,7 @@ func getMKMHistory(pool *pgx.ConnPool,
 		}
 
 		p.Time = Timestamp(t)
-
-		prices = append(prices, p)
-	}
-
-	return prices, nil
-
-}
-
-func getmtgpriceHistory(pool *pgx.ConnPool,
-	name, set string) (Prices, error) {
-
-	rows, err := pool.Query(mkmpriceHistory, name, set)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-
-	var prices Prices
-	for rows.Next() {
-		p := Price{}
-
-		var t time.Time
-		err = rows.Scan(&p.Name, &p.Set, &t, &p.Price, &p.Source)
-		if err != nil {
-			return nil, ScanError
-		}
-
-		p.Time = Timestamp(t)
+		p.Source = mtgprice
 
 		prices = append(prices, p)
 	}

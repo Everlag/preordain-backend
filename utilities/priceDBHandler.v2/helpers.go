@@ -12,9 +12,9 @@ import (
 // marshal it to a timestamp rather than a string
 type Timestamp time.Time
 
-func (t *Timestamp) MarshalJSON() ([]byte, error) {
+func (t Timestamp) MarshalJSON() ([]byte, error) {
 
-	ts := time.Time(*t).Unix()
+	ts := time.Time(t).Unix()
 	stamp := fmt.Sprint(ts)
 
 	return []byte(stamp), nil
