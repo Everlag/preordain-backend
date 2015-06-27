@@ -6,10 +6,10 @@ See its lowest counterpart for an explanation of what magic it performs
 
 
 
-Select name, set, time, price, euro from 
+Select name, set, time, price from 
 (
 
-SELECT DISTINCT ON(set) name, set, time, price, euro from prices.mtgprice
+SELECT DISTINCT ON(set) name, set, time, price from prices.mtgprice
 where name=$1 and price>0 and
 set in
 (
