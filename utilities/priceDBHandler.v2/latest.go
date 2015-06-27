@@ -4,8 +4,6 @@ import (
 	"time"
 
 	"github.com/jackc/pgx"
-
-	"fmt"
 )
 
 func GetCardLatest(pool *pgx.ConnPool,
@@ -52,8 +50,6 @@ func getmtgpriceLatest(pool *pgx.ConnPool,
 	}
 
 	p.Time = Timestamp(t)
-
-	fmt.Println(t, p.Time)
 
 	p.Source = mtgprice
 
