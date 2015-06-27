@@ -37,6 +37,10 @@ const mkmPriceLatestHighest string = "mkmPriceLatestHighest"
 const mtgPriceSetLatest string = "mtgPriceSetLatest"
 const mkmPriceSetLatest string = "mkmPriceSetLatest"
 
+const mtgPriceClosest string = "mtgPriceClosest"
+const mkmPriceClosest string = "mkmPriceClosest"
+
+
 var statements = []string{
 	mtgpriceInsert, mkmpriceInsert,
 	mtgpriceHistory, mkmpriceHistory,
@@ -45,6 +49,7 @@ var statements = []string{
 	mtgPriceLatestLowest, mkmPriceLatestLowest,
 	mtgPriceLatestHighest, mkmPriceLatestHighest,
 	mtgPriceSetLatest, mkmPriceSetLatest,
+	mtgPriceClosest, mkmPriceClosest,
 }
 
 const statementLoc string = "sql"

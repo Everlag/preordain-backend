@@ -18,6 +18,7 @@ const DefaultPriceSource string = "mtgprice"
 const PriceDBError string = "Price DB lookup failed"
 const BadCard string = "Illegal Card Name"
 const BadSet string = "Illegal Set Name"
+const BadTime string = "Illegible time"
 const BadCardFilter string = BadCard + " || " + BadSet
 const BadCalculation string = "Failed Calculation"
 
@@ -86,6 +87,7 @@ func (aService *PriceService) register() error {
 	aService.registerMeta()
 	aService.registerHistorical()
 	aService.registerLatest()
+	aService.registerClosest()
 	aService.registerSets()
 
 	return nil
