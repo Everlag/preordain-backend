@@ -23,7 +23,7 @@ func main() {
 
 	logger := GetLogger("priceLogger.txt", "migrate")
 
-	//migrate(logger)
+	migrate(logger)
 
 	test(logger)
 }
@@ -166,7 +166,6 @@ func migrateCard(name string, influxdbSetToReal map[string]string,
 			if ok {
 				// Euro may or may not be present as a non-nil
 				euro = int32(euroFloating)
-				fmt.Println(euro)
 			}
 		}
 
