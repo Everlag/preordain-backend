@@ -16,7 +16,7 @@ import(
 )
 
 const BadUserName string = "User lookup failed"
-const BadPassword string = "Invalid password, needs to be >10 characters alphanumeric"
+const BadPassword string = "Invalid password, needs to be >10 characters"
 const BadSessionKey string = "Invalid Session Key"
 const BadCredentials string = "Invalid Credentials"
 const BadCaptcha string = "Invalid Re-Captcha"

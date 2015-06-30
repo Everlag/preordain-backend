@@ -98,7 +98,7 @@ func GetLogger(fName, name string) (aLogger *log.Logger) {
 	return
 }
 
-const passwordMinLength int = 8
+const passwordMinLength int = 10
 const passwordMaxLength int = 256
 
 const alphas string = "abcdefghijklmnopqrstuvwxyz"
@@ -123,11 +123,13 @@ func passwordMeetsRequirements(password string) bool {
 		return false
 	}
 
+	/* Let the client enforce complexity rules.
 	for _, charSet := range characterSets {
 		if !strings.ContainsAny(charSet, password) {
 			complexity = false
 		}
 	}
+	*/
 
 	return complexity && length
 
