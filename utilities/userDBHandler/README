@@ -1,6 +1,19 @@
 Security Notice:
 
 	Most session authentication can be bypassed by passing a nil sessionKey. It is the caller's responsibility to ensure that they are acquiring a non-nil session key when exposing this package to external sources.
+	
+Development Notes:
+
+	go-bindata is used to avoid having to copy the sql to every user of the data.
+
+	Ensure go-bindata is installed: go get -u github.com/jteeuwen/go-bindata/...
+
+	When adding or editing sql:
+		put inside sql directory as 'handle'.sql
+	
+		it must be added to the dbHandler as a constant then added to the statements.
+		
+		run 'go-bindata -pkg="userDB" sql' to regenerate bindings
 
 Deployment Notes:
 	

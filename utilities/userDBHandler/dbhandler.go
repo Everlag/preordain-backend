@@ -75,7 +75,7 @@ func fetchRawStatement(name string) (string, error) {
 	loc:= filepath.Join(statementLoc, name)
 	loc = loc + statementExtension
 
-	result, err:= ioutil.ReadFile(loc)
+	result, err:= Asset(loc)
 	if err!= nil{
 		return "", fmt.Errorf("failed to acquire statement, ", err)
 	}
