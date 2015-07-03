@@ -144,3 +144,32 @@ func (aService *UserService) resetPassword(req *restful.Request,
 	resp.WriteEntity(true)
 
 }
+
+// Allows a logged in user to acquire their currently used email.
+func (aService *UserService) getUserEmail(req *restful.Request,
+	resp *restful.Response) {
+	
+	userName, sessionKey, err:= getUserNameAndSessionKey(req)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusBadRequest, BodyReadFailure)
+		return
+	}
+	if sessionKey == nil {
+		resp.WriteErrorString(http.StatusBadRequest, BadCredentials)
+		return
+	}
+
+	err = userDB.SessionAuth(aService.pool, userName, sessionKey)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusBadRequest, BadCredentials)
+		return	
+	}
+
+	u, err:= userDB.GetUser(aService.pool, userName)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusBadRequest, DBfailure)
+	}
+
+	resp.WriteEntity(u.Email)
+
+}

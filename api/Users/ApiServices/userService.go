@@ -151,6 +151,18 @@ func (aService *UserService) register() error {
 		Returns(http.StatusOK, "A valid session code for the user", nil))
 
 	userService.Route(userService.
+		POST("/{userName}/Email").To(aService.getUserEmail).
+		// Docs
+		Doc("Attempts to get a user's email address").
+		Operation("getUserEmail").
+		Param(userService.PathParameter("userName",
+			"The name that identifies a user to our service").DataType("string")).
+		Reads(SessionKeyBody{}).
+		Returns(http.StatusBadRequest, SignupFailure, nil).
+		Returns(http.StatusBadRequest, BadCaptcha, nil).
+		Returns(http.StatusOK, "john@doe.me", nil))
+
+	userService.Route(userService.
 		GET("/{userName}/Collections/GetPublic").To(aService.getUserPublicCollections).
 		// Docs
 		Doc("Returns a list of collections designated public by that user").
