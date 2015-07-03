@@ -34,14 +34,36 @@ func (merch *Merch) SubCustomer(customer, plan string) (string, error) {
 
 }
 
-// Removes a given customer from stripe.
+// Updates a given customer to the provided plan.
+//
+// Requires the customer's id, sub id, and the plan id
+func (merch *Merch) UpdateSubCustomer(customerID, subID, plan string) error {
+	
+	subParams:= &stripe.SubParams{
+		Customer: customerID,
+		Plan: plan,
+	}
+
+	_, err := sub.Update(subID, subParams)
+
+	return err
+
+}
+
+// Removes a given customer's subscription
+//
+// NOTE: updating a subscription should use the dedicated update
+// method as that leverages stripe's prorating
 //
 // Requires both the customer's id and their accompanying
 // subscription id
 func (merch *Merch) UnSubCustomer(subID, customerID string) error {
 
-	return customer.Del(customerID)
+	subParams:= &stripe.SubParams{
+		Customer: customerID,
+	}
 
+	return sub.Cancel(subID, subParams)
 }
 
 // Adds a new customer with a given email and payment token.
@@ -66,5 +88,27 @@ func (merch *Merch) AddCustomer(token, email, coupon string) (string, error) {
 	}
 
 	return c.ID, nil
+
+}
+
+// Removes a customer from stripe
+func (merch *Merch) DeleteCustomer(customerID string) error {
+	return customer.Del(customerID)
+}
+
+// Updates a customer to a new payment token.
+//
+// Requires a new payment token to take the place of the one
+// used in the previous subscription.
+func (merch *Merch) UpdateCustomer(customerID, token string) error {
+	customerParams:= &stripe.CustomerParams{
+		Source: &stripe.SourceParams{
+	  		Token: token,
+	  	},
+	}
+
+	_, err := customer.Update(customerID, customerParams)
+
+	return err
 
 }

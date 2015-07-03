@@ -30,7 +30,7 @@ const DBWriteFailure string = "Database read failed"
 
 const BadPlanChoice string = "Invalid plan choice!"
 
-const StripeCustFailure string = "Stripe did not allow customer"
+const StripeCustFailure string = "Stripe did not allow customer change"
 const StripeSubFailure string = "Stripe did not allow subscription change"
 
 const mailGunMetaLoc string = "mailgunMeta.json"
@@ -304,6 +304,25 @@ func (aService *UserService) register() error {
 		To(aService.addSubUser).
 		// Docs
 		Doc("Attempts to subscribe a user with the provided plan").
+		Operation("subscribe").
+		Param(userService.PathParameter("userName",
+			"The name that identifies a user to our service").DataType("string")).
+		Reads(SubBody{}).
+		Returns(http.StatusBadRequest, BodyReadFailure, nil).
+		Returns(http.StatusUnauthorized, BadCredentials, nil).
+		Returns(http.StatusBadRequest, DBfailure, nil).
+		Returns(http.StatusBadRequest, BadPlanChoice, nil).
+		Returns(http.StatusBadRequest, StripeCustFailure, nil).
+		Returns(http.StatusBadRequest, StripeSubFailure, nil).
+		Writes(true).
+		Returns(http.StatusOK, "Successfully subbed", nil))
+
+
+	userService.Route(userService.
+		PATCH("/{userName}/Sub").
+		To(aService.modSubUser).
+		// Docs
+		Doc("Attempts to move a user to the provided plan. The user must already be subscribed to change.").
 		Operation("subscribe").
 		Param(userService.PathParameter("userName",
 			"The name that identifies a user to our service").DataType("string")).

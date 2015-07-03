@@ -16,7 +16,8 @@ type subEmailContents struct{
 	Name, Plan string
 }
 
-// Changes the current status of the user's subscription
+// Changes the current status of the user's subscription to another
+// plan
 //
 // By default all users are on the passive free plan.
 func (aService *UserService) modSubUser(req *restful.Request,
@@ -42,9 +43,72 @@ func (aService *UserService) modSubUser(req *restful.Request,
 		resp.WriteErrorString(http.StatusBadRequest, DBfailure)
 		return
 	}
+	// Make sure they've signed up before
+	if sub.CustomerID == userDB.DefaultID ||
+	sub.SubID == userDB.DefaultID {
+		resp.WriteErrorString(http.StatusBadRequest, BadPlanChoice)
+		return
+	}
 
-	// Remove them from stripe so we can set a new plan
-	aService.merch.UnSubCustomer(sub.CustomerID, sub.SubID)
+	// Make sure we aren't double charging them.
+	validChoice, err:= userDB.DifferentPlan(aService.pool,
+		userName, subContainer.Plan)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusBadRequest, DBfailure)
+		return
+	}
+	if !validChoice {
+		resp.WriteErrorString(http.StatusBadRequest, BadPlanChoice)
+		return
+	}
+
+	// Change the customer's payment method to the one they just provided
+	err = aService.merch.UpdateCustomer(sub.CustomerID,
+		subContainer.PaymentMethod)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusBadRequest, StripeCustFailure)
+		return
+	}
+
+	// Change the user's subscription status
+	err = aService.merch.UpdateSubCustomer(sub.CustomerID, sub.SubID,
+		subContainer.Plan)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusBadRequest, StripeSubFailure)
+		return
+	}
+
+	// Retain everything regarding their subscription apart from the plan
+	// and its various effects.
+	//
+	// Notice that we IGNORE the error as we want to send the user
+	// the following email to ensure they can contact us if we fail
+	// to change the DB but already have stripe charging them.
+	_ = userDB.ModSub(aService.pool,
+		userName, subContainer.Plan,
+		sub.CustomerID, sub.SubID, nil)
+
+	// Grab their email so we can let them know
+	u, err:= userDB.GetUser(aService.pool, userName)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusBadRequest, DBfailure)
+		return
+	}
+
+	// Email them that we were successful!
+	contents:= subEmailContents{
+		Name: userName,
+		Plan: subContainer.Plan,
+	}
+	targetAddress:= mailer.FormatAddress(userName, u.Email)
+	err = aService.mailer.SendPrepared("subSuccess", contents,
+		targetAddress, "Subscribed! - Preorda.in")
+	if err!=nil {
+		aService.logger.Println("failed to send email", err)
+	}
+
+
+	resp.WriteEntity(true)
 
 }
 
@@ -87,12 +151,23 @@ func (aService *UserService) addSubUser(req *restful.Request,
 		return
 	}
 
-	// Add them as a customer
-	custID, err:= aService.merch.AddCustomer(subContainer.PaymentMethod,
-		u.Email, subContainer.Coupon)
+	// Grab the customer's identification.
+	sub, err:= userDB.GetSub(aService.pool, userName, subContainer.SessionKey)
 	if err!=nil {
-		resp.WriteErrorString(http.StatusBadRequest, StripeCustFailure)
+		resp.WriteErrorString(http.StatusBadRequest, DBfailure)
 		return
+	}
+
+	// Check if we need to add them as a customer
+	custID:= sub.CustomerID
+	if custID == userDB.DefaultID {
+		// Add them as a customer as needed
+		custID, err = aService.merch.AddCustomer(subContainer.PaymentMethod,
+			u.Email, subContainer.Coupon)
+		if err!=nil {
+			resp.WriteErrorString(http.StatusBadRequest, StripeCustFailure)
+			return
+		}	
 	}
 
 	// Add them as a subscriber.
@@ -103,6 +178,10 @@ func (aService *UserService) addSubUser(req *restful.Request,
 	}
 
 	// Now update their entries in the database.
+	//
+	// Notice that we IGNORE the error as we want to send the user
+	// the following email to ensure they can contact us if we fail
+	// to change the DB but already have stripe charging them.
 	userDB.ModSub(aService.pool, userName, subContainer.Plan,
 		custID, subID, subContainer.SessionKey)
 
@@ -151,7 +230,7 @@ func (aService *UserService) unSubUser(req *restful.Request,
 		return
 	}
 
-	// Remove them from stripe
+	// Remove their subscription but retain their customerID
 	err = aService.merch.UnSubCustomer(sub.SubID, sub.CustomerID)
 	if err!=nil {
 		resp.WriteErrorString(http.StatusBadRequest, StripeSubFailure)
@@ -160,9 +239,9 @@ func (aService *UserService) unSubUser(req *restful.Request,
 
 	// Mod the sub to be the default free version.
 	//
-	// Set dummy customer and sub IDs
+	// Set dummy sub ID but hold onto that customerID
 	err = userDB.ModSub(aService.pool, userName, userDB.DefaultSubLevel,
-		userDB.DefaultID, userDB.DefaultID, subContainer.SessionKey)
+		sub.CustomerID, userDB.DefaultID, subContainer.SessionKey)
 	if err!=nil {
 		resp.WriteErrorString(http.StatusBadRequest, DBWriteFailure)
 		return
