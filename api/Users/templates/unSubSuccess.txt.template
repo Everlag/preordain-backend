@@ -1,0 +1,3 @@
+Hey {{.Name}}, you've successfully unsubscribed from {{.Plan}}.
+
+We are still ironing out bugs so if you are still getting charged please email contact@perfectlag.me to be manually unsubscribed.

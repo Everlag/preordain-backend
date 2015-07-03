@@ -1,0 +1,5 @@
+Hey {{.Name}}, if you requested a password reset you can find the code below.
+
+{{.ResetCode}}
+
+If you didn't request the reset you can safely ignore this email.

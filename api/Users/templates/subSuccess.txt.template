@@ -1,0 +1,7 @@
+Hey {{.Name}}, thanks for subscribing!
+
+Your support keeps preorda.in running. If you have any questions or issues with your subscription, please send them to contact@perfectlag.me.
+
+You should be receiving a receipt from stripe every month you are subscribed.
+
+Just in case, you can unsubscribe from your plan, {{.Plan}}, any time by clicking on the update button in the sidebar and hitting the unsubscribe button.
