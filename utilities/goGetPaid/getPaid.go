@@ -91,11 +91,6 @@ func (merch *Merch) AddCustomer(token, email, coupon string) (string, error) {
 
 }
 
-// Removes a customer from stripe
-func (merch *Merch) DeleteCustomer(customerID string) error {
-	return customer.Del(customerID)
-}
-
 // Updates a customer to a new payment token.
 //
 // Requires a new payment token to take the place of the one
