@@ -145,7 +145,7 @@ func setSubEffects(tx *pgx.Tx, user, sub string) error {
 // subscription level
 func addSub(tx *pgx.Tx, user string) error {
 	_, err:= tx.Exec("modSub", user, DefaultSubLevel, time.Now(),
-		"noCust", "noSub")
+		DefaultID, DefaultID)
 
 	return err
 }
