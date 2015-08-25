@@ -276,3 +276,57 @@ similarityBuilder2015/03/23 23:09:36 similarityBuilder.go:355: Counting time is 
 similarityBuilder2015/03/23 23:09:37 similarityBuilder.go:309: Time for this round is  1.8762382s
 similarityBuilder2015/03/23 23:09:42 similarityBuilder.go:149: Running rounds took  49.124238s
 similarityBuilder2015/03/23 23:09:42 similarityBuilder.go:150: Building confidence normalized card map
+similarityBuilder2015/07/18 15:20:32 similarityBuilder.go:97: No cache available, creating
+similarityBuilder2015/07/18 15:20:32 similarityBuilder.go:449: Acquiring raw card data
+similarityBuilder2015/07/18 15:20:33 similarityBuilder.go:464: Raw card map unmarshalled
+similarityBuilder2015/07/18 15:20:33 similarityBuilder.go:475: Raw card map acquired
+similarityBuilder2015/07/18 15:20:33 similarityBuilder.go:302: Starting round  1  with weight  1  n =  3
+similarityBuilder2015/07/18 15:20:33 similarityBuilder.go:351: nGrams found, time taken is  241.5307ms
+similarityBuilder2015/07/18 15:20:46 similarityBuilder.go:355: Counting time is  12.655607s
+similarityBuilder2015/07/18 15:20:47 similarityBuilder.go:309: Time for this round is  13.7547466s
+similarityBuilder2015/07/18 15:20:47 similarityBuilder.go:302: Starting round  2  with weight  1.15  n =  4
+similarityBuilder2015/07/18 15:20:47 similarityBuilder.go:351: nGrams found, time taken is  186.0236ms
+similarityBuilder2015/07/18 15:20:54 similarityBuilder.go:355: Counting time is  6.9863872s
+similarityBuilder2015/07/18 15:20:56 similarityBuilder.go:309: Time for this round is  8.7856157s
+similarityBuilder2015/07/18 15:20:56 similarityBuilder.go:302: Starting round  3  with weight  1.3  n =  5
+similarityBuilder2015/07/18 15:20:56 similarityBuilder.go:351: nGrams found, time taken is  191.5243ms
+similarityBuilder2015/07/18 15:20:57 similarityBuilder.go:355: Counting time is  1.7897273s
+similarityBuilder2015/07/18 15:20:59 similarityBuilder.go:309: Time for this round is  3.5939563s
+similarityBuilder2015/07/18 15:20:59 similarityBuilder.go:302: Starting round  4  with weight  1.6  n =  6
+similarityBuilder2015/07/18 15:20:59 similarityBuilder.go:351: nGrams found, time taken is  188.0239ms
+similarityBuilder2015/07/18 15:21:00 similarityBuilder.go:355: Counting time is  989.6257ms
+similarityBuilder2015/07/18 15:21:03 similarityBuilder.go:309: Time for this round is  3.4689405s
+similarityBuilder2015/07/18 15:21:03 similarityBuilder.go:302: Starting round  5  with weight  2  n =  7
+similarityBuilder2015/07/18 15:21:03 similarityBuilder.go:351: nGrams found, time taken is  216.5275ms
+similarityBuilder2015/07/18 15:21:03 similarityBuilder.go:355: Counting time is  612.0777ms
+similarityBuilder2015/07/18 15:21:06 similarityBuilder.go:309: Time for this round is  3.0388858s
+similarityBuilder2015/07/18 15:21:06 similarityBuilder.go:302: Starting round  6  with weight  2.5  n =  8
+similarityBuilder2015/07/18 15:21:06 similarityBuilder.go:351: nGrams found, time taken is  189.5241ms
+similarityBuilder2015/07/18 15:21:06 similarityBuilder.go:355: Counting time is  249.5317ms
+similarityBuilder2015/07/18 15:21:08 similarityBuilder.go:309: Time for this round is  2.1327708s
+similarityBuilder2015/07/18 15:21:08 similarityBuilder.go:302: Starting round  7  with weight  3.5  n =  9
+similarityBuilder2015/07/18 15:21:08 similarityBuilder.go:351: nGrams found, time taken is  167.0212ms
+similarityBuilder2015/07/18 15:21:08 similarityBuilder.go:355: Counting time is  186.0237ms
+similarityBuilder2015/07/18 15:21:10 similarityBuilder.go:309: Time for this round is  2.1757763s
+similarityBuilder2015/07/18 15:21:10 similarityBuilder.go:302: Starting round  8  with weight  5  n =  10
+similarityBuilder2015/07/18 15:21:10 similarityBuilder.go:351: nGrams found, time taken is  147.5187ms
+similarityBuilder2015/07/18 15:21:10 similarityBuilder.go:355: Counting time is  119.5152ms
+similarityBuilder2015/07/18 15:21:12 similarityBuilder.go:309: Time for this round is  2.0292576s
+similarityBuilder2015/07/18 15:21:12 similarityBuilder.go:302: Starting round  9  with weight  6.5  n =  11
+similarityBuilder2015/07/18 15:21:12 similarityBuilder.go:351: nGrams found, time taken is  141.518ms
+similarityBuilder2015/07/18 15:21:12 similarityBuilder.go:355: Counting time is  81.0103ms
+similarityBuilder2015/07/18 15:21:14 similarityBuilder.go:309: Time for this round is  1.9952533s
+similarityBuilder2015/07/18 15:21:14 similarityBuilder.go:302: Starting round  10  with weight  8.5  n =  12
+similarityBuilder2015/07/18 15:21:14 similarityBuilder.go:351: nGrams found, time taken is  132.0167ms
+similarityBuilder2015/07/18 15:21:14 similarityBuilder.go:355: Counting time is  60.5077ms
+similarityBuilder2015/07/18 15:21:16 similarityBuilder.go:309: Time for this round is  1.9557483s
+similarityBuilder2015/07/18 15:21:16 similarityBuilder.go:302: Starting round  11  with weight  10  n =  13
+similarityBuilder2015/07/18 15:21:16 similarityBuilder.go:351: nGrams found, time taken is  125.0158ms
+similarityBuilder2015/07/18 15:21:16 similarityBuilder.go:355: Counting time is  49.5063ms
+similarityBuilder2015/07/18 15:21:18 similarityBuilder.go:309: Time for this round is  2.0087551s
+similarityBuilder2015/07/18 15:21:18 similarityBuilder.go:302: Starting round  12  with weight  12  n =  14
+similarityBuilder2015/07/18 15:21:18 similarityBuilder.go:351: nGrams found, time taken is  122.5155ms
+similarityBuilder2015/07/18 15:21:18 similarityBuilder.go:355: Counting time is  42.5054ms
+similarityBuilder2015/07/18 15:21:20 similarityBuilder.go:309: Time for this round is  1.9207439s
+similarityBuilder2015/07/18 15:21:24 similarityBuilder.go:149: Running rounds took  51.4970393s
+similarityBuilder2015/07/18 15:21:24 similarityBuilder.go:150: Building confidence normalized card map

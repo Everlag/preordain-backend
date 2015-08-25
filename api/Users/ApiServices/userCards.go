@@ -8,6 +8,8 @@ import(
 
 	"net/http"
 
+	"fmt"
+
 )
 
 // Acquires the complete collection for a user
@@ -63,6 +65,8 @@ func (aService *UserService) getCollectionPublic(req *restful.Request,
 		return
 	}
 
+	fmt.Println(meta)
+
 	if meta.Privacy == "Private" {
 		resp.WriteErrorString(http.StatusBadRequest, BadCredentials)
 		return	
@@ -76,7 +80,9 @@ func (aService *UserService) getCollectionPublic(req *restful.Request,
 			resp.WriteErrorString(http.StatusBadRequest, BadCredentials)
 			return
 		}	
-	}	
+	}
+
+	fmt.Println(history)
 
 	current, err:= userDB.GetCollectionContents(aService.pool,
 		nil, userName, collectionName)
