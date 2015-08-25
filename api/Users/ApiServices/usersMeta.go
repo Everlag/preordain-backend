@@ -29,7 +29,8 @@ func (aService *UserService) createUser(req *restful.Request,
 		return
 	}
 
-	if (someUserData.Nonce == 0){
+	valid, err:= aService.validator.Validate(someUserData.RecaptchaResponseField)
+	if err!=nil || !valid {
 		resp.WriteErrorString(http.StatusBadRequest, BadCaptcha)
 		return
 	}
@@ -90,7 +91,9 @@ func (aService *UserService) requestPasswordReset(req *restful.Request,
 		return
 	}
 
-	if (resetRequestContainer.Nonce == 0){
+
+	valid, err:= aService.validator.Validate(resetRequestContainer.RecaptchaResponseField)
+	if err!=nil || !valid {
 		resp.WriteErrorString(http.StatusBadRequest, BadCaptcha)
 		return
 	}

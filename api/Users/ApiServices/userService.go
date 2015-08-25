@@ -9,6 +9,8 @@ import(
 
 	"./../../../utilities/mailer"
 
+	"./../../../utilities/recaptcha"
+
 	"./../../../utilities/goGetPaid"
 
 	"net/http"
@@ -34,6 +36,7 @@ const StripeCustFailure string = "Stripe did not allow customer change"
 const StripeSubFailure string = "Stripe did not allow subscription change"
 
 const mailGunMetaLoc string = "mailgunMeta.json"
+const recaptchaMetaLoc string = "recaptchaMeta.json"
 const merchantMetaLoc string  = "merchMeta.json"
 
 type UserService struct{
@@ -43,6 +46,7 @@ type UserService struct{
 	logger *log.Logger
 
 	mailer *mailer.Mailer
+	validator *recaptcha.Validator
 	merch *getPaid.Merch
 
 }
@@ -66,6 +70,9 @@ func NewUserService() *UserService {
 
 	// Acquire and set up all requisites for sending mail
 	aService.setupMailing(mailGunMetaLoc)
+
+	// Make sure we can rate limit expensive operations
+	aService.setupRecaptcha(recaptchaMetaLoc)
 
 	aService.setupMerchant(merchantMetaLoc)
 
@@ -92,6 +99,16 @@ func (aService *UserService) setupMailing(metaLoc string) {
 
 	aService.mailer = mailer
 
+}
+
+// Readies our ability to accept recaptcha 2.0 responses.
+func (aService *UserService) setupRecaptcha(loc string) {
+	validator, err:=  recaptcha.GetValidatorFromFile(loc)
+	if err!=nil {
+		aService.logger.Fatalln("Failed to get recaptcha validator", err)
+	}
+
+	aService.validator = validator
 }
 
 // Sets up our stripe merchant so we can actually make money!
