@@ -21,6 +21,14 @@ func (aService *PriceService) registerMeta() {
 		Returns(http.StatusOK, "All available sets", nil))
 
 	priceService.Route(priceService.
+		GET("/SetToShort").To(aService.getSetToShortMap).
+		// Docs
+		Doc("Returns all available sets' mapping to their short codes").
+		Operation("getSetToShortMap").
+		Writes(map[string]string{}).
+		Returns(http.StatusOK, "Set names to short codes", nil))
+
+	priceService.Route(priceService.
 		GET("/SourceList").To(aService.getPriceSourcesList).
 		// Docs
 		Doc("Returns all available price sources").
@@ -43,6 +51,15 @@ func (aService *PriceService) getSetList(req *restful.Request,
 	setCacheHeader(resp)
 
 	resp.WriteEntity(setList)
+
+}
+
+func (aService *PriceService) getSetToShortMap(req *restful.Request,
+	resp *restful.Response) {
+
+	setCacheHeader(resp)
+
+	resp.WriteEntity(setsToShort)
 
 }
 

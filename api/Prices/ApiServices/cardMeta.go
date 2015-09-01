@@ -13,6 +13,10 @@ import(
 // A global map used to ensure we only search for valid sets
 var sets = make(map[string]bool)
 
+// A global map from set names to their short (typically) 3 character
+// codes. Exposed for image usage 
+var setsToShort = make(map[string]string)
+
 // To ensure we only search for and allow into trades cards
 // that are actual magic cards. These can be cards that aren't in the list of
 // valid sets but we whitelist input to be within the domain of all cards
@@ -31,7 +35,7 @@ var setsToCardsAndRarity = make(SetsToCards)
 func populateCardMaps() error {
 	
 	var setErr, cardErr, cardRarityErr error
-	sets, setErr = populateSets()
+	sets, setsToShort, setErr = populateSets()
 	cards, cardsToSets, cardErr = populateCardsTranslationMap(sets)
 	setsToCardsAndRarity, cardRarityErr = populateCardsRarityMap(sets)
 	if cardErr!=nil {
@@ -48,14 +52,14 @@ func populateCardMaps() error {
 
 }
 
-func populateSets() (map[string]bool, error) {
+func populateSets() (map[string]bool, map[string]string, error) {
 
 	sets:= make(map[string]bool)
 
 	// Acquire the list of valid sets we'll deal with
 	setList, err:= getSetList()
 	if err!=nil {
-		return sets, err
+		return sets, nil, err
 	}
 
 	// Adds names of sets we use
@@ -63,7 +67,20 @@ func populateSets() (map[string]bool, error) {
 		sets[aSet] = true
 	}
 
-	return sets, nil
+	// Acquire the mapping from set names to set codes
+	setMap, err:= getSetsRaw()
+	if err!=nil {
+		return sets, nil, err
+	}
+
+	var setsToShort = make(map[string]string)
+
+	for c, set:= range setMap{
+		setsToShort[set.Name] = c
+	}
+
+
+	return sets, setsToShort, nil
 
 }
 
@@ -219,6 +236,26 @@ func (aSetToCardsMap SetsToCards) addCardToSet(aSet string,
 
 // Acquires each set and returns it as a map from full names to the set
 func getSets() (map[string]set, error) {
+
+	var aSetMap setMap
+	aSetMap, err:= getSetsRaw()
+	if err!=nil {
+		return map[string]set{},
+		err
+	}
+
+	resultMap:= make(map[string]set)
+
+	for _, aSet:= range aSetMap{
+		resultMap[aSet.Name] = aSet
+	}
+
+	return resultMap, nil
+}
+
+// Acquires each set and returns it as a map from short codes
+// to full names of sets
+func getSetsRaw() (map[string]set, error) {
 	// Acquire the map of sets
 	setData, err:= ioutil.ReadFile("AllSets-x.json")
 	if err!=nil {
@@ -233,11 +270,5 @@ func getSets() (map[string]set, error) {
 		err
 	}
 
-	resultMap:= make(map[string]set)
-
-	for _, aSet:= range aSetMap{
-		resultMap[aSet.Name] = aSet
-	}
-
-	return resultMap, nil
+	return aSetMap, nil
 }
