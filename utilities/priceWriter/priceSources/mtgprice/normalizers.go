@@ -24,6 +24,10 @@ var dirtySetNames = map[string]string{
 	"Rivals Quick Start Set":"",
 	"Modern Event Deck 2014":"",
 	"Vintage Masters": "",
+	"Battle for Zendikar Foil":"",
+	"Battle for Zendikar":"",
+	"Zendikar Expedition":"",
+
 
 	//now supported product!
 	//"Duels of the Planeswalkers": "",

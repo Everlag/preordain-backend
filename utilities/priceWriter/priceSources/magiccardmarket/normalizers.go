@@ -21,6 +21,7 @@ var dirtyToCleanSetNames = map[string]string{
 	"Judge Rewards Promos": "Judge Gift Program",
 	"Harper Prism Promos": "Media Inserts",
 	"Duels of the Planeswalkers Promos": "Duels of the Planeswalkers",
+	"Zendikar Expeditions": "Zendikar Expedition",
 
 	"Conspiracy":"Magic: The Gathering—Conspiracy",
 
