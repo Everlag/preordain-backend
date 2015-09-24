@@ -211,11 +211,19 @@ func (cardData *cardMap) cleanSetNames(aLogger *log.Logger) {
 		aLogger.Fatalln("Failed to acquire supported setlist, ", err)
 	}
 
+	// We need to translate from set codes to names
+	translator:= getSetCodeToSetNameTranslator(aLogger)
+	if err!=nil {
+		aLogger.Fatalln("Failed to acquire set code translator, ", err)
+	}
+
 	for _, aCard:= range *cardData {
 		
 		properPrintings:= make([]string, 0)
 
 		for _, aPrinting:= range aCard.Printings{
+
+			aPrinting = translator[aPrinting]
 
 			foilName, ok:= setMap[aPrinting]
 			if !ok {
@@ -255,7 +263,10 @@ type card struct{
 	Colors []string
 	Power, Toughness, Type, ImageName string
 	Printings, Types, SuperTypes, SubTypes []string
-	Legalities map[string]string
+	Legalities []struct{
+		Format string
+		Legality string
+	}
 	Reserved bool
 	Loyalty int
 

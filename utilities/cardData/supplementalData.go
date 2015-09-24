@@ -46,6 +46,22 @@ func getSetNameToSetCodeTranslator(aLogger *log.Logger) map[string]string {
 	return properTranslator
 }
 
+func getSetCodeToSetNameTranslator(aLogger *log.Logger) map[string]string {
+
+	poorTranslator, err:= buildSetData()
+	if err != nil {
+		aLogger.Fatalf("Failed to unmarhsal AllSets-x ", err)
+	}
+
+	properTranslator:= make(map[string]string)
+
+	for _, aSetMeta:= range poorTranslator{
+		properTranslator[aSetMeta.Code] = aSetMeta.Name
+	}
+
+	return properTranslator
+}
+
 //acquires the card data located only in our supplementary AllSets-x.json
 func stapleOnSetSpecificData(aCardMap cardMap, aLogger *log.Logger) {
 	//thanks to AllSets using codes instead of names as keys, we get to
