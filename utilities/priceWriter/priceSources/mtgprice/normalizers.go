@@ -24,10 +24,6 @@ var dirtySetNames = map[string]string{
 	"Rivals Quick Start Set":"",
 	"Modern Event Deck 2014":"",
 	"Vintage Masters": "",
-	"Battle for Zendikar Foil":"",
-	"Battle for Zendikar":"",
-	"Zendikar Expedition":"",
-
 
 	//now supported product!
 	//"Duels of the Planeswalkers": "",
@@ -48,6 +44,7 @@ var dirtySetNames = map[string]string{
 	//expert level sets with names modified
 	"Ravnica: City of Guilds": "Ravnica",
 	"Journey into Nyx": "Journey_Into_Nyx",
+	"Zendikar Expedition":"Zendikar Expeditions",
 
 	//core-or core equivalent- sets
 	"Revised Edition": "Revised",
