@@ -10,6 +10,8 @@ import(
 
 	"sort"
 	
+	"../mtgjson"
+
 	"./commanderDB"
 	"./similarityDB"
 	"./categoriesDB"
@@ -280,18 +282,33 @@ type card struct{
 
 //acquires basic card data for our process
 func buildBasicData(aLogger *log.Logger) cardMap {
-	
-	//grab the card data hosted on disk
-	cardData, err:= ioutil.ReadFile("AllCards-x.json")
+
+	foreignMap, err:= mtgjson.AllCardsX()
 	if err!=nil {
-		aLogger.Fatalf("Failed to read AllCards-x.json")
+		aLogger.Fatalf("", err)
 	}
 
-	//unmarshal it into a map of string to card with relevant data
-	var aCardMap cardMap
-	err = json.Unmarshal(cardData, &aCardMap)
-	if err!=nil {
-		aLogger.Fatalf("Failed to unmarshal AllCards-x.json, ", err)
+	// Convert to our extended structure
+	// Yes, I feel bad.
+	aCardMap:= make(cardMap)
+	for _, c:= range foreignMap{
+		aCardMap[c.Name] = &card{
+			Name: c.Name,
+			Text: c.Text,
+			ManaCost: c.ManaCost,
+			Colors: c.Colors,
+			Power: c.Power,
+			Toughness: c.Toughness,
+			ImageName: c.ImageName,
+			Printings: c.Printings,
+			Type: c.Type,
+			Types: c.Types,
+			SuperTypes: c.SuperTypes,
+			SubTypes: c.SubTypes,
+			Legalities: c.Legalities,
+			Reserved: c.Reserved,
+			Loyalty: c.Loyalty,
+		}
 	}
 
 	return aCardMap

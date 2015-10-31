@@ -2,8 +2,7 @@ package ApiServices
 
 import(
 
-	"encoding/json"
-	"io/ioutil"
+	"./../../../utilities/mtgjson"
 
 	"strings"
 	"sort"
@@ -68,7 +67,7 @@ func populateSets() (map[string]bool, map[string]string, error) {
 	}
 
 	// Acquire the mapping from set names to set codes
-	setMap, err:= getSetsRaw()
+	setMap, err:= mtgjson.AllSetsX()
 	if err!=nil {
 		return sets, nil, err
 	}
@@ -91,15 +90,9 @@ func populateCardsTranslationMap(validSets map[string]bool) (map[string]bool,
 	cardsToSets:= make(map[string]map[string]bool)
 
 	// Acquire the map of card names
-	cardData, err:= ioutil.ReadFile("AllCards-x.json")
+	aCardList, err:= mtgjson.AllCardsX()
 	if err!=nil {
-		return cards, cardsToSets, err
-	}
-
-	var aCardList cardMap
-	err = json.Unmarshal(cardData, &aCardList)
-	if err!=nil {
-		return cards, cardsToSets, err
+		return nil, nil, err
 	}
 
 	// Also acquire the sets we support and sort them so
@@ -237,38 +230,21 @@ func (aSetToCardsMap SetsToCards) addCardToSet(aSet string,
 // Acquires each set and returns it as a map from full names to the set
 func getSets() (map[string]set, error) {
 
-	var aSetMap setMap
-	aSetMap, err:= getSetsRaw()
+	aSetMap, err:= mtgjson.AllSetsX()
 	if err!=nil {
-		return map[string]set{},
-		err
+		return nil, err
 	}
 
 	resultMap:= make(map[string]set)
 
 	for _, aSet:= range aSetMap{
-		resultMap[aSet.Name] = aSet
+		s:= set{Name: aSet.Name, Cards: make([]setSpecficCard,
+			len(aSet.Cards))}
+		for i, c:= range aSet.Cards{
+			s.Cards[i] = setSpecficCard{Name: c.Name, Rarity: c.Rarity}
+		}
+		resultMap[aSet.Name] = s
 	}
 
 	return resultMap, nil
-}
-
-// Acquires each set and returns it as a map from short codes
-// to full names of sets
-func getSetsRaw() (map[string]set, error) {
-	// Acquire the map of sets
-	setData, err:= ioutil.ReadFile("AllSets-x.json")
-	if err!=nil {
-		return map[string]set{},
-		err
-	}
-
-	var aSetMap setMap
-	err = json.Unmarshal(setData, &aSetMap)
-	if err!=nil {
-		return map[string]set{},
-		err
-	}
-
-	return aSetMap, nil
 }

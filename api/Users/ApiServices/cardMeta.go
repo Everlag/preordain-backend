@@ -2,8 +2,7 @@ package ApiServices
 
 import(
 
-	"encoding/json"
-	"io/ioutil"
+	"./../../../utilities/mtgjson"
 
 	"strings"
 	"sort"
@@ -74,15 +73,9 @@ func populateCardsTranslationMap(validSets map[string]bool) (map[string]bool,
 	cardsToSets:= make(map[string]map[string]bool)
 
 	// Acquire the map of card names
-	cardData, err:= ioutil.ReadFile("AllCards-x.json")
+	aCardList, err:= mtgjson.AllCardsX()
 	if err!=nil {
-		return cards, cardsToSets, err
-	}
-
-	var aCardList cardMap
-	err = json.Unmarshal(cardData, &aCardList)
-	if err!=nil {
-		return cards, cardsToSets, err
+		return nil, nil, err
 	}
 
 	// Also acquire the sets we support and sort them so
@@ -131,10 +124,9 @@ func populateCardsRarityMap(validSets map[string]bool) (SetsToCards, error) {
 	
 	aSetToCardsMap:= make(SetsToCards)
 
-	setMap, err:= getSets()
+	setMap, err:= mtgjson.AllSetsX()
 	if err!=nil {
-		return aSetToCardsMap,
-		err
+		return nil, err
 	}
 
 	for _, aSet:= range setMap{
@@ -144,7 +136,10 @@ func populateCardsRarityMap(validSets map[string]bool) (SetsToCards, error) {
 		}
 
 		for _, aCard:= range aSet.Cards{
-			aSetToCardsMap.addCardToSet(aSet.Name, aCard)
+			aSetToCardsMap.addCardToSet(aSet.Name, setSpecficCard{
+				Name: aCard.Name,
+				Rarity: aCard.Rarity,
+				})
 		}
 	}
 
@@ -215,29 +210,4 @@ func (aSetToCardsMap SetsToCards) addCardToSet(aSet string,
 
 	aSetToCardsMap[aSet] = append(aSetToCardsMap[aSet], aCard)
 
-}
-
-// Acquires each set and returns it as a map from full names to the set
-func getSets() (map[string]set, error) {
-	// Acquire the map of sets
-	setData, err:= ioutil.ReadFile("AllSets-x.json")
-	if err!=nil {
-		return map[string]set{},
-		err
-	}
-
-	var aSetMap setMap
-	err = json.Unmarshal(setData, &aSetMap)
-	if err!=nil {
-		return map[string]set{},
-		err
-	}
-
-	resultMap:= make(map[string]set)
-
-	for _, aSet:= range aSetMap{
-		resultMap[aSet.Name] = aSet
-	}
-
-	return resultMap, nil
 }
