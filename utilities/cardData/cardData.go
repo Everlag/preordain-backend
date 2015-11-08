@@ -10,7 +10,7 @@ import(
 
 	"sort"
 	
-	"../mtgjson"
+	"../../common/mtgjson"
 
 	"./commanderDB"
 	"./similarityDB"
