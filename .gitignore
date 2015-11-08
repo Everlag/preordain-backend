@@ -17,3 +17,5 @@ twitterRenders/
 *.exe
 *.crt
 *.key
+*.last
+*.log
