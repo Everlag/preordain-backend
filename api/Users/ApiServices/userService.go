@@ -5,13 +5,13 @@ import(
 	"github.com/emicklei/go-restful"
 
 	"github.com/jackc/pgx"
-	"./../../../utilities/userDBHandler"
+	"./userDBHandler"
 
-	"./../../../utilities/mailer"
+	"./mailer"
 
-	"./../../../utilities/recaptcha"
+	"./recaptcha"
 
-	"./../../../utilities/goGetPaid"
+	"./goGetPaid"
 
 	"net/http"
 	"log"

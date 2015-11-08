@@ -2,7 +2,7 @@ package ApiServices
 
 import(
 
-	"./../../../utilities/userDBHandler"
+	"./userDBHandler"
 
 )
 

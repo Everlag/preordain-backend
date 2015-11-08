@@ -2,8 +2,8 @@ package ApiServices
 
 import(
 
-	"./../../../utilities/userDBHandler"
-	"./../../../utilities/mailer"
+	"./userDBHandler"
+	"./mailer"
 
 	"github.com/emicklei/go-restful"
 

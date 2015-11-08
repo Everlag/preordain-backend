@@ -8,7 +8,7 @@ import(
 	"time"
 	"strconv"
 
-	"./../../../utilities/priceDBHandler.v2"
+	"./priceDBHandler.v2"
 )
 
 // Register price data returning singular points
