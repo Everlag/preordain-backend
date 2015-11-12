@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="50.981468mm"
+   height="84.666664mm"
+   viewBox="0 0 180.643 299.99999"
+   id="svg3515"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Zendikar Expedition.tweaked.svg">
+  <defs
+     id="defs3517" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="125.3215"
+     inkscape:cy="141.42858"
+     inkscape:document-units="px"
+     inkscape:current-layer="g3337"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3520">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-249.6785,-373.79078)">
+    <g
+       id="g3337"
+       transform="translate(249.5005,373.79078)">
+      <g
+         id="g3339">
+        <linearGradient
+           y2="170.5312"
+           x2="173.72099"
+           y1="85.131302"
+           x1="42.216801"
+           gradientUnits="userSpaceOnUse"
+           id="SVGID_1_">
+          <stop
+             id="stop3342"
+             style="stop-color:#A42A28"
+             offset="0" />
+          <stop
+             id="stop3344"
+             style="stop-color:#E48728"
+             offset="0.5" />
+          <stop
+             id="stop3346"
+             style="stop-color:#A42A28"
+             offset="1" />
+        </linearGradient>
+        <polygon
+           id="polygon3348"
+           points="90.724,10.438 174.02,170.072 89.474,217.973 10.52,170.741 "
+           style="fill:#000000" />
+        <path
+           id="path3350"
+           d="M 90.813,20.876 167.686,168.201 89.54,212.476 16.739,168.926 90.813,20.876 M 90.635,0 4.3,172.556 89.409,223.469 180.353,171.943 90.635,0 l 0,0 z"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="g3352">
+        <linearGradient
+           y2="276.61249"
+           x2="148.5238"
+           y1="191.2095"
+           x1="17.014601"
+           gradientUnits="userSpaceOnUse"
+           id="SVGID_2_">
+          <stop
+             id="stop3355"
+             style="stop-color:#A42A28"
+             offset="0" />
+          <stop
+             id="stop3357"
+             style="stop-color:#E48728"
+             offset="0.55" />
+          <stop
+             id="stop3359"
+             style="stop-color:#A42A28"
+             offset="1" />
+        </linearGradient>
+        <polygon
+           id="polygon3361"
+           points="171.598,203.01 136.421,295.25 40.81,295.25 8.892,203.718 89.635,250.653 "
+           style="fill:#000000" />
+        <path
+           id="path3363"
+           d="m 162.374,213.866 -29.226,76.634 -88.964,0 -26.58,-76.223 67.257,39.096 4.774,2.775 4.774,-2.775 67.965,-39.507 m 18.447,-21.712 -91.187,53.005 -89.456,-52 37.258,106.841 102.258,0 41.127,-107.846 0,0 z"
+           inkscape:connector-curvature="0"
+           style="fill:#000000" />
+      </g>
+    </g>
+  </g>
+</svg>
