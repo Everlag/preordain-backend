@@ -17,14 +17,14 @@ func (aService *PriceService) registerHistorical() {
 	priceService.Route(priceService.
 		GET("/Card/{cardName}/{setName}").To(aService.getCardSpecificSet).
 		// Docs
-		Doc("Returns all prices for a printing of a card since the start of time").
+		Doc("All prices for a printing of a card since the start of time").
 		Operation("getCardSpecificSet").
 		Param(priceService.PathParameter("cardName",
-			"The name of a Magic: the Gathering card").DataType("string")).
+			"Name of a Magic: the Gathering card").DataType("string")).
 		Param(priceService.PathParameter("setName",
-			"The name of a Magic: the Gathering set").DataType("string")).
+			"Name of a Magic: the Gathering set").DataType("string")).
 		Param(priceService.QueryParameter("source",
-			"The name of a valid price source").DataType("string")).
+			"Valid price source").DataType("string")).
 		Writes(priceDB.Prices{}).
 		Returns(http.StatusInternalServerError, "Price DB lookup failed", nil).
 		Returns(http.StatusBadRequest, BadCardFilter, nil).
@@ -34,14 +34,14 @@ func (aService *PriceService) registerHistorical() {
 		GET("/Card/{cardName}/{setName}/WeeksMedian").
 		To(aService.getCardWeeksMedian).
 		// Docs
-		Doc("Returns all prices for a printing of a card since the start of time; Price Data is granular down to a week. Only for mtgprice").
+		Doc("All prices for a printing of a card since the start of time with week granularity").
 		Operation("getCardWeeksMedian").
 		Param(priceService.PathParameter("cardName",
-			"The name of a Magic: the Gathering card").DataType("string")).
+			"Name of a Magic: the Gathering card").DataType("string")).
 		Param(priceService.PathParameter("setName",
-			"The name of a Magic: the Gathering set").DataType("string")).
+			"Name of a Magic: the Gathering set").DataType("string")).
 		Param(priceService.QueryParameter("source",
-			"The name of a valid price source").DataType("string")).
+			"Valid price source").DataType("string")).
 		Writes(priceDB.Prices{}).
 		Returns(http.StatusInternalServerError, "Price DB lookup failed", nil).
 		Returns(http.StatusBadRequest, BadCardFilter, nil).

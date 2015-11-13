@@ -17,14 +17,14 @@ func (aService *PriceService) registerLatest() {
 	priceService.Route(priceService.
 		GET("/Card/{cardName}/{setName}/Latest").To(aService.getCardLatestPoint).
 		// Docs
-		Doc("Returns latest price for a printing of a card").
+		Doc("Latest price for a printing of a card").
 		Operation("getCardLatestPoint").
 		Param(priceService.PathParameter("cardName",
-			"The name of a Magic: the Gathering card").DataType("string")).
+			"Name of a Magic: the Gathering card").DataType("string")).
 		Param(priceService.PathParameter("setName",
-			"The name of a Magic: the Gathering set").DataType("string")).
+			"Name of a Magic: the Gathering set").DataType("string")).
 		Param(priceService.QueryParameter("source",
-			"The name of a valid price source").DataType("string")).
+			"Valid price source").DataType("string")).
 		Writes(priceDB.Prices{}).
 		Returns(http.StatusInternalServerError, "Price DB lookup failed", nil).
 		Returns(http.StatusBadRequest, BadCardFilter, nil).
@@ -33,12 +33,12 @@ func (aService *PriceService) registerLatest() {
 	priceService.Route(priceService.
 		GET("/Card/{cardName}/LatestLowest").To(aService.getCardLatestLowestPoint).
 		// Docs
-		Doc("Returns latest price for a printing of a card").
+		Doc("Lowest, latest price for among printings of a card").
 		Operation("getCardLatestLowestPoint").
 		Param(priceService.PathParameter("cardName",
-			"The name of a Magic: the Gathering card").DataType("string")).
+			"Name of a Magic: the Gathering card").DataType("string")).
 		Param(priceService.QueryParameter("source",
-			"The name of a valid price source").DataType("string")).
+			"Valid price source").DataType("string")).
 		Writes(priceDB.Price{}).
 		Returns(http.StatusInternalServerError, "Price DB lookup failed", nil).
 		Returns(http.StatusBadRequest, BadCardFilter, nil).
@@ -47,12 +47,12 @@ func (aService *PriceService) registerLatest() {
 	priceService.Route(priceService.
 		GET("/Card/{cardName}/LatestHighest").To(aService.getCardLatestHighestPoint).
 		// Docs
-		Doc("Returns latest price for a printing of a card").
+		Doc("Highest, latest price for among printings of a card").
 		Operation("getCardLatestHighestPoint").
 		Param(priceService.PathParameter("cardName",
-			"The name of a Magic: the Gathering card").DataType("string")).
+			"Name of a Magic: the Gathering card").DataType("string")).
 		Param(priceService.QueryParameter("source",
-			"The name of a valid price source").DataType("string")).
+			"Valid price source").DataType("string")).
 		Writes(priceDB.Price{}).
 		Returns(http.StatusInternalServerError, "Price DB lookup failed", nil).
 		Returns(http.StatusBadRequest, BadCardFilter, nil).

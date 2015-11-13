@@ -36,12 +36,12 @@ func (aService *PriceService) registerSets() {
 	priceService.Route(priceService.
 		GET("/Set/{setName}/Latest").To(aService.getSetLatestPrices).
 		// Docs
-		Doc("Returns latest price for every card in a set").
+		Doc("Latest price for every card in a set").
 		Operation("getSetLatestPrices").
 		Param(priceService.PathParameter("setName",
-			"The name of a Magic: the Gathering set").DataType("string")).
+			"Name of a Magic: the Gathering set").DataType("string")).
 		Param(priceService.QueryParameter("source",
-			"The name of a valid price source").DataType("string")).
+			"Valid price source").DataType("string")).
 		Writes(priceDB.Prices{}).
 		Returns(http.StatusInternalServerError, "Price DB lookup failed", nil).
 		Returns(http.StatusBadRequest, BadCardFilter, nil).
@@ -50,12 +50,12 @@ func (aService *PriceService) registerSets() {
 	priceService.Route(priceService.
 		GET("/Set/{setName}/EV").To(aService.getSetLatestBoxEV).
 		// Docs
-		Doc("Returns calculated expected value for a box of this set").
+		Doc("Box expected value for a set").
 		Operation("getSetLatestBoxEV").
 		Param(priceService.PathParameter("setName",
-			"The name of a Magic: the Gathering set").DataType("string")).
+			"Name of a Magic: the Gathering set").DataType("string")).
 		Param(priceService.QueryParameter("source",
-			"The name of a valid price source").DataType("string")).
+			"Valid price source").DataType("string")).
 		Writes(EVResponse{}).
 		Returns(http.StatusInternalServerError, "Price DB lookup failed", nil).
 		Returns(http.StatusBadRequest, BadCardFilter, nil).

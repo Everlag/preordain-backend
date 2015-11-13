@@ -15,7 +15,7 @@ func (aService *PriceService) registerMeta() {
 	priceService.Route(priceService.
 		GET("/SetList").To(aService.getSetList).
 		// Docs
-		Doc("Returns all available sets").
+		Doc("All available sets").
 		Operation("getSetList").
 		Writes([]string{}).
 		Returns(http.StatusOK, "All available sets", nil))
@@ -23,7 +23,7 @@ func (aService *PriceService) registerMeta() {
 	priceService.Route(priceService.
 		GET("/SetToShort").To(aService.getSetToShortMap).
 		// Docs
-		Doc("Returns all available sets' mapping to their short codes").
+		Doc("Map from set name to short code").
 		Operation("getSetToShortMap").
 		Writes(map[string]string{}).
 		Returns(http.StatusOK, "Set names to short codes", nil))
@@ -31,7 +31,7 @@ func (aService *PriceService) registerMeta() {
 	priceService.Route(priceService.
 		GET("/SourceList").To(aService.getPriceSourcesList).
 		// Docs
-		Doc("Returns all available price sources").
+		Doc("All available price sources").
 		Operation("getPriceSourcesList").
 		Writes([]string{}).
 		Returns(http.StatusOK, "All available sources", nil))

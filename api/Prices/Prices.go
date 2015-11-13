@@ -4,6 +4,7 @@ import(
 
 	"net/http"
 	"github.com/emicklei/go-restful"
+	"github.com/emicklei/go-restful/swagger"
 
 	"./ApiServices"
 
@@ -16,6 +17,18 @@ func main() {
 
 	restful.Add(priceService.Service)
 
+	// Expose docs json
+	//
+	// Developer note: Documentation endpoints are
+	// called against the production servers. Modified
+	// or added endpoints will have undefined behaviour.
+	config := swagger.Config{
+		WebServices:    restful.DefaultContainer.RegisteredWebServices(),
+		WebServicesUrl: "https://preorda.in/backend",
+		ApiPath:        "api/Prices/apidocs.json",
+	}
+	swagger.RegisterSwaggerService(config, restful.DefaultContainer)
+	
 	// Ensure we aren't sending stack traces out in the event we panic.
 	restful.DefaultContainer.RecoverHandler(ApiServices.RecoverHandler)
 
