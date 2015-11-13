@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"path/filepath"
+	"os"
 
 	"crypto/tls"
 )
@@ -55,8 +56,8 @@ var statements = []string{
 const statementLoc string = "sql"
 const statementExtension string = ".sql"
 
-const configLoc string = "postgres.config.json"
-const certLoc string = "certs/server.crt"
+const configName string = "postgres.config.json"
+const certName string = "server.crt"
 
 // Exposed and available
 const Magiccardmarket string = magiccardmarket
@@ -111,6 +112,10 @@ func afterConnect(conn *pgx.Conn) (err error) {
 // Uses the certificate found in certs/server.crt to establish trust
 func Connect() (*pgx.ConnPool, error) {
 
+	// Determine config location
+	configRoot:= os.Getenv("POSTGRES_CONFIG")
+	configLoc:= filepath.Join(configRoot, configName)
+
 	// Create our pool.
 	//
 	// In most cases InsecureSkipVerify would be very poor but since
@@ -145,6 +150,10 @@ func readConfig(loc string) (*pgx.ConnPoolConfig, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to unmarshal config", err)
 	}
+
+	// Figure out where trust root is
+	certRoot:= os.Getenv("POSTGRES_CERT")
+	certLoc:= filepath.Join(certRoot, certName)
 
 	// Acquire our trust chain so we can connect
 	trustRoot, err := grabCert(certLoc)

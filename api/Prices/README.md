@@ -8,6 +8,22 @@ Documentation is exposed as a swagger config on api/Prices/apidocs.json
 
 This documentation can be loaded into any swagger 1.2 compatible viewer.
 
+## Environment Notice
+
+Two environment variables must be present when calling this package.
+
+1. `POSTGRES_CONFIG` — location of package config
+
+1. `POSTGRES_CERT` — location of postgres cert to trust
+
+Additionally, two optional environment variables are provided for configuration
+
+1. `MTGJSON` — location of mtgjson generated card data
+
+1. `SETLIST` — location of set list to use.
+
+All environment variables have sane defaults for *development*. These defaults are provided in `prices.default.env`. They should be explicitly specified when operation in production.
+
 ## Authentication and abuse
 
 This version of the api, 0.2, is unauthenticated.

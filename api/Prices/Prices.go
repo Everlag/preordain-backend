@@ -9,9 +9,19 @@ import(
 	"./ApiServices"
 
 	"fmt"
+
+	"github.com/joho/godotenv"
+	"os"
 )
 
 func main() {
+
+	// Populate config locations not explicitly set
+	envError:= godotenv.Load("prices.default.env")
+	if envError!=nil {
+		fmt.Println("failed to parse prices.default.env")
+		os.Exit(1)
+	}
 
 	priceService:= ApiServices.NewPriceService()
 
@@ -28,7 +38,7 @@ func main() {
 		ApiPath:        "api/Prices/apidocs.json",
 	}
 	swagger.RegisterSwaggerService(config, restful.DefaultContainer)
-	
+
 	// Ensure we aren't sending stack traces out in the event we panic.
 	restful.DefaultContainer.RecoverHandler(ApiServices.RecoverHandler)
 
