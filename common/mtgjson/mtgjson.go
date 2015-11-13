@@ -7,12 +7,15 @@ import (
 	"io/ioutil"
 
 	"strings"
+
+	"os"
+	"path/filepath"
 )
 
-const AllSetsXLoc string = "AllSets-x.json"
-const AllSetsLoc string = "AllSets.json"
-const AllCardsXLoc string = "AllCards-x.json"
-const AllCardsLoc string = "AllCards.json"
+const AllSetsXName string = "AllSets-x.json"
+const AllSetsName string = "AllSets.json"
+const AllCardsXName string = "AllCards-x.json"
+const AllCardsName string = "AllCards.json"
 
 type Cards map[string]*Card
 
@@ -39,25 +42,36 @@ type Card struct {
 
 // Fetches and unmarshals AllCards.json
 func AllCards() (Cards, error) {
-	return genericCards(AllCardsLoc)
+	return genericCards(AllCardsName)
 }
 
 // Fetches and unmarshals AllCards-X.json
 func AllCardsX() (Cards, error) {
-	return genericCards(AllCardsXLoc)
+	return genericCards(AllCardsXName)
 }
 
 // Attempts to fetch and unmarhsal name into some Cards
 func genericCards(name string) (Cards, error) {
-	raw, err := ioutil.ReadFile(name)
+
+	// Allow environment config
+	//
+	// Default to inside CWD if nothing specified
+	loc:= os.Getenv("MTGJSON")
+	if len(loc) == 0 {
+		loc = "."
+	}
+
+	loc = filepath.Join(loc, name)
+
+	raw, err := ioutil.ReadFile(loc)
 	if err != nil {
-		return nil, fmt.Errorf("failed to read", name, err)
+		return nil, fmt.Errorf("failed to read", loc, err)
 	}
 
 	var cs Cards
 	err = json.Unmarshal(raw, &cs)
 	if err != nil {
-		return nil, fmt.Errorf("to unmarshal", name, err)
+		return nil, fmt.Errorf("to unmarshal", loc, err)
 	}
 
 	// Clean up the data for our specific uses
@@ -88,25 +102,36 @@ type Set struct {
 
 // Fetches and unmarshals AllSets.json
 func AllSets() (Sets, error) {
-	return genericSets(AllSetsLoc)
+	return genericSets(AllSetsName)
 }
 
 // Fetches and unmarshals AllSets-X.json
 func AllSetsX() (Sets, error) {
-	return genericSets(AllSetsXLoc)
+	return genericSets(AllSetsXName)
 }
 
 // Attempts to fetch and unmarshal name into some Sets
 func genericSets(name string) (Sets, error) {
-	raw, err := ioutil.ReadFile(name)
+
+	// Allow environment config
+	//
+	// Default to inside CWD if nothing specified
+	loc:= os.Getenv("MTGJSON")
+	if len(loc) == 0 {
+		loc = "."
+	}
+
+	loc = filepath.Join(loc, name)
+
+	raw, err := ioutil.ReadFile(loc)
 	if err != nil {
-		return nil, fmt.Errorf("failed to read", name, err)
+		return nil, fmt.Errorf("failed to read", loc, err)
 	}
 
 	var s Sets
 	err = json.Unmarshal(raw, &s)
 	if err != nil {
-		return nil, fmt.Errorf("failed to unmarshal", name, err)
+		return nil, fmt.Errorf("failed to unmarshal", loc, err)
 	}
 
 	// Clean the sets and their contents for our specific use case
