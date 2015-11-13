@@ -17,7 +17,7 @@ func (aService *PriceService) registerHistorical() {
 	priceService.Route(priceService.
 		GET("/Card/{cardName}/{setName}").To(aService.getCardSpecificSet).
 		// Docs
-		Doc("All prices for a printing of a card since the start of time").
+		Doc("All prices for a printing of a card for the last two months").
 		Operation("getCardSpecificSet").
 		Param(priceService.PathParameter("cardName",
 			"Name of a Magic: the Gathering card").DataType("string")).
