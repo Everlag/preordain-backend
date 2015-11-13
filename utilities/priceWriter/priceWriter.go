@@ -5,7 +5,7 @@ import(
 	"log"
 	"time"
 
-	"./../priceDBHandler.v2"
+	"github.com/Everlag/preordain-backend/api/Prices/ApiServices/priceDBHandler.v2"
 
 	"./priceSources"
 
