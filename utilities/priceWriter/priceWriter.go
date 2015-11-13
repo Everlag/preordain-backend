@@ -10,9 +10,20 @@ import(
 	"./priceSources"
 
 	"github.com/jackc/pgx"
+
+	"os"
+	"fmt"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+
+	// Populate config locations not explicitly set
+	envError:= godotenv.Load("priceWriter.default.env")
+	if envError!=nil {
+		fmt.Println("failed to parse prices.default.env")
+		os.Exit(1)
+	}
 
 	aLogger:= priceSources.GetLogger("priceWriter.log", "priceWriter")
 
