@@ -33,13 +33,6 @@ func buildTypeAheadCardData(aLogger *log.Logger) (typeAhead) {
 	aTypeAhead.addList(cardList)
 	aTypeAhead.sortByCommanderUsage(&commanderData)
 
-	// Add the sets to the start of their applicable keys
-	setList, err:= getSupportedSetListFlat()
-	if err!=nil {
-		aLogger.Println("Failed to get set list, ", err)
-	}
-	aTypeAhead.prependList(setList)
-
 	return aTypeAhead
 }
 
@@ -84,37 +77,6 @@ func (aTypeAhead *typeAhead) addList(names []string) {
 			}
 
 			valueTypeAhead[key] = append(valueTypeAhead[key], aName)
-
-		}
-
-	}
-}
-
-// Adds a list of strings to the typeahead but strictly at the front
-func (aTypeAhead *typeAhead) prependList(names []string) {
-	// Allows us to index
-	valueTypeAhead:= *aTypeAhead
-
-	var key string
-	for _, aName:= range names{
-
-		aName = strings.Replace(aName, "Æ", "AE", -1)
-		aLowerName:= strings.ToLower(aName)
-
-		// Develop subarrays for each depth of key
-		for keyIndexEnd := 1; keyIndexEnd < len(aName) + 1; keyIndexEnd++ {
-			
-			if keyIndexEnd > len(aName) {
-				break
-			}
-			key = aLowerName[0:keyIndexEnd]
-
-			_, ok:= valueTypeAhead[key]
-			if !ok {
-				valueTypeAhead[key] = make([]string, 0)
-			}
-
-			valueTypeAhead[key] = append([]string{aName}, valueTypeAhead[key]...)
 
 		}
 
