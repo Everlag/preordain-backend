@@ -14,7 +14,6 @@ import(
 
 	"./commanderDB"
 	"./similarityDB"
-	"./categoriesDB"
 	"./deckDB"
 
 )
@@ -28,7 +27,6 @@ func getAllCardData(aLogger *log.Logger) {
 	cardData.addCommanderData()
 	cardData.addSimilarityData()
 
-	cardData.addCategoryData()
 	cardData.addDeckData()
 
 	cardData.cleanSetNames(aLogger)
@@ -79,42 +77,6 @@ func (cardData *cardMap) addSimilarityData() {
 
 		aCard.SimilarCards = similarityResults.Others
 		aCard.SimilarCardConfidences = similarityResults.Confidences
-
-	}
-
-}
-
-func (cardData *cardMap) addCategoryData() {
-	
-	categoryData:= categoryBuilder.GetQueryableCategoryData()
-
-	//grab the value of each card
-	for _, aCard:= range *cardData {
-		
-		categories:= categoryData.Query(aCard.Name)
-
-		aCard.Categories = categories
-	}
-
-	// Pull down the categories, sort them by commander play,
-	// and save them as well
-	commanderData:= commanderData.GetQueryableCommanderData()
-	completeCategories:= categoryData.GetCategories()
-	for aCategory, cards:= range completeCategories{
-
-		// Sorting by desirability is quite helpful
-		commanderData.Sort(cards)
-
-		serialCategory, err:= json.Marshal(cards)
-		if err!=nil {
-			log.Println("Failed to marshal category, ", aCategory , err)	
-			return
-		}
-
-		usagePath:= dataLoc + string(os.PathSeparator) + aCategory +
-		"." + categorySuffix + ".json"
-
-		ioutil.WriteFile(usagePath, serialCategory, 0666)
 
 	}
 
@@ -276,7 +238,6 @@ type card struct{
 	CommanderUsage float64
 	SimilarCards []string
 	SimilarCardConfidences []float64
-	Categories []string
 	ModernPlay deckData.CardResult
 }
 
