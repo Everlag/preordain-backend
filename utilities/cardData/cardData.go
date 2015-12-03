@@ -14,7 +14,6 @@ import(
 	"../../common/setlist"
 
 	"./commanderDB"
-	"./similarityDB"
 	"./deckDB"
 
 )
@@ -26,7 +25,6 @@ func getAllCardData(aLogger *log.Logger) {
 
 	
 	cardData.addCommanderData()
-	cardData.addSimilarityData()
 
 	cardData.addDeckData()
 
@@ -61,25 +59,6 @@ func (cardData *cardMap) dumpToDisk(aLogger *log.Logger) {
 	}
 
 	aLogger.Println("Dump complete")
-
-}
-
-func (cardData *cardMap) addSimilarityData() {
-	
-	similarityData:= similarityBuilder.GetQueryableSimilarityData()
-
-	//grab the value of each card
-	for _, aCard:= range *cardData {
-		
-		similarityResults, err:= similarityData.Query(aCard.Name)
-		if err!=nil {
-			continue
-		}
-
-		aCard.SimilarCards = similarityResults.Others
-		aCard.SimilarCardConfidences = similarityResults.Confidences
-
-	}
 
 }
 
@@ -237,8 +216,6 @@ type card struct{
 
 	//Extensions we add manually
 	CommanderUsage float64
-	SimilarCards []string
-	SimilarCardConfidences []float64
 	ModernPlay deckData.CardResult
 }
 
