@@ -11,6 +11,7 @@ import(
 	"sort"
 	
 	"../../common/mtgjson"
+	"../../common/setlist"
 
 	"./commanderDB"
 	"./similarityDB"
@@ -170,7 +171,7 @@ func (cardData *cardMap) addCommanderData() {
 func (cardData *cardMap) cleanSetNames(aLogger *log.Logger) {
 	
 	// Grab the setlist
-	setMap, err:= getSupportedSetList()
+	setMap, err:= setlist.FoilMapping()
 	if err!=nil {
 		aLogger.Fatalln("Failed to acquire supported setlist, ", err)
 	}

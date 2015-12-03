@@ -3,6 +3,7 @@ package ApiServices
 import(
 
 	"./../../../common/mtgjson"
+	"./../../../common/setlist"
 
 	"strings"
 	"sort"
@@ -56,7 +57,7 @@ func populateSets() (map[string]bool, map[string]string, error) {
 	sets:= make(map[string]bool)
 
 	// Acquire the list of valid sets we'll deal with
-	setList, err:= getSetList()
+	setList, err:= setlist.Get()
 	if err!=nil {
 		return sets, nil, err
 	}
@@ -97,7 +98,7 @@ func populateCardsTranslationMap(validSets map[string]bool) (map[string]bool,
 
 	// Also acquire the sets we support and sort them so
 	// we can easily search
-	setList, err:= getSetList()
+	setList, err:= setlist.Get()
 	if err!=nil {
 		return cards, cardsToSets, err
 	}

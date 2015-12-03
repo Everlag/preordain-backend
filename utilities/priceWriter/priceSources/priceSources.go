@@ -10,6 +10,8 @@ import(
 	"fmt"
 	"log"
 
+	"../../../common/setlist"
+
 )
 
 const RateExceeded string = "Attempted update beyond allowed rate"
@@ -184,7 +186,7 @@ func getResources(requestedSource PriceSourceRequested) (ApiKeys,
 		}
 	}
 
-	setList, err:= getSetList()
+	setList, err:= setlist.Get()
 	if err!=nil {
 		return ApiKeys{}, nil, 0,
 		fmt.Errorf("Failed to acquire setList, ", err)

@@ -4,7 +4,6 @@ import(
 
 	"io/ioutil"
 	"encoding/json"
-	"strings"
 
 	"io"
 	"log"
@@ -12,11 +11,9 @@ import(
 	"fmt"
 
 	"path/filepath"
-
 )
 
 const apiKeysName string = "apiKeys.json"
-const setListName string = "setList.txt"
 
 // The keys residing on disk alongside the traits we need to ensure we don't
 // misuse them
@@ -72,33 +69,6 @@ func (keys *ApiKeys) updateOnDisk() error {
 	}
 
 	return nil
-}
-
-func getSetList() ([]string, error) {
-
-	// Fetch optionally specified set list
-	// root loc from environment
-	loc:= os.Getenv("SETLIST")
-	if len(loc) == 0 {
-		loc = "./"
-	}
-
-	setListLoc:= filepath.Join(loc, setListName)
-
-	setsRaw, err:= ioutil.ReadFile(setListLoc)
-	if err!=nil {
-		return nil, err
-	}
-
-	sets:= strings.Split(string(setsRaw), "\n")
-	for i, set:= range sets{
-		set = strings.TrimSpace(set)
-
-		sets[i] = set
-	}
-
-	return sets, nil
-
 }
 
 // Intelligently fetches location of api keys

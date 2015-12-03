@@ -2,7 +2,6 @@ package ApiServices
 
 import(
 
-	"io/ioutil"
 	"strings"
 
 	"io"
@@ -14,13 +13,10 @@ import(
 
 	"net/http"
 
-	"path/filepath"
-
 )
 
 const PanicRecoverMessage string = "Something really bad happened while completing your request :("
 
-const setListName string = "setList.txt"
 const managerNameLoc string = "managerMeta.txt"
 const recaptchaKeyLoc string = "recaptchaPrivateKey.txt"
 
@@ -41,26 +37,6 @@ func setCacheHeader(resp *restful.Response) {
 // Sets a cache header of 5 hours to a given request.
 func setPrivateHeader(resp *restful.Response) {
 	resp.Header().Set("Cache-Control", "private")
-}
-
-func getSetList() ([]string, error) {
-
-	// Fetch optionally specified set list
-	// root loc from environment
-	loc:= os.Getenv("SETLIST")
-	if len(loc) == 0 {
-		loc = "./"
-	}
-
-	setListLoc:= filepath.Join(loc, setListName)
-
-	sets, err:= ioutil.ReadFile(setListLoc)
-	if err!=nil {
-		return nil, err
-	}
-
-	return strings.Split(string(sets), "\n"), nil
-
 }
 
 func getIP(req *restful.Request) string {
