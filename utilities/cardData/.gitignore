@@ -3,3 +3,5 @@ cardSymbols/
 cardText/
 cardFulls/
 cardCrops/
+
+*.log
