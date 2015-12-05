@@ -19,24 +19,15 @@ import(
 	"github.com/joho/godotenv"
 
 	"path/filepath"
-	// Images are totally broken because mtgimage
-	// got the DMCA
-	// TODO: Implement import from archives.
-	//"./imageDB"
 )
 
 // The various locations our derived data goes
 const dataDir string = "cardText/"
-const imageLoc string = "cardFulls/"
-const cropLoc string =  "cardCrops/"
-const symbolsLoc string = "cardSymbols/"
 const typeAheadDir string = "typeAhead/"
 
 // The location and top count of the commander data we release
 const topCommanderUsageLoc string = "commanderUsage"
 const topCommanderUsageCount int = 1000
-
-const categorySuffix string = "category"
 
 func main() {
 	aLogger:= getLogger("core.log")
@@ -48,22 +39,19 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Notify intent
+	// Notify intent to user
 	fmt.Printf(`
 Output directories:
 	general:   %v
 	typeAhead: %v
 `, dataLoc(), typeAheadLoc())
 
-	// Dumps into dataLoc the data for each card
+	// Dumps data for each card into dataLoc 
 	getAllCardData(aLogger)
 
-	// Dumps into typeAheadLoc the entire typeahead
-	// setup.
+	// Dumps typeAhead content into typeAheadLoc 
 	getAllTypeAheadData(aLogger)
 
-	//imageScraper.ScrapeImages(imageLoc, cropLoc, symbolsLoc)
-	
 }
 
 // Returns the complete path to our general output directory
@@ -92,6 +80,7 @@ func outputLoc() string {
 	return loc
 }
 
+// Acquires a logger a standardized logger.
 func getLogger(fName string) (aLogger *log.Logger) {
 	file, err:= os.OpenFile(fName, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err!=nil {

@@ -15,22 +15,28 @@ import(
 
 )
 
+// Generates and outputs typeAhead data to typeAheadLoc()
 func getAllTypeAheadData(aLogger *log.Logger) {
-	// Build the card specific data.
+	
+	// Generate
 	aTypeAhead:= buildTypeAheadCardData(aLogger)
+	// Output
 	aTypeAhead.dumpToDisk(aLogger)
 }
 
 
 func buildTypeAheadCardData(aLogger *log.Logger) (typeAhead) {
-
-	cardList:= getRawCardNames(aLogger)
-	commanderData:= commanderData.GetQueryableCommanderData()
-
+	
 	aTypeAhead:= make(typeAhead)
 
-	// Add the cards and sort them by commander use
+	// List Cards
+	cardList:= getRawCardNames(aLogger)
+
+	// Add the cards
 	aTypeAhead.addList(cardList)
+
+	// Sort by commander use
+	commanderData:= commanderData.GetQueryableCommanderData()
 	aTypeAhead.sortByCommanderUsage(&commanderData)
 
 	return aTypeAhead
@@ -60,6 +66,7 @@ func (aTypeAhead *typeAhead) addList(names []string) {
 	var key string
 	for _, aName:= range names{
 
+		// Replace the special case of AEther cards
 		aName = strings.Replace(aName, "Æ", "AE", -1)
 		aLowerName:= strings.ToLower(aName)
 
@@ -101,7 +108,8 @@ func (aTypeAhead *typeAhead) sortByCommanderUsage(commanderUsage *commanderData.
 
 }
 
-// Dumps each stored typeahead query to typeAheadLoc in form key.json 
+// Dumps each stored typeahead query to typeAheadLoc() as
+// $QUERY.json 
 func (aTypeAhead *typeAhead) dumpToDisk(aLogger *log.Logger) {
 
 	var serialChoices []byte

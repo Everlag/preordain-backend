@@ -19,22 +19,26 @@ import(
 )
 
 func getAllCardData(aLogger *log.Logger) {
-	//acquire mtgjson basic data we get for effectively free
+	// Base from mtgjson
 	cardData:= buildBasicData(aLogger)
+	
+	// Set data such as reserved list status
 	stapleOnSetSpecificData(cardData, aLogger)
 
-	
+	// Commander stats
 	cardData.addCommanderData()
 
+	// Modern deck data
 	cardData.addDeckData()
 
+	// Cleanup set names
 	cardData.cleanSetNames(aLogger)
 
+	// Send everything to disk
 	cardData.dumpToDisk(aLogger)
 }
 
-// dumpToDisk commits each value of the card map and dumps it into
-// the dataLoc folder under the name.json file
+// Commits each card in the cardMap to disk under name.json
 func (cardData *cardMap) dumpToDisk(aLogger *log.Logger) {
 	
 	aLogger.Println("Commencing dump to disk of cardMap")
@@ -47,12 +51,14 @@ func (cardData *cardMap) dumpToDisk(aLogger *log.Logger) {
 
 	for name, aCard:= range *cardData {
 
+		// Serialize
 		serialCard, err= json.Marshal(aCard)
 		if err!=nil {
 			aLogger.Println("Failed to marshal ", name)	
 			continue
 		}
 
+		// Store
 		cardPath = baseLoc + string(os.PathSeparator) + name + ".json"
 
 		ioutil.WriteFile(cardPath, serialCard, 0666)
@@ -63,6 +69,10 @@ func (cardData *cardMap) dumpToDisk(aLogger *log.Logger) {
 
 }
 
+// Apply modern deck data to the map
+//
+// Has the side effect of causing a long cache population
+// if not cache is found
 func (cardData *cardMap) addDeckData() error {
 	deckData, err:= deckData.GetQueryableDeckData()
 	if err!=nil {
@@ -103,10 +113,10 @@ func (someData cardUsageArray) Less(i, j int) bool {
 }
 
 
-// Initializes and queries the commanderData package for data regarding
-// commander usage for each card
+// Apply commander meta data to each card
 //
-// Has the side 
+// Has the side effect of causing a long
+// cache population if the cache is unavailable.
 func (cardData *cardMap) addCommanderData() {
 	
 	commanderData:= commanderData.GetQueryableCommanderData()
@@ -146,8 +156,7 @@ func (cardData *cardMap) addCommanderData() {
 
 }
 
-// Cleans the set names for the cards contained within.
-// IE, removed set names we don't support and adds foil sets if available.
+// Remove set names we don't support and add foil variants.
 func (cardData *cardMap) cleanSetNames(aLogger *log.Logger) {
 	
 	// Grab the setlist
@@ -196,10 +205,9 @@ func (cardData *cardMap) cleanSetNames(aLogger *log.Logger) {
 
 }
 
-//we seed our initial card data off of AllCard-x.json
 type cardMap map[string]*card
 
-//the components of the card we use for exporting
+// Format of serialized card
 type card struct{
 	//What we get for free, or near free, from mtgjson
 	Name string
@@ -220,16 +228,19 @@ type card struct{
 	ModernPlay deckData.CardResult
 }
 
-//acquires basic card data for our process
+// Acquire the baseline data for each card
+//
+// Requires a translation of the mtgjon structure
+// to our extended format.
 func buildBasicData(aLogger *log.Logger) cardMap {
 
+	// Baseline
 	foreignMap, err:= mtgjson.AllCardsX()
 	if err!=nil {
 		aLogger.Fatalf("", err)
 	}
 
-	// Convert to our extended structure
-	// Yes, I feel bad.
+	// Translate to extended structure
 	aCardMap:= make(cardMap)
 	for _, c:= range foreignMap{
 		aCardMap[c.Name] = &card{
