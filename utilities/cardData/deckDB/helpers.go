@@ -6,7 +6,12 @@ import(
 
 	"fmt"
 
+	"os"
+	"path/filepath"
+
 )
+
+const cacheFile string = "deckData.cache.json"
 
 const sampleDeck string = `// Deck file for Magic Workstation created with mtgtop8.com
 // NAME : UR Aggro
@@ -112,4 +117,20 @@ func Translate(name string) (string, error) {
 
 	return clean, nil
 
+}
+
+// Returns the location of the cache file
+// as specified by the CACHE environment variable.
+//
+// An empty CACHE variable directs output to the working directory.
+func cacheLoc() string {
+
+	// Fetch optionally specified cache location
+	// root loc from environment
+	loc:= os.Getenv("CACHE")
+	if len(loc) == 0 {
+		loc = "./"
+	}
+
+	return filepath.Join(loc, cacheFile)
 }

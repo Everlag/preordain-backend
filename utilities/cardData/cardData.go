@@ -43,6 +43,7 @@ func (cardData *cardMap) dumpToDisk(aLogger *log.Logger) {
 	var err error
 
 	var cardPath string
+	baseLoc:= dataLoc()
 
 	for name, aCard:= range *cardData {
 
@@ -52,7 +53,7 @@ func (cardData *cardMap) dumpToDisk(aLogger *log.Logger) {
 			continue
 		}
 
-		cardPath = dataLoc + string(os.PathSeparator) + name + ".json"
+		cardPath = baseLoc + string(os.PathSeparator) + name + ".json"
 
 		ioutil.WriteFile(cardPath, serialCard, 0666)
 
@@ -139,7 +140,7 @@ func (cardData *cardMap) addCommanderData() {
 		return
 	}
 
-	usagePath:= dataLoc + string(os.PathSeparator) + topCommanderUsageLoc + ".json"
+	usagePath:= dataLoc() + string(os.PathSeparator) + topCommanderUsageLoc + ".json"
 
 	ioutil.WriteFile(usagePath, serialUsage, 0666)
 

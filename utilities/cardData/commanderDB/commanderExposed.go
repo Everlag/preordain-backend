@@ -12,9 +12,6 @@ import(
 
 )
 
-//Location of cache so we don't have to hit remote often
-const cacheFile string = "commanderData.cache.json"
-
 // An exposable type that allows users to query for data regarding
 // our commander data.
 type QueryableCommanderData struct{
@@ -77,12 +74,14 @@ func (usableData *QueryableCommanderData) populate() {
 	
 	aLogger:= getLogger("deckScraper.log", "deckScraper")
 
+	cache:= cacheLoc()
+
 	//see if a cache exists and we can read from it
-	cacheData, err := ioutil.ReadFile(cacheFile)	
+	cacheData, err := ioutil.ReadFile(cache)	
 	if err!=nil {
 		//in the event we can't read from the cache, populate it
 		populateRawCache(aLogger)
-		cacheData, err = ioutil.ReadFile(cacheFile)
+		cacheData, err = ioutil.ReadFile(cache)
 		if err!=nil {
 			//if we can't read the cache right after populating it, we quit
 			fmt.Println("Failed to read cache after populating it")

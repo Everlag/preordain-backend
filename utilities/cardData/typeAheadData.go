@@ -117,7 +117,7 @@ func (aTypeAhead *typeAhead) dumpToDisk(aLogger *log.Logger) {
 			continue
 		}
 
-		path = typeAheadLoc + string(os.PathSeparator) + aKey + ".json"
+		path = typeAheadLoc() + string(os.PathSeparator) + aKey + ".json"
 
 		err = ioutil.WriteFile(path, serialChoices, 0666)
 		if err!=nil {

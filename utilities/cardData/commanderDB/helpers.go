@@ -8,7 +8,12 @@ import(
 
 	"strings"
 
+	"path/filepath"
+
 )
+
+//Location of cache so we don't have to hit remote often
+const cacheFile string = "commanderData.cache.json"
 
 func getLogger(fName, name string) (aLogger *log.Logger) {
 	file, err:= os.OpenFile(fName, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
@@ -29,6 +34,22 @@ func normalizeCardName(cardName string) string {
 	properName:= strings.ToLower(cardName)
 
 	return properName 
+}
+
+// Returns the location of the cache file
+// as specified by the CACHE environment variable.
+//
+// An empty CACHE variable directs output to the working directory.
+func cacheLoc() string {
+
+	// Fetch optionally specified cache location
+	// root loc from environment
+	loc:= os.Getenv("CACHE")
+	if len(loc) == 0 {
+		loc = "./"
+	}
+
+	return filepath.Join(loc, cacheFile)
 }
 
 // Simple wrapper for allowing QueryableCommanderData the ability to sort cards

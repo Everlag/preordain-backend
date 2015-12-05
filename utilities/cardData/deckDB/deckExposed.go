@@ -9,8 +9,6 @@ import(
 
 )
 
-const cacheFile string = "deckData.cache.json"
-
 const baseLocation string = "http://mtgtop8.com/"
 const archeTypeLocation string = baseLocation + "format?f=MO"
 
@@ -85,7 +83,7 @@ func queryableDeckDataFromCache() (QueryableDeckData, error) {
 
 	var usableData QueryableDeckData
 	
-	raw, err:= ioutil.ReadFile(cacheFile)
+	raw, err:= ioutil.ReadFile(cacheLoc())
 	if err!=nil {
 		return usableData, err
 	}
@@ -100,7 +98,7 @@ func (usableData *QueryableDeckData) toDisk() error {
 		return err
 	}
 
-	return ioutil.WriteFile(cacheFile, raw, 0777)
+	return ioutil.WriteFile(cacheLoc(), raw, 0777)
 }
 
 func (usableData *QueryableDeckData) populate() error {

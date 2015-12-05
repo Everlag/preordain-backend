@@ -160,7 +160,7 @@ func populateRawCache(aLogger *log.Logger) {
 		aLogger.Println("Failed to marshal count")
 	}
 
-	ioutil.WriteFile(cacheFile, serialCount, 0666)
+	ioutil.WriteFile(cacheLoc(), serialCount, 0666)
 
 }
 
