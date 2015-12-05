@@ -5,7 +5,7 @@ import(
 	"net/http"
 	"github.com/emicklei/go-restful"
 
-	"./priceDBHandler.v2"
+	"./../../../common/priceDB"
 
 )
 

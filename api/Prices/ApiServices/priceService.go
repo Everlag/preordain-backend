@@ -5,7 +5,7 @@ import(
 
 	"github.com/emicklei/go-restful"
 
-	"./priceDBHandler.v2"
+	"./../../../common/priceDB"
 	"github.com/jackc/pgx"
 
 	"log"

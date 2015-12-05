@@ -5,7 +5,7 @@ import(
 	
 	"./priceSources"
 
-	"github.com/Everlag/preordain-backend/api/Prices/ApiServices/priceDBHandler.v2"
+	"./../../common/priceDB"
 	"github.com/jackc/pgx"
 
 )
