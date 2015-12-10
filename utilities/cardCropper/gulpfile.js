@@ -50,7 +50,6 @@ gulp.task('default', ['clean'], function () {
   	.pipe(jimp({
         '': {
             crop: { x: x, y: y, width: width, height: height },
-            jpg: true,
         },
     }))
     // Rename from common full card naming

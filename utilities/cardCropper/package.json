@@ -4,7 +4,7 @@
   "devDependencies": {
     "del": "^2.0.2",
     "gulp": "^3.8.5",
-    "gulp-jimp": "https://github.com/haydenbleasel/gulp-jimp/tarball/df79cd6e8fb69daffa16d370dc76e58758d699ba",
+    "gulp-jimp": "^1.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-zip": "^3.0.2",
     "yargs": "^3.29.0"
