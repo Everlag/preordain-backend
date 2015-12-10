@@ -1,3 +1,4 @@
 !*.svg
+!package.json
 dist/
 node_modules/

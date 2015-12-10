@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "del": "^2.0.2",
+    "gulp": "^3.8.5",
+    "gulp-size": "^1.0.0",
+    "gulp-svgmin": "^1.2.0",
+    "gulp-zip": "^3.0.2",
+    "yargs": "^3.29.0"
+  },
+  "engines": {
+    "node": ">=4.2.2"
+  }
+}
