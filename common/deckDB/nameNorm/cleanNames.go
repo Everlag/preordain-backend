@@ -47,6 +47,7 @@ const AdNauseam string = "Ad Nauseam"
 const Zoo string = "Zoo"
 const TribalZoo string = "Tribal Zoo"
 const BigZoo string = "Big Zoo"
+const SuicideZoo string = "Suicide Zoo"
 
 const Merfolk string = "Merfolk"
 

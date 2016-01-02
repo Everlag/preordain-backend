@@ -173,7 +173,6 @@ func populateTopLevel() {
 	// default value
 	burnFilter:= contentFilter{Default: Burn}
 	affinityFilter:= contentFilter{Default: Affinity}
-	jundFilter:= contentFilter{Default: Jund}
 	junkFilter:= contentFilter{Default: Junk}
 	merfolkFilter:= contentFilter{Default: Merfolk}
 	hatebearFilter:= contentFilter{Default: Hatebears}
@@ -199,6 +198,7 @@ func populateTopLevel() {
 		Default: Zoo,
 		"Tribal Flames": TribalZoo,
 		"Geist of Saint Traft": BigZoo,
+		"Death's Shadow": SuicideZoo,
 	}
 
 	monogreenFilter:= contentFilter{
@@ -233,6 +233,12 @@ func populateTopLevel() {
 	scapeshiftFilter:= contentFilter{
 		Default: Scapeshift,
 		"Primeval Titan": TitanShift,
+	}
+
+	jundFilter:= contentFilter{
+		Default: Jund,
+		// Sometimes suicide zoo gets lumped into jund
+		"Death's Shadow": SuicideZoo,
 	}
 
 	// Map from mtgtop8 archetype names to our filters
