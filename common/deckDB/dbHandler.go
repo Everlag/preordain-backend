@@ -32,10 +32,14 @@ const archetypeLatest string = "latestArchetype"
 
 const deckContents string = "contentsDeck"
 
+const eventExists string = "existsEvent"
+
+
 var statements = []string{
 	cardInsert, deckInsert, eventInsert,
 	archetypeContents, archetypeLatest,
 	deckContents,
+	eventExists,
 }
 
 const statementLoc string = "sql"
