@@ -6,10 +6,14 @@ import (
 	"fmt"
 
 	"github.com/jackc/pgx"
+
+	"./deckData"
+	"./nameNorm"
+
 )
 
 // Sends a single event to the remote server
-func SendEvent(pool *pgx.ConnPool, e *Event) error {
+func SendEvent(pool *pgx.ConnPool, e *deckData.Event) error {
 	
 	tx, err := pool.Begin()
 	if err != nil {
@@ -53,7 +57,12 @@ func SendEvent(pool *pgx.ConnPool, e *Event) error {
 }
 
 // Inserts a deck into the db using a passed transaction
-func insertDeck(tx *pgx.Tx, d *Deck, EventID string) (err error) {
+func insertDeck(tx *pgx.Tx, d *deckData.Deck, EventID string) (err error) {
+
+	// Normalize the deck to be more more universal
+	d.Name = nameNorm.Normalize(d.Name)
+
+	fmt.Println(d.Name)
 
 	// Insert the meta row
 	_, err = tx.Exec(deckInsert, d.Name, d.Player,
@@ -82,7 +91,7 @@ func insertDeck(tx *pgx.Tx, d *Deck, EventID string) (err error) {
 //
 // Decks contain the necessary metadata to populate the
 // row of event data
-func insertEvent(tx *pgx.Tx, e *Event) (err error) {
+func insertEvent(tx *pgx.Tx, e *deckData.Event) (err error) {
 
 	_, err = tx.Exec(eventInsert, e.Name, e.EventID,
 		time.Time(e.Happened))
@@ -92,7 +101,7 @@ func insertEvent(tx *pgx.Tx, e *Event) (err error) {
 }
 
 // Inserts a deck into the db using a passed transaction
-func insertCard(tx *pgx.Tx, c *Card,
+func insertCard(tx *pgx.Tx, c *deckData.Card,
 	deckid string, sideboard bool) (err error) {
 
 	_, err = tx.Exec(cardInsert,

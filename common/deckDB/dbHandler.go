@@ -11,7 +11,10 @@ import (
 	"os"
 
 	"crypto/tls"
+
+	"./nameNorm"
 )
+
 
 // Errors we may return when executing statements
 var ConnError error = fmt.Errorf("db connection failed")
@@ -24,9 +27,15 @@ const cardInsert string = "addCard"
 const deckInsert string = "addDeck"
 const eventInsert string = "addEvent"
 
+const archetypeContents string = "contentsArchetype"
+const archetypeLatest string = "latestArchetype"
+
+const deckContents string = "contentsDeck"
 
 var statements = []string{
 	cardInsert, deckInsert, eventInsert,
+	archetypeContents, archetypeLatest,
+	deckContents,
 }
 
 const statementLoc string = "sql"
@@ -100,6 +109,14 @@ func Connect() (*pgx.ConnPool, error) {
 	pool, err := pgx.NewConnPool(*connPoolConfig)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create connection pool,", err)
+	}
+
+	// Initialize nameNorm if not already done
+	//
+	// We need it to normalize the deck names we store
+	// so matching can be more liberal
+	if !nameNorm.Ready() {
+		nameNorm.Begin()
 	}
 
 	return pool, nil

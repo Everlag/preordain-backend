@@ -13,7 +13,7 @@ import (
 
 	"reflect"
 
-	"./../../common/deckDB"
+	"./../../common/deckDB/deckData"
 )
 
 const testLoc string = "testDecks"
@@ -63,18 +63,18 @@ func deckCase(d string) error {
 	return nil
 }
 
-func deckEquality(a, b *deckDB.Deck) bool {
+func deckEquality(a, b *deckData.Deck) bool {
 	return reflect.DeepEqual(a, b)
 }
 
 
 // Get a reference value set for a deck
-func getDeckReference(deck string) (*deckDB.Deck, error) {
+func getDeckReference(deck string) (*deckData.Deck, error) {
 	
 	refName:= fmt.Sprintf("%s.json", deck)
 	refLoc:= filepath.Join(testLoc, refName)
 
-	var ref deckDB.Deck
+	var ref deckData.Deck
 
 	raw, err:= ioutil.ReadFile(refLoc)
 	if err!=nil {
@@ -88,7 +88,7 @@ func getDeckReference(deck string) (*deckDB.Deck, error) {
 	return &ref, nil
 }
 
-func ParseDecklist(filename string) (*deckDB.Deck, error) {
+func ParseDecklist(filename string) (*deckData.Deck, error) {
 	file, err := os.Open("sampledata/" + filename)
 	if err != nil {
 		return nil, err
@@ -106,9 +106,9 @@ func ParseDecklist(filename string) (*deckDB.Deck, error) {
 	return deck, nil
 }
 
-func CountCards(deck []*deckDB.Card) (count int) {
+func CountCards(deck []*deckData.Card) (count int) {
 	for _, c := range deck {
-		count += c.Quantity
+		count += int(c.Quantity)
 	}
 	return count
 }

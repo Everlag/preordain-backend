@@ -3,14 +3,14 @@ package main
 import (
 	"fmt"
 
-	"./../../common/deckDB"
+	"./../../common/deckDB/deckData"
 
 	"net/http"
 )
 
 // Fetches an mwDeck formatted deck for a given mtgtop8 deckID
 // and parses it into a usable structure
-func FetchDeck(id string) (*deckDB.Deck, error) {
+func FetchDeck(id string) (*deckData.Deck, error) {
 
 	loc := fmt.Sprintf("http://mtgtop8.com/export_files/deck%s.mwDeck", id)
 

@@ -11,7 +11,8 @@ import (
 
 	"fmt"
 
-	"./../../common/deckDB"
+	"./../../common/deckDB/deckData"
+
 
 	"golang.org/x/text/encoding/charmap"
 
@@ -28,9 +29,9 @@ const namePrefix string = "NAME :"
 
 const MainDeckSize int = 60
 
-func NewCard(line string) (*deckDB.Card, error) {
+func NewCard(line string) (*deckData.Card, error) {
 	match := linePattern.FindStringSubmatch(line)
-	card := &deckDB.Card{}
+	card := &deckData.Card{}
 	if match == nil {
 		return card, fmt.Errorf("Failed to parse line '%s'", line)
 	}
@@ -40,7 +41,7 @@ func NewCard(line string) (*deckDB.Card, error) {
 			if err != nil {
 				return card, err
 			}
-			card.Quantity = quantity
+			card.Quantity = int64(quantity)
 		} else if group == "name" {
 			card.Name = match[i]
 		}
@@ -100,13 +101,13 @@ func handleNameLine(line string) string {
 	return strings.TrimSpace(nameSplit[1])
 }
 
-func NewDeck(r io.Reader) (*deckDB.Deck, error) {
+func NewDeck(r io.Reader) (*deckData.Deck, error) {
 	decklist, err := ioutil.ReadAll(r)
 	if err != nil {
 		return nil, err
 	}
-	maindeck := make([]*deckDB.Card, 0)
-	sideboard := make([]*deckDB.Card, 0)
+	maindeck := make([]*deckData.Card, 0)
+	sideboard := make([]*deckData.Card, 0)
 	count := 0
 	name:= "?"
 	creator:= "?"
@@ -125,7 +126,7 @@ func NewDeck(r io.Reader) (*deckDB.Deck, error) {
 
 			continue
 		}
-		
+
 		card, err := NewCard(line)
 		if err != nil {
 			return nil, err
@@ -135,7 +136,7 @@ func NewDeck(r io.Reader) (*deckDB.Deck, error) {
 			sideboard = append(sideboard, card)
 		} else {
 			maindeck = append(maindeck, card)
-			count += card.Quantity
+			count += int(card.Quantity)
 		}
 	}
 
@@ -167,7 +168,7 @@ func NewDeck(r io.Reader) (*deckDB.Deck, error) {
 
 
 
-	return &deckDB.Deck{
+	return &deckData.Deck{
 		Name: name,
 		Player: creator,
 		Maindeck: maindeck,

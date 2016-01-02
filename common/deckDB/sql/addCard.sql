@@ -6,6 +6,6 @@ mtgtop8.cards
 */
 
 INSERT INTO mtgtop8.cards
-(name, quantity, sideboard, deckid)
+(name, quantity, sideboard, parent)
 values
 ($1, $2, $3, $4)

@@ -6,6 +6,6 @@ mtgtop8.decks
 */
 
 INSERT INTO mtgtop8.decks
-(name, player, deckid, eventid)
+(name, player, deckid, parent)
 values
 ($1, $2, $3, $4)

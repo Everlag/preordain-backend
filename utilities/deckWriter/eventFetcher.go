@@ -5,7 +5,7 @@ import (
 
 	gq "github.com/PuerkitoBio/goquery"
 
-	"./../../common/deckDB"
+	"./../../common/deckDB/deckData"
 
 	"strings"
 
@@ -19,6 +19,7 @@ import (
 
 )
 
+// Match dd/mm/yy
 var timePattern = regexp.MustCompile(`\b[0-9]{2}\b\/\b[0-9]{2}\b\/\b[0-9]{2}\b`)
 
 // Fetches a specific event and returns an equivalent Event
@@ -26,7 +27,7 @@ var timePattern = regexp.MustCompile(`\b[0-9]{2}\b\/\b[0-9]{2}\b\/\b[0-9]{2}\b`)
 //
 // TODO: check db if each event or deck is already present
 //       to avoid refetching them unnecessarily
-func FetchEvent(id string) (*deckDB.Event, error) {
+func FetchEvent(id string) (*deckData.Event, error) {
 
 	loc := fmt.Sprintf("http://mtgtop8.com/event?e=%s", id)
 
@@ -55,7 +56,7 @@ func FetchEvent(id string) (*deckDB.Event, error) {
 
 
 	// Fetch each decklist
-	decks:= make([]*deckDB.Deck, 0)
+	decks:= make([]*deckData.Deck, 0)
 
 	for _, dID:= range ids{
 		d, err:= FetchDeck(dID)
@@ -77,9 +78,9 @@ func FetchEvent(id string) (*deckDB.Event, error) {
 		return nil, err
 	}
 
-	return &deckDB.Event{
+	return &deckData.Event{
 		Name: name, EventID: id,
-		Happened: deckDB.Timestamp(happened),
+		Happened: deckData.Timestamp(happened),
 		Decks: decks}, nil
 }
 
@@ -101,7 +102,7 @@ func eventName(doc *gq.Document) (string, error) {
 
 // Finds time a specific event happened given its document
 //
-// Time is formatted dd/mm/yyyy and sits in the document
+// Time is formatted dd/mm/yy and sits in the document
 // as 'Format [-] TIME\nOPTIONAL'
 //
 // Optional appears only on some events, they're a hassle
