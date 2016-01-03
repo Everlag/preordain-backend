@@ -59,8 +59,6 @@ func GetArchetypeLatest(pool *pgx.ConnPool,
 	if err!=nil {
 		return nil, err
 	}
-
-	fmt.Println(archetypes, "\n", presentCards, "\n", excludedCards)
 	
 	d:= deckData.Deck{Name: name}
 	// We don't want the deckid exposed to the caller
