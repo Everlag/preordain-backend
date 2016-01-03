@@ -16,6 +16,7 @@ const DefaultPriceSource string = "mtgprice"
 
 // Responses
 const PriceDBError string = "Price DB lookup failed"
+const RemoteAPIError string = "Remote API query failed"
 const BadCard string = "Illegal Card Name"
 const BadSet string = "Illegal Set Name"
 const BadTime string = "Illegible time"
@@ -89,6 +90,7 @@ func (aService *PriceService) register() error {
 	aService.registerLatest()
 	aService.registerClosest()
 	aService.registerSets()
+	aService.registerDecks()
 
 	return nil
 

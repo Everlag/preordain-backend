@@ -10,11 +10,13 @@ This documentation can be loaded into any swagger 1.2 compatible viewer.
 
 ## Environment Notice
 
-Two environment variables must be present when calling this package.
+Three environment variables must be present when calling this package.
 
 1. `POSTGRES_CONFIG` — location of package config
 
 1. `POSTGRES_CERT` — location of postgres cert to trust
+
+1. `DECK_API` — local port the remote deck api sits on
 
 Additionally, two optional environment variables are provided for configuration
 
