@@ -8,6 +8,7 @@
 // sql/existsEvent.sql
 // sql/historicalDecksForCard.sql
 // sql/latestArchetype.sql
+// sql/metaDeck.sql
 // DO NOT EDIT!
 
 package deckDB
@@ -235,6 +236,26 @@ func sqlLatestarchetypeSql() (*asset, error) {
 	return a, nil
 }
 
+var _sqlMetadeckSql = []byte("\x1f\x8b\x08\x00\x00\x09\x6e\x88\x00\xff\x2c\xcb\x41\x0a\xc2\x30\x14\x84\xe1\x7d\xa1\x77\x98\x85\xab\x22\x16\x77\x82\x78\x09\x6f\xf0\x68\xa6\x6d\xb0\x49\x4a\xde\xa8\x78\x7b\x89\xb8\xf9\xe1\x5f\x7c\xe3\xd0\x77\x7d\x77\xa7\x9e\x35\x3b\xb4\x12\x89\xb2\x60\x32\x94\x19\x86\xc0\xe9\x81\x25\xbe\x98\x11\xe5\xbf\x8d\xa1\x91\x61\x6c\x75\x6e\x9c\x84\x7d\xb3\x0f\xeb\x11\xd9\x12\x31\xd7\x92\x90\xb4\xa8\xec\x97\x53\x03\x8e\xf7\xca\xca\x3f\xbe\x1d\xce\xd7\x6f\x00\x00\x00\xff\xff\x29\x6c\xbd\xd9\x76\x00\x00\x00")
+
+func sqlMetadeckSqlBytes() ([]byte, error) {
+	return bindataRead(
+		_sqlMetadeckSql,
+		"sql/metaDeck.sql",
+	)
+}
+
+func sqlMetadeckSql() (*asset, error) {
+	bytes, err := sqlMetadeckSqlBytes()
+	if err != nil {
+		return nil, err
+	}
+
+	info := bindataFileInfo{name: "sql/metaDeck.sql", size: 118, mode: os.FileMode(438), modTime: time.Unix(1451785386, 0)}
+	a := &asset{bytes: bytes, info:  info}
+	return a, nil
+}
+
 // Asset loads and returns the asset for the given name.
 // It returns an error if the asset could not be found or
 // could not be loaded.
@@ -295,6 +316,7 @@ var _bindata = map[string]func() (*asset, error){
 	"sql/existsEvent.sql": sqlExistseventSql,
 	"sql/historicalDecksForCard.sql": sqlHistoricaldecksforcardSql,
 	"sql/latestArchetype.sql": sqlLatestarchetypeSql,
+	"sql/metaDeck.sql": sqlMetadeckSql,
 }
 
 // AssetDir returns the file names below a certain
@@ -353,6 +375,8 @@ var _bintree = &bintree{nil, map[string]*bintree{
 		"historicalDecksForCard.sql": &bintree{sqlHistoricaldecksforcardSql, map[string]*bintree{
 		}},
 		"latestArchetype.sql": &bintree{sqlLatestarchetypeSql, map[string]*bintree{
+		}},
+		"metaDeck.sql": &bintree{sqlMetadeckSql, map[string]*bintree{
 		}},
 	}},
 }}

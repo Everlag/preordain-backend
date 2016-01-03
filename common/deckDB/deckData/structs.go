@@ -48,13 +48,11 @@ type Event struct{
 	Decks []*Deck `json:",omitempty"`
 }
 
-// A single deck that gets transformed into one meta row
-// and len(Maindeck) + len(Sideboard) cheap card rows
 type Deck struct {
 	// mtgtop8 deck id
 	Name string
 
-	DeckID string `json:",omitempty"`
+	DeckID string
 
 	// The specific person piloting the deck
 	Player string

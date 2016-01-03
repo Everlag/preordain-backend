@@ -31,6 +31,7 @@ const archetypeContents string = "contentsArchetype"
 const archetypeLatest string = "latestArchetype"
 
 const deckContents string = "contentsDeck"
+const deckMeta string = "metaDeck"
 
 const eventExists string = "existsEvent"
 
@@ -38,7 +39,7 @@ const eventExists string = "existsEvent"
 var statements = []string{
 	cardInsert, deckInsert, eventInsert,
 	archetypeContents, archetypeLatest,
-	deckContents,
+	deckContents, deckMeta,
 	eventExists,
 }
 

@@ -64,19 +64,19 @@ func GetArchetypeLatest(pool *pgx.ConnPool,
 	
 	d:= deckData.Deck{Name: name}
 	// We don't want the deckid exposed to the caller
-	var deckid, Event string
+	var Event string
 	var t time.Time
 
 
 	err = pool.QueryRow(archetypeLatest, archetypes, 
 		excludedCards, presentCards).Scan(
-			&deckid,
+			&d.DeckID,
 			&d.Player, &Event, &t)
 	if err != nil {
 		return nil, err
 	}
 
-	maindeck, sideboard, err:= GetDeckContents(pool, deckid)
+	maindeck, sideboard, err:= GetDeckContents(pool, d.DeckID)
 	if err!=nil {
 		return nil, err	
 	}

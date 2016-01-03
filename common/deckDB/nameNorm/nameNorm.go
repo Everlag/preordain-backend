@@ -30,6 +30,13 @@ func Ready() bool {
 
 // Starts our internal state.
 func Begin() {
+
+	// Consistent ordering of deck names
+	// that we expose
+	sortNames()
+
+	// Mapping to and from mtgtop8 deck names
+	// to the pleasant names we support
 	populateTopLevel()
 }
 
