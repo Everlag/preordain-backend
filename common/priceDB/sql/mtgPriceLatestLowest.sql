@@ -1,34 +1,24 @@
 /*
-Gets the lowest(non-zero) price of the card across all printings for the most recent price of each printing.
-
-This is a complex query that does a lot of work for us right in the database,
-I break it down here
-
-get the most recent price of each set of the card, distinct on allows this
-eachSetLatest =
-	SELECT DISTINCT ON(set) name, set, time, price from prices.mtgprice where name=$1 and set in theSets
-
-get each set of the card we have on record
-theSets =
-	(select distinct(set) from prices.mtgprice where name=$1)
-
-Select name, set, time, price from (eachSetLatest) ORDER BY set, time DESC) as temp;
-
+Get the lowest, positive price of a card across all of its printings's
+latest prices.
 */
 
 
-
-Select name, set, time, price from 
-(
-
-SELECT DISTINCT ON(set) name, set, time, price from prices.mtgprice
-where name=$1 and price>0 and
-set in
-(
-
-select distinct(set) from prices.mtgprice where name=$1
-
+with tiny_window as (
+	select * from prices.mtgprice
+	where
+		name=$1 and
+		now() - time < '1 week'::interval and
+		price > 0
+),
+all_sets as (
+	select set from tiny_window where name=$1 group by set
 )
-ORDER BY set, time DESC
+select name, set, time, price from(
 
-) as temp ORDER BY price ASC LIMIT 1;
+	SELECT DISTINCT ON(set) name, set, time, price from tiny_window
+	where
+		set in (select * from all_sets)
+	order by set, time desc
+
+) as temp order by price asc limit 1;

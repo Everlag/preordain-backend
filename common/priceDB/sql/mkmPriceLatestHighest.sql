@@ -1,24 +1,23 @@
 /*
-Gets the lowest(non-zero) price of the card across all printings for the most recent price of each printing.
-
-Gets the highest price of the card across all printings for the most recent price of each printing.
-
-See its lowest counterpart for an explanation of what magic it performs
+Get the highest, positive price of a card across all of its printings's
+latest prices.
 */
 
-
-
-Select name, set, time, price, euro from 
-(
-
-SELECT DISTINCT ON(set) name, set, time, price, euro from prices.magiccardmarket
-where name=$1 and price>0 and
-set in
-(
-
-select distinct(set) from prices.magiccardmarket where name=$1
-
+with tiny_window as (
+	select * from prices.magiccardmarket
+	where
+		name=$1 and
+		now() - time < '1 week'::interval and
+		price > 0
+),
+all_sets as (
+	select set from tiny_window where name=$1 group by set
 )
-ORDER BY set, time DESC
+select name, set, time, price from(
 
-) as temp ORDER BY price DESC LIMIT 1;
+	SELECT DISTINCT ON(set) name, set, time, price from tiny_window
+	where
+		set in (select * from all_sets)
+	order by set, time desc
+
+) as temp order by price desc limit 1;
