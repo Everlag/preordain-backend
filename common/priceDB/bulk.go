@@ -4,31 +4,52 @@ import (
 	"github.com/jackc/pgx"
 
 	"fmt"
+
+	"time"
 )
 
 func GetBulkLatestLowest(pool *pgx.ConnPool,
 	names []string, source string) (Prices, error) {
 
-	result:= make(Prices, len(names))
+	query:= mtgPriceLatestLowest
+	if source == magiccardmarket {
+		query = mkmPriceLatestLowest
+	}
+
+	// We use a stored function to handle this to avoid
+	// significantly more code duplication.
+	rows, err := pool.Query(bulkLatest, query, names)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+
+	result:= make(Prices, 0)
 
 	failed:= 0
 
-	for i, c:= range names {
-		p, err:= GetCardLatestLowest(pool, c, source)
-		if err!=nil {
-			// Record this as a failure
-			failed++
+	for rows.Next() {
+		p := Price{}
 
-			// Insert a placeholder
+		var t time.Time
+		err = rows.Scan(&p.Name, &p.Set, &t, &p.Price)
+		if err != nil {
+			failed++
+			// Indicate a failed price,
+			// we can't possibly know the name of the card that
+			// failed so the client can figure that out!
 			p = Price{
-				Name: c,
+				Name: "Unknown",
 				Set: "Unknown",
 				Price: -1,
-				Source: source,
 			}
 		}
 
-		result[i] = p
+		p.Time = Timestamp(t)
+		p.Source = source
+
+		result = append(result, p)
 	}
 
 	// If we fail to fetch more than 1/3 of prices for this bulk
@@ -43,26 +64,45 @@ func GetBulkLatestLowest(pool *pgx.ConnPool,
 func GetBulkLatestHighest(pool *pgx.ConnPool,
 	names []string, source string) (Prices, error) {
 
-	result:= make(Prices, len(names))
+	query:= mtgPriceLatestHighest
+	if source == magiccardmarket {
+		query = mkmPriceLatestHighest
+	}
+
+	// We use a stored function to handle this to avoid
+	// significantly more code duplication.
+	rows, err := pool.Query(bulkLatest, query, names)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+
+	result:= make(Prices, 0)
 
 	failed:= 0
 
-	for i, c:= range names {
-		p, err:= GetCardLatestHighest(pool, c, source)
-		if err!=nil {
-			// Record this as a failure
-			failed++
+	for rows.Next() {
+		p := Price{}
 
-			// Insert a placeholder
+		var t time.Time
+		err = rows.Scan(&p.Name, &p.Set, &t, &p.Price)
+		if err != nil {
+			failed++
+			// Indicate a failed price,
+			// we can't possibly know the name of the card that
+			// failed so the client can figure that out!
 			p = Price{
-				Name: c,
+				Name: "Unknown",
 				Set: "Unknown",
 				Price: -1,
-				Source: source,
 			}
 		}
 
-		result[i] = p
+		p.Time = Timestamp(t)
+		p.Source = source
+
+		result = append(result, p)
 	}
 
 	// If we fail to fetch more than 1/3 of prices for this bulk

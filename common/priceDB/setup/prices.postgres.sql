@@ -113,6 +113,47 @@ CREATE AGGREGATE median(anyelement) (
   INITCOND='{}'
 );
 
+
+/*
+	Create a function and associated type that allows us to hit
+	bulk queries in a single db trip for latest extrema.
+
+	This is not overly efficient but keeps the work in the database
+	as a single client-facing query rather than len(cards)
+	queries.
+*/
+create type latestitem as (name text, set text, time timestamp, price int);
+
+CREATE OR REPLACE FUNCTION forEachLatest(IN prepared text, IN cards text[])
+  RETURNS setof latestitem AS
+
+  $$
+  DECLARE
+    card text;
+
+    query text;
+
+    latest latestitem%rowtype;
+  BEGIN
+
+    foreach card in array cards
+    loop
+
+      query = format('execute %s(%s)',
+      	quote_ident(prepared), quote_literal(card));
+      execute query into latest;
+
+      return next latest;
+
+    end loop;
+  
+    RETURN;
+  END;
+  $$
+
+LANGUAGE plpgsql VOLATILE;
+
+
 /*
 Privileges for the pricewriter
 */
