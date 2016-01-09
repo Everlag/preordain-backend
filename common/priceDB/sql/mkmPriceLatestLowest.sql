@@ -20,4 +20,4 @@ select name, set, time, price from(
 		set in (select * from all_sets)
 	order by set, time desc
 
-) as temp order by price desc limit 1;
+) as temp order by price asc limit 1;

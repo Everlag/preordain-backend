@@ -25,7 +25,7 @@ func getMKMLatestHighest(pool *pgx.ConnPool,
 	var p Price
 	var t time.Time
 	err := pool.QueryRow(mkmPriceLatestHighest, name).Scan(
-		&p.Name, &p.Set, &t, &p.Price, &p.Euro)
+		&p.Name, &p.Set, &t, &p.Price)
 	if err != nil {
 		return p, ScanError
 	}
