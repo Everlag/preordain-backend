@@ -50,6 +50,26 @@ func Clean(d *deckData.Deck) error {
 	return topLevel.determine(d)
 }
 
+// Given just a deck name, performs an attempt to give it a name
+// solely on the mtgtop8 archetype
+func CleanEst(s string) (string, error) {
+	if !Ready() {
+		return "", fmt.Errorf("internal state not initialized, call Begin()!")
+	}
+
+	d:= deckData.Deck{
+		Name: s,
+	}
+
+	err:= Clean(&d)
+	if err!=nil {
+		return "", err
+	}
+
+	return d.Name, nil
+
+}
+
 // Given an official name we support, attempts to turn it into
 // every mtgtop8 name that could've produced it.
 //

@@ -35,12 +35,16 @@ const deckMeta string = "metaDeck"
 
 const eventExists string = "existsEvent"
 
+const cardArchetypes string = "cardArchetypes"
+
+
 
 var statements = []string{
 	cardInsert, deckInsert, eventInsert,
 	archetypeContents, archetypeLatest,
 	deckContents, deckMeta,
 	eventExists,
+	cardArchetypes,
 }
 
 const statementLoc string = "sql"
