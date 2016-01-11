@@ -41,7 +41,13 @@ const mkmPriceSetLatest string = "mkmPriceSetLatest"
 const mtgPriceClosest string = "mtgPriceClosest"
 const mkmPriceClosest string = "mkmPriceClosest"
 
+const mtgPriceWeeksLow string = "mtgPriceWeeksLow"
+const mtgPriceWeeksHigh string = "mtgPriceWeeksHigh"
+const mkmPriceWeeksLow string = "mkmPriceWeeksLow"
+const mkmPriceWeeksHigh string = "mkmPriceWeeksHigh"
+
 const bulkLatest string = "bulkLatest"
+const bulkExtrema string = "bulkExtrema"
 
 
 var statements = []string{
@@ -53,7 +59,9 @@ var statements = []string{
 	mtgPriceLatestHighest, mkmPriceLatestHighest,
 	mtgPriceSetLatest, mkmPriceSetLatest,
 	mtgPriceClosest, mkmPriceClosest,
-	bulkLatest,
+	mtgPriceWeeksLow, mtgPriceWeeksHigh,
+	mkmPriceWeeksLow, mkmPriceWeeksHigh,
+	bulkLatest, bulkExtrema,
 }
 
 const statementLoc string = "sql"

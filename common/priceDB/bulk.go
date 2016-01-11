@@ -113,3 +113,98 @@ func GetBulkLatestHighest(pool *pgx.ConnPool,
 
 	return result, nil
 }
+
+type SummedWeeks []SummedWeek
+
+// The sum of a number of cards' weekly medians
+type SummedWeek struct {
+	Time      Timestamp
+
+	Price int32
+
+	Source string
+}
+
+func GetBulkWeeklyLowest(pool *pgx.ConnPool,
+	names []string, multipliers []int32,
+	source string) (SummedWeeks, error) {
+
+	if len(names) != len(multipliers) {
+		return nil, fmt.Errorf("failed to match a multiplier to each card")
+	}
+
+	query:= mtgPriceWeeksLow
+	if source == magiccardmarket {
+		query = mkmPriceWeeksLow
+	}
+
+	// We use a stored function to handle this to avoid
+	// significantly more code duplication.
+	rows, err := pool.Query(bulkExtrema, query, names, multipliers)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+
+	result:= make(SummedWeeks, 0)
+
+	for rows.Next() {
+		w := SummedWeek{}
+
+		var t time.Time
+		err = rows.Scan(&t, &w.Price)
+		if err != nil {
+			return nil, ScanError
+		}
+
+		w.Time = Timestamp(t)
+		w.Source = source
+
+		result = append(result, w)
+	}
+
+	return result, nil
+}
+
+func GetBulkWeeklyHighest(pool *pgx.ConnPool,
+	names []string, multipliers []int32,
+	source string) (SummedWeeks, error) {
+
+	if len(names) != len(multipliers) {
+		return nil, fmt.Errorf("failed to match a multiplier to each card")
+	}
+
+	query:= mtgPriceWeeksHigh
+	if source == magiccardmarket {
+		query = mkmPriceWeeksHigh
+	}
+
+	// We use a stored function to handle this to avoid
+	// significantly more code duplication.
+	rows, err := pool.Query(bulkExtrema, query, names, multipliers)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+
+	result:= make(SummedWeeks, 0)
+
+	for rows.Next() {
+		w := SummedWeek{}
+
+		var t time.Time
+		err = rows.Scan(&t, &w.Price)
+		if err != nil {
+			return nil, ScanError
+		}
+
+		w.Time = Timestamp(t)
+		w.Source = source
+
+		result = append(result, w)
+	}
+
+	return result, nil
+}

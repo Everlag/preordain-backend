@@ -155,6 +155,99 @@ LANGUAGE plpgsql VOLATILE;
 
 
 /*
+  Create a funcion and associated type that allow us sum weekly extrema
+  so as to get the lowest a collection of cards has been.
+
+  This requires that the prepared statement provided is a weekly extrema
+  statement, such as weeksLow, otherwise sad things happen.
+
+  A multiplier array can be passed so decks can be summed. The result
+  of this is opaque in what effect each card has on the final sum so
+  it is necesssary to keep track of that here.
+*/
+create type weekly_intermed as (name text, week timestamp, price int);
+create type weekly_item as (week timestamp, price int);
+
+
+CREATE OR REPLACE FUNCTION summedWeeklyExtrema(IN prepared text,
+  IN cards text[], IN multipliers int[])
+  RETURNS setof weekly_item AS
+
+  $$
+  DECLARE
+    card text;
+
+    query text;
+
+    i int;
+    single_week weekly_intermed%rowtype;
+
+    summed_week weekly_item%rowtype;
+    -- complete_weekly weeklyitem%rowtype;
+  BEGIN
+
+    /* Somewhere to keep our results */
+    create temp table
+        complete_weekly(
+          name text,
+          week timestamp,
+          price int)
+      on commit drop;
+
+    /*
+      Arrays are zero-indexed, that was fun to figure out
+      why all the prices were blank.
+    */
+    i = 1;
+    foreach card in array cards
+    loop
+      query = format('execute %s(%s)',
+        quote_ident(prepared), quote_literal(card));
+      for single_week in execute query loop
+        insert into
+            complete_weekly
+            (name, week, price)
+        values
+            ( single_week.name,
+              single_week.week,
+              single_week.price * multipliers[i]);
+      end loop;
+
+      i = i + 1;
+    end loop;
+
+    /*
+      Insert every week for which we have a price for every card.
+
+      This avoids the issue where a card present in the deck was
+      released after the rest of the cards and would be silently excluded
+      from all weeks prior to its release.
+    */
+    for summed_week in
+        with summed as (
+          select
+            count(distinct(name)) as count,
+            week,
+            sum(price) as sum
+          from complete_weekly
+          group by week order by week desc
+        )
+        select
+          week,
+          sum
+        from summed
+        where count = array_length(cards, 1)
+    loop
+      return next summed_week;
+    end loop;
+
+    RETURN;
+  END;
+  $$
+
+LANGUAGE plpgsql VOLATILE;
+
+/*
 Privileges for the pricewriter
 */
 REVOKE all privileges ON SCHEMA PUBLIC FROM priceWriter;
