@@ -50,6 +50,36 @@ func (aService *PriceService) registerDecks() {
 		Returns(http.StatusInternalServerError, RemoteAPIError, nil).
 		Returns(http.StatusBadRequest, BadCardFilter, nil).
 		Returns(http.StatusOK, "Highest card prices for a specific deck from DefaultPriceSource or specific price source", nil))
+
+	priceService.Route(priceService.
+		GET("/Deck/{deckID}/Weekly/Low").To(aService.getDeckWeeklyLowest).
+		// Docs
+		Doc("Lowest weekly prices for a deck").
+		Operation("getDeckWeeklyLowest").
+		Param(priceService.PathParameter("deckID",
+			"A valid deck identifer usable in the Decks api").DataType("string")).
+		Param(priceService.QueryParameter("source",
+			"Valid price source").DataType("string")).
+		Writes(priceDB.SummedWeek{}).
+		Returns(http.StatusInternalServerError, PriceDBError, nil).
+		Returns(http.StatusInternalServerError, RemoteAPIError, nil).
+		Returns(http.StatusBadRequest, BadCardFilter, nil).
+		Returns(http.StatusOK, "Lowest weekly summed prices for a specific deck from DefaultPriceSource or specific price source", nil))
+
+	priceService.Route(priceService.
+		GET("/Deck/{deckID}/Weekly/High").To(aService.getDeckWeeklyHighest).
+		// Docs
+		Doc("Highest weekly prices for a deck").
+		Operation("getDeckWeeklyHighest").
+		Param(priceService.PathParameter("deckID",
+			"A valid deck identifer usable in the Decks api").DataType("string")).
+		Param(priceService.QueryParameter("source",
+			"Valid price source").DataType("string")).
+		Writes(priceDB.SummedWeek{}).
+		Returns(http.StatusInternalServerError, PriceDBError, nil).
+		Returns(http.StatusInternalServerError, RemoteAPIError, nil).
+		Returns(http.StatusBadRequest, BadCardFilter, nil).
+		Returns(http.StatusOK, "Highest weekly summed prices for a specific deck from DefaultPriceSource or specific price source", nil))
 }
 
 
@@ -70,7 +100,7 @@ func (aService *PriceService) getDeckPriceLowest(req *restful.Request,
 		return
 	}
 
-	cards:= deckToCardList(d)
+	cards, _:= deckToCardList(d)
 
 	prices, err:= priceDB.GetBulkLatestLowest(aService.pool, cards, sourceName)
 	if err!=nil {
@@ -101,7 +131,7 @@ func (aService *PriceService) getDeckPriceHighest(req *restful.Request,
 		return
 	}
 
-	cards:= deckToCardList(d)
+	cards, _:= deckToCardList(d)
 
 	prices, err:= priceDB.GetBulkLatestHighest(aService.pool, cards, sourceName)
 	if err!=nil {
@@ -115,18 +145,89 @@ func (aService *PriceService) getDeckPriceHighest(req *restful.Request,
 	resp.WriteEntity(prices)
 }
 
-// Convert a deck to a list of cards
-func deckToCardList(d *deckData.Deck) []string {
+func (aService *PriceService) getDeckWeeklyLowest(req *restful.Request,
+	resp *restful.Response) {
+	
+	deckid:= req.PathParameter("deckID")
+
+	sourceName:= req.QueryParameter("source")
+	if !validPriceSources[sourceName] {
+		sourceName = DefaultPriceSource
+	}
+
+	// Grab the decklist from the remote
+	d, err:= fetchRemoteDecklist(deckid)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusInternalServerError, RemoteAPIError)
+		return
+	}
+
+	cards, multipliers:= deckToCardList(d)
+
+	weeks, err:= priceDB.GetBulkWeeklyLowest(aService.pool,
+		cards, multipliers,
+		sourceName)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusInternalServerError, PriceDBError)
+		return
+	}
+
+	// Set cache header to reduce load.
+	setCacheHeader(resp)
+
+	resp.WriteEntity(weeks)
+}
+
+func (aService *PriceService) getDeckWeeklyHighest(req *restful.Request,
+	resp *restful.Response) {
+	
+	deckid:= req.PathParameter("deckID")
+
+	sourceName:= req.QueryParameter("source")
+	if !validPriceSources[sourceName] {
+		sourceName = DefaultPriceSource
+	}
+
+	// Grab the decklist from the remote
+	d, err:= fetchRemoteDecklist(deckid)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusInternalServerError, RemoteAPIError)
+		return
+	}
+
+	cards, multipliers:= deckToCardList(d)
+
+	weeks, err:= priceDB.GetBulkWeeklyHighest(aService.pool,
+		cards, multipliers,
+		sourceName)
+	if err!=nil {
+		resp.WriteErrorString(http.StatusInternalServerError, PriceDBError)
+		return
+	}
+
+	// Set cache header to reduce load.
+	setCacheHeader(resp)
+
+	resp.WriteEntity(weeks)
+}
+
+
+// Convert a deck to a list of cards and a corresponding
+// list of integers for appearance numbers.
+func deckToCardList(d *deckData.Deck) ([]string, []int32) {
 	
 	cards:= make([]string, 0)
+	quantities:= make([]int32, 0)
 	for _, c:= range d.Maindeck{
 		cards = append(cards, c.Name)
+		quantities = append(quantities, int32(c.Quantity))
 	}
 	for _, c:= range d.Sideboard{
 		cards = append(cards, c.Name)
+		quantities = append(quantities, int32(c.Quantity))
 	}
 
-	return cards
+	return cards, quantities
 }
 
 // Given a deckid, acquire the decklist from a remote database
