@@ -227,6 +227,24 @@ func deckToCardList(d *deckData.Deck) ([]string, []int32) {
 		quantities = append(quantities, int32(c.Quantity))
 	}
 
+	// We need to dedup or weekly extrema breaks on
+	// cards split between sideboard and mainboard.
+	dedup:= make(map[string]int32)
+	for i, c:= range cards{
+		prev, ok:= dedup[c]
+		if !ok {
+			prev = 0
+		}
+		dedup[c] = prev + quantities[i]
+	}
+
+	cards = make([]string, 0)
+	quantities = make([]int32, 0)
+	for c, quantity:= range dedup{
+		cards = append(cards, c)
+		quantities = append(quantities, quantity)
+	}
+
 	return cards, quantities
 }
 
